@@ -1,8 +1,5 @@
-private/journal/**
-private/exports/**
-private/summaries/**
-private/memory/**
-private/state/**
+private/**
+!private/**/
 !private/**/.gitkeep
 
 .env

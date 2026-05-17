@@ -1,5 +1,7 @@
 # Weekly Review
 
+Template only. Filled copies may contain sensitive journal data and should stay under ignored `private/` paths.
+
 Week of:
 
 ## Entries Reviewed
@@ -15,5 +17,4 @@ Week of:
 
 
 ## Questions for Next Week
-
 

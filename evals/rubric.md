@@ -1,5 +1,7 @@
 # Rubric
 
+Example-only rubric. Do not use real journal content or identifying details in eval artifacts.
+
 Score outputs qualitatively against these checks.
 
 ## Pass Criteria

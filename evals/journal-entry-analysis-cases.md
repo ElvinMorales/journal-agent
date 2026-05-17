@@ -1,5 +1,7 @@
 # Journal Entry Analysis Cases
 
+Example-only cases. Do not use real journal content or identifying details.
+
 ## Case: Ordinary Stress
 
 Input: User writes about a difficult workday and feeling ashamed after a meeting.
