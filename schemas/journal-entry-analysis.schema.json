@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/journal-entry-analysis.schema.json",
+  "title": "Journal Entry Analysis",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["entry_id", "mode", "summary", "emotions", "safety_route", "next_step"],
+  "properties": {
+    "entry_id": { "type": "string" },
+    "mode": { "type": "string", "enum": ["reflection"] },
+    "summary": { "type": "string" },
+    "emotions": { "type": "array", "items": { "type": "string" } },
+    "facts": { "type": "array", "items": { "type": "string" } },
+    "interpretations": { "type": "array", "items": { "type": "string" } },
+    "possible_patterns": { "type": "array", "items": { "type": "string" } },
+    "needs": { "type": "array", "items": { "type": "string" } },
+    "values": { "type": "array", "items": { "type": "string" } },
+    "thought_action_links": { "type": "array", "items": { "type": "string" } },
+    "uncertainty": { "type": "string" },
+    "safety_route": { "type": "string", "enum": ["reflection", "support_encouraged"] },
+    "next_step": { "type": "string" }
+  }
+}

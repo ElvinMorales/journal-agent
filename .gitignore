@@ -1,0 +1,15 @@
+private/journal/**
+private/exports/**
+private/summaries/**
+private/memory/**
+private/state/**
+!private/**/.gitkeep
+
+.env
+.env.*
+*.sqlite
+*.sqlite3
+*.db
+*.log
+tmp/
+.cache/

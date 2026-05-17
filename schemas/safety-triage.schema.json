@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/safety-triage.schema.json",
+  "title": "Safety Triage",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["route", "signals", "response_priority", "ordinary_reflection_allowed"],
+  "properties": {
+    "route": {
+      "type": "string",
+      "enum": ["reflection", "support_encouraged", "safety_check", "urgent_support"]
+    },
+    "signals": { "type": "array", "items": { "type": "string" } },
+    "response_priority": { "type": "string" },
+    "ordinary_reflection_allowed": { "type": "boolean" },
+    "direct_safety_question": { "type": "string" },
+    "human_support_prompt": { "type": "string" },
+    "crisis_resource_note": { "type": "string" },
+    "do_not_include": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["numerical_risk_score", "diagnosis", "method_details", "deep_analysis"]
+      }
+    }
+  }
+}

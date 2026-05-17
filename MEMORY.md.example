@@ -1,0 +1,22 @@
+# MEMORY.md.example
+
+This example shows the shape of durable memory if the user explicitly consents. Do not store real memory in this committed file.
+
+## Allowed Memory
+
+- User-stated preferences for reflection style.
+- User-approved recurring values or coping strategies.
+- User-approved therapy-prep preferences.
+
+## Disallowed Memory
+
+- Raw journal entries.
+- Crisis notes.
+- Unreviewed inferred traits.
+- Diagnoses or suspected diagnoses.
+- Secrets, credentials, or third-party private information.
+
+## Example
+
+- Reflection preference: The user prefers concise summaries with one optional next step.
+- Coping preference: The user finds grounding prompts more useful than cognitive reframes during high stress.

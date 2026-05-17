@@ -1,0 +1,15 @@
+# STATE.md.example
+
+This example describes session state. Do not store real state in this committed file.
+
+## Session State Shape
+
+- Current mode: reflection, coping, weekly review, therapy prep, or safety.
+- Current user goal.
+- Entry identifiers under review.
+- User-approved constraints for this session.
+- Open questions to resolve before summarizing.
+
+## Rule
+
+Session state is temporary and should not become durable memory unless the user explicitly approves a specific item.

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/journal-entry.schema.json",
+  "title": "Journal Entry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["entry_id", "created_at", "body"],
+  "properties": {
+    "entry_id": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "body": { "type": "string" },
+    "context_tags": { "type": "array", "items": { "type": "string" } },
+    "user_goal": { "type": "string" }
+  }
+}

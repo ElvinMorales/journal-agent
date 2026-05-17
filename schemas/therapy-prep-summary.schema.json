@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/therapy-prep-summary.schema.json",
+  "title": "Therapy Prep Summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["time_period", "topics", "questions", "user_review_needed"],
+  "properties": {
+    "time_period": { "type": "string" },
+    "topics": { "type": "array", "items": { "type": "string" } },
+    "emotions": { "type": "array", "items": { "type": "string" } },
+    "situations_to_discuss": { "type": "array", "items": { "type": "string" } },
+    "coping_that_helped": { "type": "array", "items": { "type": "string" } },
+    "safety_concerns_to_mention": { "type": "array", "items": { "type": "string" } },
+    "questions": { "type": "array", "items": { "type": "string" } },
+    "user_review_needed": { "type": "boolean" }
+  }
+}

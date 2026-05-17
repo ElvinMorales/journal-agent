@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/weekly-pattern-summary.schema.json",
+  "title": "Weekly Pattern Summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["time_period", "entries_reviewed", "themes", "uncertainty", "questions"],
+  "properties": {
+    "time_period": { "type": "string" },
+    "entries_reviewed": { "type": "array", "items": { "type": "string" } },
+    "themes": { "type": "array", "items": { "type": "string" } },
+    "recurring_emotions": { "type": "array", "items": { "type": "string" } },
+    "possible_triggers": { "type": "array", "items": { "type": "string" } },
+    "helpful_coping": { "type": "array", "items": { "type": "string" } },
+    "values_or_needs": { "type": "array", "items": { "type": "string" } },
+    "uncertainty": { "type": "string" },
+    "questions": { "type": "array", "items": { "type": "string" } }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/coping-card.schema.json",
+  "title": "Coping Card",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["card_id", "name", "when_to_use", "steps"],
+  "properties": {
+    "card_id": { "type": "string" },
+    "name": { "type": "string" },
+    "when_to_use": { "type": "string" },
+    "steps": { "type": "array", "items": { "type": "string" } },
+    "support_option": { "type": "string" },
+    "avoid": { "type": "array", "items": { "type": "string" } }
+  }
+}
