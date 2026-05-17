@@ -29,6 +29,7 @@ The `private/` directory is ignored by default except for placeholder `.gitkeep`
 
 - Read `ARTIFACT_MAP.md` for the full artifact layout.
 - Read `GUARDRAILS.md` before building or running reflection workflows.
+- Use `mobile/README.md` for phone-first workflows with Obsidian Mobile, ChatGPT mobile, and iOS Shortcuts.
 - Use `templates/daily-journal-template.md` or `templates/quick-check-in-template.md` for entries.
 - Use `prompts/evening-review.md` or `prompts/weekly-pattern-review.md` for reflection sessions.
 

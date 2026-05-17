@@ -14,6 +14,7 @@ This map explains the role, loading mode, and activation control for the reposit
 | Outputs | Structured contracts | On demand/tooling | Agent/tool | `OUTPUT_FORMATS.md`, `schemas/*.json` |
 | Prompts | User-invoked flows | User-controlled | User | `prompts/*.md` |
 | Templates | User-owned journal artifacts | User-controlled | User/agent | `templates/*.md` |
+| Mobile starter pack | Phone-first no-code workflows and shortcut specs | On demand | Human | `mobile/` |
 | Memory | Durable user facts, if consented | On demand/private | Human/agent | `MEMORY.md.example`, `private/memory/` |
 | State | Session continuity | On demand/private | Human/agent | `STATE.md.example`, `private/state/` |
 | Evaluation | Regression and safety review | On demand | Human/tool | `EVALS.md`, `evals/*` |
