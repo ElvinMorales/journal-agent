@@ -2,6 +2,8 @@
 
 This map explains the role, loading mode, and activation control for the repository artifacts.
 
+It also shows how repo files relate to the Agentic AI Artifact Taxonomy. See `docs/taxonomy-mapping.md` for the full 14-bucket mapping.
+
 | Category | Role | Loading Mode | Activation Control | Path |
 |---|---|---:|---|---|
 | Identity | Always-on repo instruction | Always-on | Agent/tool | `AGENTS.md` |
