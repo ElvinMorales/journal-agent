@@ -16,7 +16,7 @@ This example shows the shape of durable memory if the user explicitly consents. 
 - Diagnoses or suspected diagnoses.
 - Secrets, credentials, or third-party private information.
 
-## Example
+## Synthetic Shape Example
 
 - Reflection preference: The user prefers concise summaries with one optional next step.
 - Coping preference: The user finds grounding prompts more useful than cognitive reframes during high stress.
