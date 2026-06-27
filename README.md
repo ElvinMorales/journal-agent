@@ -1,10 +1,10 @@
 # Journal Mirror Agent
 
-`journal-agent` is a public reference implementation of the Agentic AI Artifact Taxonomy applied to a private journaling workflow. The `v0.2.0` direction evolves it into a Journal Mirror Agent scaffold: natural private writing first, selected-context reflection after, and reviewable Memory or State update proposals.
+`journal-agent` is a public, file-first scaffold for a private-first Journal Mirror Agent and a reference implementation of the Agentic AI Artifact Taxonomy. The `v0.2.0` release candidate supports natural private writing first, selected-context reflection after, and reviewable Memory or State update proposals.
 
 It does not store journal entries and it is not therapy, diagnosis, crisis counseling, medical advice, treatment planning, medication guidance, a mental health product, clinical decision support system, hosted service, Obsidian plugin, or private journal database.
 
-The public repo contains the reusable control-plane artifacts. Private journal content belongs outside the repo: in a private Obsidian vault, ignored local folders, or another user-controlled private system.
+The public repo is the reusable control plane. A private Obsidian vault or other user-controlled notes system is the data plane. Private journal content and all real runtime artifacts belong outside the repo.
 
 Taxonomy source of truth: [agentic-ai-artifact-taxonomy](https://github.com/ElvinMorales/agentic-ai-artifact-taxonomy.git)
 
@@ -51,14 +51,22 @@ This repo applies that lens to a journaling companion by making public artifacts
 
 ## Start Here
 
+For the shortest orientation, read the [v0.2 usable-product handoff](docs/v0.2-usable-product-handoff.md). Then follow this manual flow:
+
 1. Write naturally in a private Obsidian vault or another user-controlled private notes system.
-2. Use the [private runtime starter guide](docs/obsidian-private-runtime-guide.md) to set up a minimal private runtime, then start with the [Journal Mirror session prompt](prompts/journal-mirror-session.md) or [freeform entry prompt](prompts/freeform-entry-mirror.md) and one selected entry, excerpt, or small group of entries.
-3. Review any proposed Memory or State updates with the [proposal review guide](docs/memory-state-proposal-review.md) and separate [Memory](schemas/memory-update-proposal.schema.json) or [State](schemas/state-update-proposal.schema.json) schema before manually applying, editing, or discarding them. Nothing changes automatically.
+2. Use the [private runtime starter guide](docs/obsidian-private-runtime-guide.md) to set up a minimal private workflow, then start with the [Journal Mirror workflow](docs/journal-mirror-workflow.md), [session prompt](prompts/journal-mirror-session.md), or [freeform entry prompt](prompts/freeform-entry-mirror.md) and one selected entry, excerpt, or small group of entries.
+3. Review any proposed Memory or State updates with the [proposal review guide](docs/memory-state-proposal-review.md) and separate [Memory](schemas/memory-update-proposal.schema.json) or [State](schemas/state-update-proposal.schema.json) schema before manually copying, editing, or discarding them. Proposals are review-only; nothing changes automatically.
 4. Use `templates/` only when a structured starting point is helpful; templates are optional, not a required journal format.
+
+Release readers should also review the [v0.2.0 release notes](docs/release-notes/v0.2.0.md) and [v0.2.0 release checklist](docs/release-checklist-v0.2.0.md).
 
 See [all session prompts](prompts/), the [Journal Mirror session capability](skills/journal-mirror-session/SKILL.md), and the [Memory/State review capability](skills/memory-state-review/SKILL.md). Read `docs/journal-mirror-workflow.md` for the complete flow, `docs/memory-state-proposal-review.md` for the proposal lifecycle and publishing checklist, `ARTIFACT_MAP.md` for the artifact layout, and `GUARDRAILS.md` before running reflection workflows.
 
 To inspect the flow without private content, use the [synthetic Journal Mirror walkthroughs](examples/journal-mirror-walkthroughs/) and the [manual synthetic eval suite](EVALS.md). They demonstrate selected-context reflection, proposal review, expiration, privacy limits, and safety routing; they are not private traces or clinical validation.
+
+## v0.2.0 Scope
+
+`v0.2.0` adds usable manual Journal Mirror sessions, private-notes setup guidance, prompt and capability surfaces, separate reviewable Memory and State proposal contracts, synthetic walkthroughs and evals, and a design-only future controller contract. It does not add a live MCP/VPS runtime, vault access, an Obsidian plugin, automatic persistence, a clinical product, or crisis automation.
 
 ## Safety and Privacy Warnings
 
