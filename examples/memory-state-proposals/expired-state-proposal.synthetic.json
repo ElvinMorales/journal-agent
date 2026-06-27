@@ -1,0 +1,38 @@
+{
+  "proposal_id": "state-proposal-synthetic-past-conversation",
+  "proposal_type": "state",
+  "destination": "private_state",
+  "status": "expired",
+  "proposed_temporary_text": "This week's focus is preparing for a specific conversation.",
+  "reason_it_is_useful_now": "Before the event, the temporary focus could have supported a short preparation loop.",
+  "active_context_or_open_loop": "The synthetic conversation event was the only open loop.",
+  "review_or_stale_trigger": "Expire when the synthetic conversation has occurred or at the end of the week.",
+  "expiration": {
+    "date": "2026-06-14",
+    "event": "Synthetic conversation completed"
+  },
+  "evidence_summary": "A synthetic session identified a time-limited event without including source writing.",
+  "uncertainty_or_counterevidence": "The event has passed, so retaining this item would no longer support current context.",
+  "source_reference": {
+    "private_session_id": "session-synthetic-state-002"
+  },
+  "review_decision": "expired",
+  "reviewer_notes": "Expired because the event and review window have passed; do not promote this item to Memory.",
+  "edited_approved_text": null,
+  "created_at": "2026-06-08T15:00:00Z",
+  "updated_at": "2026-06-15T15:00:00Z",
+  "reviewed_at": "2026-06-15T15:00:00Z",
+  "safety_privacy_checks": {
+    "contains_raw_journal_content": false,
+    "contains_full_journal_entries": false,
+    "contains_therapy_or_crisis_notes": false,
+    "contains_clinical_claims": false,
+    "used_as_private_log": false,
+    "has_review_stale_or_expiration_condition": true,
+    "silently_promotes_to_memory": false,
+    "exact_wording_and_destination_approved": false
+  },
+  "proposal_only": true,
+  "human_review_required": true,
+  "review_reminder": "Proposal only: a human must approve the exact wording and private State destination before manually copying any update."
+}

@@ -1,0 +1,38 @@
+{
+  "proposal_id": "state-proposal-synthetic-evening-question",
+  "proposal_type": "state",
+  "destination": "private_state",
+  "status": "pending",
+  "proposed_temporary_text": "Current open question: how to make evenings feel less chaotic this week.",
+  "reason_it_is_useful_now": "Keeping one near-term question visible may support the next reflection session.",
+  "active_context_or_open_loop": "A synthetic weekly reflection is exploring one small change to the evening routine.",
+  "review_or_stale_trigger": "Review after the end of the week.",
+  "expiration": {
+    "date": "2026-06-07",
+    "event": "End of the synthetic reflection week"
+  },
+  "evidence_summary": "A synthetic session identified this as the current question; no source writing is included.",
+  "uncertainty_or_counterevidence": "The question may stop being useful before the week ends.",
+  "source_reference": {
+    "private_session_id": "session-synthetic-state-001"
+  },
+  "review_decision": "pending",
+  "reviewer_notes": null,
+  "edited_approved_text": null,
+  "created_at": "2026-06-01T15:00:00Z",
+  "updated_at": "2026-06-01T15:00:00Z",
+  "reviewed_at": null,
+  "safety_privacy_checks": {
+    "contains_raw_journal_content": false,
+    "contains_full_journal_entries": false,
+    "contains_therapy_or_crisis_notes": false,
+    "contains_clinical_claims": false,
+    "used_as_private_log": false,
+    "has_review_stale_or_expiration_condition": true,
+    "silently_promotes_to_memory": false,
+    "exact_wording_and_destination_approved": false
+  },
+  "proposal_only": true,
+  "human_review_required": true,
+  "review_reminder": "Proposal only: a human must approve the exact wording and private State destination before manually copying any update."
+}

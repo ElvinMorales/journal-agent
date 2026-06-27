@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/state-update-proposal.schema.json",
+  "title": "State Update Proposal",
+  "description": "A reviewable temporary-state candidate. This artifact is proposal-only and never authorizes or performs a State write.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "proposal_id",
+    "proposal_type",
+    "destination",
+    "status",
+    "proposed_temporary_text",
+    "reason_it_is_useful_now",
+    "active_context_or_open_loop",
+    "review_or_stale_trigger",
+    "expiration",
+    "evidence_summary",
+    "uncertainty_or_counterevidence",
+    "source_reference",
+    "review_decision",
+    "reviewer_notes",
+    "edited_approved_text",
+    "created_at",
+    "updated_at",
+    "reviewed_at",
+    "safety_privacy_checks",
+    "proposal_only",
+    "human_review_required",
+    "review_reminder"
+  ],
+  "properties": {
+    "proposal_id": {
+      "type": "string",
+      "pattern": "^state-proposal-[a-z0-9][a-z0-9-]{2,63}$"
+    },
+    "proposal_type": { "const": "state" },
+    "destination": { "const": "private_state" },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "approved", "edited", "expired", "discarded"]
+    },
+    "proposed_temporary_text": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The exact minimal wording proposed for temporary State; never a full journal entry or private log."
+    },
+    "reason_it_is_useful_now": { "type": "string", "minLength": 1 },
+    "active_context_or_open_loop": { "type": "string", "minLength": 1 },
+    "review_or_stale_trigger": { "type": "string", "minLength": 1 },
+    "expiration": {
+      "description": "An optional expiration date or event. A review or stale trigger is still required.",
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "minProperties": 1,
+          "properties": {
+            "date": { "type": "string", "format": "date" },
+            "event": { "type": "string", "minLength": 1 }
+          }
+        }
+      ]
+    },
+    "evidence_summary": {
+      "type": "string",
+      "minLength": 1,
+      "description": "A synthetic, minimal, or redacted summary. Do not copy raw journal content or selected excerpts."
+    },
+    "uncertainty_or_counterevidence": { "type": "string", "minLength": 1 },
+    "source_reference": { "$ref": "#/$defs/source_reference" },
+    "review_decision": {
+      "type": "string",
+      "enum": ["pending", "approved", "edited", "expired", "discarded"]
+    },
+    "reviewer_notes": { "type": ["string", "null"] },
+    "edited_approved_text": {
+      "type": ["string", "null"],
+      "description": "The exact user-approved replacement wording when status is edited; otherwise null."
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "reviewed_at": { "type": ["string", "null"], "format": "date-time" },
+    "safety_privacy_checks": { "$ref": "#/$defs/safety_privacy_checks" },
+    "proposal_only": { "const": true },
+    "human_review_required": { "const": true },
+    "review_reminder": {
+      "const": "Proposal only: a human must approve the exact wording and private State destination before manually copying any update."
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "pending" } }, "required": ["status"] },
+      "then": {
+        "properties": {
+          "review_decision": { "const": "pending" },
+          "reviewed_at": { "type": "null" },
+          "edited_approved_text": { "type": "null" },
+          "safety_privacy_checks": {
+            "properties": { "exact_wording_and_destination_approved": { "const": false } }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "status": { "const": "approved" } }, "required": ["status"] },
+      "then": {
+        "properties": {
+          "review_decision": { "const": "approved" },
+          "reviewed_at": { "type": "string" },
+          "edited_approved_text": { "type": "null" },
+          "safety_privacy_checks": { "$ref": "#/$defs/approved_safety_privacy_checks" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "status": { "const": "edited" } }, "required": ["status"] },
+      "then": {
+        "properties": {
+          "review_decision": { "const": "edited" },
+          "reviewed_at": { "type": "string" },
+          "edited_approved_text": { "type": "string", "minLength": 1 },
+          "safety_privacy_checks": { "$ref": "#/$defs/approved_safety_privacy_checks" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "status": { "enum": ["expired", "discarded"] } },
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "reviewed_at": { "type": "string" },
+          "edited_approved_text": { "type": "null" },
+          "safety_privacy_checks": {
+            "properties": { "exact_wording_and_destination_approved": { "const": false } }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "status": { "const": "expired" } }, "required": ["status"] },
+      "then": { "properties": { "review_decision": { "const": "expired" } } }
+    },
+    {
+      "if": { "properties": { "status": { "const": "discarded" } }, "required": ["status"] },
+      "then": { "properties": { "review_decision": { "const": "discarded" } } }
+    }
+  ],
+  "$defs": {
+    "source_reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["private_session_id"],
+      "properties": {
+        "private_session_id": {
+          "type": "string",
+          "pattern": "^session-[a-z0-9][a-z0-9-]{2,63}$",
+          "description": "An opaque private-session identifier, not private content or a local path."
+        }
+      }
+    },
+    "safety_privacy_checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contains_raw_journal_content",
+        "contains_full_journal_entries",
+        "contains_therapy_or_crisis_notes",
+        "contains_clinical_claims",
+        "used_as_private_log",
+        "has_review_stale_or_expiration_condition",
+        "silently_promotes_to_memory",
+        "exact_wording_and_destination_approved"
+      ],
+      "properties": {
+        "contains_raw_journal_content": { "const": false },
+        "contains_full_journal_entries": { "const": false },
+        "contains_therapy_or_crisis_notes": { "const": false },
+        "contains_clinical_claims": { "const": false },
+        "used_as_private_log": { "const": false },
+        "has_review_stale_or_expiration_condition": { "const": true },
+        "silently_promotes_to_memory": { "const": false },
+        "exact_wording_and_destination_approved": { "type": "boolean" }
+      }
+    },
+    "approved_safety_privacy_checks": {
+      "allOf": [
+        { "$ref": "#/$defs/safety_privacy_checks" },
+        {
+          "properties": {
+            "exact_wording_and_destination_approved": { "const": true }
+          }
+        }
+      ]
+    }
+  }
+}

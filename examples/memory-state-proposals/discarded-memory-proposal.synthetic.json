@@ -1,0 +1,31 @@
+{
+  "proposal_id": "memory-proposal-synthetic-overbroad-trait",
+  "proposal_type": "memory",
+  "destination": "private_memory",
+  "status": "discarded",
+  "proposed_durable_text": "The user is always avoidant.",
+  "reason_it_may_remain_useful": "The rejected rationale claimed that a broad label could predict future behavior.",
+  "evidence_summary": "One synthetic scenario showed hesitation in one situation; that is not enough evidence for durable context.",
+  "uncertainty_or_counterevidence": "The wording is absolute, trait-like, and unsupported by varied observations or explicit user confirmation.",
+  "source_reference": {
+    "private_session_id": "session-synthetic-memory-002"
+  },
+  "review_decision": "discarded",
+  "reviewer_notes": "Discarded because the proposal turns limited evidence into a broad trait claim.",
+  "edited_approved_text": null,
+  "created_at": "2026-06-02T14:00:00Z",
+  "updated_at": "2026-06-02T14:10:00Z",
+  "reviewed_at": "2026-06-02T14:10:00Z",
+  "safety_privacy_checks": {
+    "contains_raw_journal_content": false,
+    "contains_selected_excerpts": false,
+    "contains_therapy_or_crisis_notes": false,
+    "contains_clinical_claims": false,
+    "is_broad_trait_claim": true,
+    "enough_evidence_for_durable_context": false,
+    "exact_wording_and_destination_approved": false
+  },
+  "proposal_only": true,
+  "human_review_required": true,
+  "review_reminder": "Proposal only: a human must approve the exact wording and private Memory destination before manually copying any update."
+}

@@ -16,7 +16,7 @@ Private reflections remain in the private data plane unless the user intentional
 
 Durable memory requires explicit user approval. Do not infer durable traits from journal content.
 
-Memory and State remain separate. Each proposed update stays pending until the user reviews its wording and destination, then edits, approves, or discards it. State must not be promoted to Memory automatically.
+Memory and State remain separate. Each proposed update is a private runtime artifact and stays pending until the user reviews its exact wording and destination, then edits, approves, discards, or, for State, lets it expire. Approved wording is manually copied into private Memory or State; State must not be promoted to Memory automatically. Only synthetic proposal fixtures may appear in the public repository. See `docs/memory-state-proposal-review.md`.
 
 ## 4. Export
 

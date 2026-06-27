@@ -63,13 +63,15 @@ Outputs are suggestions for review, not clinical conclusions or automatic record
 
 State captures fast-changing execution context, such as the current reflection goal, an open question, or a near-term next step. Memory captures durable context likely to remain useful across future sessions, such as an explicitly stated reflection preference. A temporary feeling, one-off event, or unreviewed inferred trait does not become Memory.
 
-Each proposal should identify its destination, concise proposed text, reason, source context, uncertainty, and review or deletion expectation. Proposals remain pending until the user chooses one action:
+Each proposal should identify its destination, concise proposed text, reason, minimal evidence summary, opaque private source reference, uncertainty, safety/privacy checks, and review or deletion expectation. Use the separate `schemas/memory-update-proposal.schema.json` and `schemas/state-update-proposal.schema.json` contracts and follow `docs/memory-state-proposal-review.md`. Proposals remain pending until the user chooses one action:
 
 - Approve the exact proposal.
 - Edit it, then approve the edited version.
 - Discard it.
 
-Approval for one proposal does not approve another. State must not silently become Memory, and neither layer should contain a raw journal entry when a minimal summary is sufficient. This release documents the review contract but does not implement live writes.
+Temporary State proposals may also expire when their review, stale, date, or event trigger is reached.
+
+Approval for one proposal does not approve another. State must not silently become Memory, and neither layer should contain a raw journal entry when a minimal summary is sufficient. Approved wording is manually copied into private Memory or State; the schemas do not implement live writes or automatic persistence.
 
 ## Why Templates Are Optional
 

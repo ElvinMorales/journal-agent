@@ -111,15 +111,17 @@ A proposal may be useful but classified incorrectly. Review both its wording and
 
 ## Pending Update Review Flow
 
+Use `schemas/memory-update-proposal.schema.json` and `schemas/state-update-proposal.schema.json` as the separate public contracts, and use `docs/memory-state-proposal-review.md` for review questions and the publishing checklist. Filled files in the private vault are private runtime artifacts. The repository examples are synthetic fixtures only.
+
 ```text
 proposal created
-→ saved to Pending Updates
-→ user reviews
-→ user edits, approves, or discards
-→ approved update moves to Memory or State
+→ saved privately to Pending Updates
+→ user reviews exact wording and destination
+→ user edits, approves, discards, or lets it expire
+→ approved wording is manually copied to Memory or State
 ```
 
-Keep Memory proposals under `Pending Updates/memory/` and State proposals under `Pending Updates/state/`. Moving or copying an approved item into its destination is a deliberate user action. Proposal files contain private runtime context and are private runtime artifacts, not public repo artifacts.
+Keep Memory proposals under `Pending Updates/memory/` and State proposals under `Pending Updates/state/`. Moving or copying an approved item into its destination is a deliberate user action; nothing in the schemas performs it. Proposal files contain private runtime context and are private runtime artifacts, not public repo artifacts.
 
 ## What Not to Store in the Public Repo
 

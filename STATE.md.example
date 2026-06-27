@@ -2,6 +2,8 @@
 
 This example describes session state. Do not store real state in this committed file.
 
+State should come only from a reviewed and approved State proposal. Include a review, stale, or expiration trigger where useful, and do not use State as a private log. See `docs/memory-state-proposal-review.md`.
+
 ## Session State Shape
 
 - Current mode: reflection, coping, weekly review, therapy prep, or safety.

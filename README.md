@@ -52,10 +52,10 @@ This repo applies that lens to a journaling companion by making public artifacts
 
 1. Write naturally in a private Obsidian vault or another user-controlled private notes system.
 2. Use the [private runtime starter guide](docs/obsidian-private-runtime-guide.md) to set up a minimal private runtime, then start with the [Journal Mirror session prompt](prompts/journal-mirror-session.md) or [freeform entry prompt](prompts/freeform-entry-mirror.md) and one selected entry, excerpt, or small group of entries.
-3. Review any proposed Memory or State updates before applying, editing, or discarding them. Nothing durable changes automatically.
+3. Review any proposed Memory or State updates with the [proposal review guide](docs/memory-state-proposal-review.md) and separate [Memory](schemas/memory-update-proposal.schema.json) or [State](schemas/state-update-proposal.schema.json) schema before manually applying, editing, or discarding them. Nothing changes automatically.
 4. Use `templates/` only when a structured starting point is helpful; templates are optional, not a required journal format.
 
-See [all session prompts](prompts/), the [Journal Mirror session capability](skills/journal-mirror-session/SKILL.md), and the [Memory/State review capability](skills/memory-state-review/SKILL.md). Read `docs/journal-mirror-workflow.md` for the complete flow, `ARTIFACT_MAP.md` for the artifact layout, and `GUARDRAILS.md` before running reflection workflows.
+See [all session prompts](prompts/), the [Journal Mirror session capability](skills/journal-mirror-session/SKILL.md), and the [Memory/State review capability](skills/memory-state-review/SKILL.md). Read `docs/journal-mirror-workflow.md` for the complete flow, `docs/memory-state-proposal-review.md` for the proposal lifecycle and publishing checklist, `ARTIFACT_MAP.md` for the artifact layout, and `GUARDRAILS.md` before running reflection workflows.
 
 ## Safety and Privacy Warnings
 

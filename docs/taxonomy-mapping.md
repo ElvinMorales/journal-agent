@@ -38,14 +38,14 @@ The taxonomy defines an agentic AI artifact as anything an agent system depends 
 | Tools | `scripts/` | Validation and redaction helpers; future connectors remain implementation-edge mappings | Public tooling; no private outputs committed | Partial |
 | Knowledge/resources | `references/`, `docs/`, `docs/obsidian-private-runtime-guide.md` | Supporting public reference material and private-runtime setup guidance | Public-safe guidance only; private vault content stays outside Git | Covered for starter guide |
 | Prompts/interfaces | `prompts/journal-mirror-session.md`, `prompts/freeform-entry-mirror.md`, `prompts/recent-pattern-review.md`, `prompts/gentle-next-action.md`, `prompts/update-proposal-review.md`, `templates/`, `docs/journal-mirror-workflow.md` | User-invoked manual session surfaces and optional templates | Prompts public; selected context and filled outputs private | Covered for manual sessions |
-| Memory | `MEMORY.md.example`, `prompts/update-proposal-review.md`, `skills/memory-state-review/SKILL.md`, `private/memory/` | Durable user-approved context and review-only proposal handling | Example and review rules public; real Memory and proposals private/ignored | Boundary and review surface covered |
-| State | `STATE.md.example`, `prompts/update-proposal-review.md`, `skills/memory-state-review/SKILL.md`, `private/state/` | Temporary session context and review-only proposal handling | Example and review rules public; live State and proposals private/ignored | Boundary and review surface covered |
-| Planning/orchestration | `skills/journal-mirror-session/SKILL.md`, `prompts/`, `docs/journal-mirror-workflow.md`, `docs/obsidian-private-runtime-guide.md` | Workflow sequencing, manual private setup, selected-context reflection, proposal, and review gates | Public instructions only; session artifacts remain private | Covered for manual flow |
-| Guardrails/governance | `GUARDRAILS.md`, `PRIVACY.md`, `SECURITY.md`, `CONTRIBUTING.md`, `skills/*/SKILL.md`, `docs/decisions/`, `docs/obsidian-private-runtime-guide.md` | Safety, privacy, trust metadata, reporting, review requirements, and architectural decisions | Public rules and metadata; no sensitive runtime artifacts | Covered |
-| Outputs/schemas | `OUTPUT_FORMATS.md`, `schemas/`, `prompts/*.md` | Structured contracts plus human-readable session and proposal output shapes | Definitions public; filled outputs private unless synthetic | Prompt outputs covered; proposal schemas remain open |
-| Evaluation/observability | `EVALS.md`, `evals/` | Regression and safety review cases | Synthetic cases only; private traces excluded | Partial |
+| Memory | `MEMORY.md.example`, `schemas/memory-update-proposal.schema.json`, `examples/memory-state-proposals/`, `prompts/update-proposal-review.md`, `skills/memory-state-review/SKILL.md`, `docs/memory-state-proposal-review.md`, `private/memory/` | Durable user-approved context and a reviewable proposal contract | Schema, rules, and synthetic fixtures public; real Memory and proposals private/ignored | Proposal system covered |
+| State | `STATE.md.example`, `schemas/state-update-proposal.schema.json`, `examples/memory-state-proposals/`, `prompts/update-proposal-review.md`, `skills/memory-state-review/SKILL.md`, `docs/memory-state-proposal-review.md`, `private/state/` | Temporary context with review, stale, expiration, and separate proposal handling | Schema, rules, and synthetic fixtures public; live State and proposals private/ignored | Proposal system covered |
+| Planning/orchestration | `skills/journal-mirror-session/SKILL.md`, `prompts/`, `docs/journal-mirror-workflow.md`, `docs/obsidian-private-runtime-guide.md`, `docs/memory-state-proposal-review.md` | Workflow sequencing, manual private setup, selected-context reflection, proposal lifecycle, and review gates | Public instructions only; session and filled proposal artifacts remain private | Covered for manual flow |
+| Guardrails/governance | `GUARDRAILS.md`, `PRIVACY.md`, `SECURITY.md`, `CONTRIBUTING.md`, `skills/*/SKILL.md`, `docs/decisions/`, `docs/obsidian-private-runtime-guide.md`, `docs/memory-state-proposal-review.md` | Safety, privacy, trust metadata, reporting, exact-wording approval, and architectural decisions | Public rules and metadata; no sensitive runtime artifacts | Covered |
+| Outputs/schemas | `OUTPUT_FORMATS.md`, `schemas/`, `examples/memory-state-proposals/`, `prompts/*.md` | Separate structured proposal contracts plus human-readable session output shapes | Definitions and synthetic fixtures public; filled real outputs private | Proposal schemas covered |
+| Evaluation/observability | `EVALS.md`, `evals/`, `examples/memory-state-proposals/` | Regression and safety review cases plus good, discarded, and expired proposal fixtures | Synthetic cases only; private traces excluded | Partial; proposal fixtures added |
 | Runtime/deployment | `mobile/`, `.gitignore`, `.github/workflows/`, `scripts/`, `docs/obsidian-private-runtime-guide.md`, `docs/decisions/0002-journal-mirror-runtime-pattern.md` | Local/mobile/no-code guidance, manual private setup, validation surfaces, and public-control-plane/private-data-plane boundary | Runtime private data stays out of repo; no live runtime is implemented | Manual starter guide covered |
-| Learning/iteration | `CHANGELOG.md`, `BACKLOG.md`, release checklists, `docs/roadmap-v0.2.0.md` | Change history, roadmap, and future work | Public project tracking only | Partial |
+| Learning/iteration | `CHANGELOG.md`, `BACKLOG.md`, release checklists, `docs/roadmap-v0.2.0.md`, `docs/memory-state-proposal-review.md` | Change history, review criteria, roadmap, and future work | Public project tracking and synthetic guidance only | Partial |
 
 ## Intentional Non-Goals
 
@@ -56,9 +56,8 @@ The taxonomy defines an agentic AI artifact as anything an agent system depends 
 - Do not add vendor-specific framework lock-in.
 - Do not treat Strategic Mirror Agent as the taxonomy source of truth.
 
-## Known Gaps After v0.2.0 Planning
+## Known Gaps After the Proposal System
 
-- Memory and State update proposals need explicit schemas and examples.
 - Evaluation remains lightweight and needs additional synthetic cases for template forcing, memory overreach, and unsafe clinical framing.
 - Future MCP/VPS architecture remains documentation-only and intentionally unimplemented.
 - Learning and iteration need v0.2 release-readiness docs after the sprint work lands.

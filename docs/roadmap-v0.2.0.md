@@ -22,11 +22,11 @@ This release is a foundation, not the end of the sprint. It should make the dire
 
 - Covered by issue #12: a manual private Obsidian/private-notes runtime starter guide, with no plugin, server, or vault automation.
 - Covered by issues #13 and #6: practical selected-context session prompts, capability modules, and privacy-first trust metadata for journal skills.
-- Remaining sprint work: reviewable Memory/State proposal schemas and examples, synthetic walkthroughs and safety evals, future controller-contract documentation, and release readiness.
+- Covered by issue #14: separate reviewable Memory and State proposal schemas, synthetic lifecycle examples, and manual review guidance without persistence automation.
+- Remaining sprint work: synthetic walkthroughs and safety evals, future controller-contract documentation, and release readiness.
 
 ## Maybe-Later Scope
 
-- Structured pending-proposal schemas for Memory and State.
 - Synthetic walkthroughs, expanded evals, and release notes.
 - A future controller contract for MCP or VPS-based private runtimes.
 - Optional setup helpers that do not read or move private journal content.
@@ -62,13 +62,13 @@ The agent remains a reflection companion, not a clinical product or care provide
 - [x] A private Obsidian/private-notes runtime guide documents manual setup without adding private runtime artifacts.
 - [x] Selected-context Journal Mirror prompts and capability surfaces support manual sessions without template-first writing.
 - [x] Journal skills declare privacy-first trust metadata and proposal-only persistence boundaries.
+- [x] Separate Memory and State proposal schemas, synthetic examples, and manual review guidance keep updates review-only.
 - [ ] `git diff --check` passes.
 - [ ] `python scripts/validate-json-schemas.py` passes.
 - [ ] `git ls-files private` contains placeholders only.
 
 ## Follow-Up Issue Candidates
 
-- Define separate reviewable Memory and State proposal contracts.
 - Add synthetic end-to-end walkthroughs and safety evals.
 - Specify a future MCP/VPS controller contract without implementation.
 - Complete `v0.2.0` release-readiness and navigation review.
