@@ -1,8 +1,8 @@
-# Journal Companion Agent Artifacts
+# Journal Mirror Agent
 
-This repository is a public, reusable template for building a text-based journal companion agent. It provides the instruction files, guardrails, schemas, prompts, templates, and eval cases needed to turn private journal entries into structured reflection, emotion labels, thought/action maps, needs and values signals, coping prompts, pattern summaries, and therapy-prep notes.
+This repository is a public, reusable scaffold for a text-based Journal Mirror Agent. The `v0.2.0` direction starts with natural writing in a private notes system, then uses selected writing for tentative reflection and reviewable Memory or State update proposals. The public repo provides instructions, guardrails, schemas, prompts, optional templates, and eval cases; it is not the private runtime or journal store.
 
-It is not therapy, diagnosis, crisis counseling, medical advice, treatment planning, medication guidance, or a replacement for licensed care.
+It is not therapy, diagnosis, crisis counseling, medical advice, treatment planning, medication guidance, a mental health product, or a replacement for licensed care. It is also not a hosted service, an Obsidian plugin, or a private journal database.
 
 ## Public Use Warning
 
@@ -25,13 +25,14 @@ Raw journal entries, exports, summaries, memory, state, crisis notes, and therap
 
 The `private/` directory is ignored by default except for placeholder `.gitkeep` files. Treat anything written there as local-only unless you deliberately export and review it.
 
-## Start Points
+## Start Here
 
-- Read `ARTIFACT_MAP.md` for the full artifact layout.
-- Read `GUARDRAILS.md` before building or running reflection workflows.
-- Use `mobile/README.md` for phone-first workflows with Obsidian Mobile, ChatGPT mobile, and iOS Shortcuts.
-- Use `templates/daily-journal-template.md` or `templates/quick-check-in-template.md` for entries.
-- Use `prompts/evening-review.md` or `prompts/weekly-pattern-review.md` for reflection sessions.
+1. Write naturally in a private Obsidian vault or another user-controlled private notes system.
+2. Use the workflow in `docs/journal-mirror-workflow.md` on one selected entry, excerpt, or small group of entries.
+3. Review any proposed Memory or State updates before applying, editing, or discarding them. Nothing durable changes automatically.
+4. Use `templates/` only when a structured starting point is helpful; templates are optional, not a required journal format.
+
+Read `docs/roadmap-v0.2.0.md` for the release direction, `ARTIFACT_MAP.md` for the artifact layout, and `GUARDRAILS.md` before building or running reflection workflows. Existing prompts remain starting surfaces for reflection sessions.
 
 ## For Contributors
 
