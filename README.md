@@ -1,8 +1,8 @@
-# Journal Agent Artifact System
+# Journal Mirror Agent
 
-`journal-agent` is a public reference implementation of the Agentic AI Artifact Taxonomy applied to a private journaling workflow.
+`journal-agent` is a public reference implementation of the Agentic AI Artifact Taxonomy applied to a private journaling workflow. The `v0.2.0` direction evolves it into a Journal Mirror Agent scaffold: natural private writing first, selected-context reflection after, and reviewable Memory or State update proposals.
 
-It does not store journal entries and it is not a therapy or mental health product. Instead, it demonstrates how to organize the reusable artifacts an AI-assisted journaling companion depends on: instructions, operating boundaries, prompts, schemas, templates, memory/state rules, safety guardrails, eval cases, and mobile workflow guidance.
+It does not store journal entries and it is not therapy, diagnosis, crisis counseling, medical advice, treatment planning, medication guidance, a mental health product, clinical decision support system, hosted service, Obsidian plugin, or private journal database.
 
 The public repo contains the reusable control-plane artifacts. Private journal content belongs outside the repo: in a private Obsidian vault, ignored local folders, or another user-controlled private system.
 
@@ -43,17 +43,18 @@ This repo applies that lens to a journaling companion by making public artifacts
 - `docs/taxonomy-mapping.md` for the 14-bucket mapping.
 - `docs/architecture.md` for the public/private architecture.
 - `docs/decisions/0001-public-artifacts-private-journal.md` for the core boundary decision.
-- `docs/release-checklist-v0.1.0.md` for the first reference release checklist.
+- `docs/decisions/0002-journal-mirror-runtime-pattern.md` for the Journal Mirror runtime-pattern decision.
+- `docs/roadmap-v0.2.0.md` for the v0.2 planning direction.
+- `docs/journal-mirror-workflow.md` for the post-writing reflection workflow.
 
-## Start Points for Builders
+## Start Here
 
-- Read `ARTIFACT_MAP.md` for the artifact layout.
-- Read `docs/taxonomy-mapping.md` to see how the repo maps to the taxonomy.
-- Read `docs/architecture.md` before adapting the public/private boundary.
-- Read `GUARDRAILS.md`, `PRIVACY.md`, and `SECURITY.md` before building workflows.
-- Use `mobile/README.md` for phone-first workflows with Obsidian Mobile, ChatGPT mobile, and iOS Shortcuts.
-- Use `templates/daily-journal-template.md` or `templates/quick-check-in-template.md` as blank user-owned templates.
-- Use `prompts/evening-review.md` or `prompts/weekly-pattern-review.md` as reflection entry points.
+1. Write naturally in a private Obsidian vault or another user-controlled private notes system.
+2. Use the workflow in `docs/journal-mirror-workflow.md` on one selected entry, excerpt, or small group of entries.
+3. Review any proposed Memory or State updates before applying, editing, or discarding them. Nothing durable changes automatically.
+4. Use `templates/` only when a structured starting point is helpful; templates are optional, not a required journal format.
+
+Read `docs/roadmap-v0.2.0.md` for the release direction, `ARTIFACT_MAP.md` for the artifact layout, and `GUARDRAILS.md` before building or running reflection workflows. Existing prompts remain starting surfaces for reflection sessions.
 
 ## Safety and Privacy Warnings
 

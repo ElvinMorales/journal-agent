@@ -4,7 +4,7 @@ All notable changes to this artifact system will be documented here.
 
 ## Unreleased
 
-- None yet.
+- Started `v0.2.0` planning for the Journal Mirror runtime pattern: natural private writing first, reflection after selection, and user-reviewed Memory or State proposals.
 
 ## v0.1.0 - 2026-05-31
 

@@ -1,0 +1,71 @@
+# Roadmap: v0.2.0
+
+Status: Draft planning note
+
+## Release Thesis
+
+`v0.2.0` establishes a usable Journal Mirror Agent scaffold. Natural writing happens first in a private notes system; the agent reflects only on context the user selects; any Memory or State changes are proposed for review before application.
+
+This release is a foundation, not the end of the sprint. It should make the direction inspectable and give later issues stable workflow, privacy, taxonomy, and approval boundaries.
+
+## Must-Have Scope
+
+- Reframe the primary path as `write naturally → select context → mirror after → review updates`.
+- Document the Journal Mirror session workflow, inputs, outputs, and non-clinical boundaries.
+- Define the public repository as the reusable control plane and a private Obsidian vault or private notes system as the runtime/data plane.
+- Keep Memory and State separate and require a proposal plus user review before either changes.
+- Position journal templates as optional helpers rather than required structure.
+- Preserve the canonical 14-bucket taxonomy and document Strategic Mirror as a working pattern only.
+- Keep all examples synthetic and the repository public-safe.
+
+## Maybe-Later Scope
+
+- A private Obsidian runtime guide.
+- Dedicated Journal Mirror session prompts.
+- Structured pending-proposal schemas for Memory and State.
+- Synthetic walkthroughs, expanded evals, and release notes.
+- A future controller contract for MCP or VPS-based private runtimes.
+- Optional setup helpers that do not read or move private journal content.
+
+## Explicit Non-Goals
+
+- No MCP server.
+- No hosted runtime.
+- No Obsidian plugin.
+- No private journal content.
+- No live Memory or State writes.
+- No therapy, diagnosis, treatment planning, or medication guidance.
+- No full repo rewrite.
+
+## Public/Private Safety Notes
+
+The public repository contains reusable design-time artifacts: instructions, policies, prompts, templates, schemas, decisions, synthetic examples, and validation. It must not contain raw entries, selected excerpts, generated private reflections, pending proposals from real sessions, filled Memory, live State, local paths, credentials, logs, or private vault files.
+
+The private notes system is user-controlled. Selection is explicit and minimal. A Journal Mirror session does not grant broad access to a vault, and a proposal is not permission to persist data. Users review each proposed destination and can approve, edit, or discard it.
+
+The agent remains a reflection companion, not a clinical product or care provider. Existing crisis and safety guardrails continue to take precedence over ordinary reflection.
+
+## Validation Checklist
+
+- [ ] README presents natural private writing as the primary starting point.
+- [ ] The Journal Mirror workflow and ADR agree on sequencing and approval gates.
+- [ ] Templates are described as optional.
+- [ ] Memory and State remain separate.
+- [ ] The original 14 taxonomy buckets remain intact.
+- [ ] Strategic Mirror is identified only as a working implementation pattern.
+- [ ] No private runtime artifacts, identifying data, secrets, or local paths are added.
+- [ ] No MCP server, hosted runtime, or Obsidian plugin is implemented.
+- [ ] `git diff --check` passes.
+- [ ] `python scripts/validate-json-schemas.py` passes.
+- [ ] `git ls-files private` contains placeholders only.
+
+## Follow-Up Issue Candidates
+
+- Document the private Obsidian runtime boundary and setup flow.
+- Add Journal Mirror session prompts for manually selected context.
+- Define separate reviewable Memory and State proposal contracts.
+- Add synthetic end-to-end walkthroughs and safety evals.
+- Specify a future MCP/VPS controller contract without implementation.
+- Complete `v0.2.0` release-readiness and navigation review.
+
+Do not implement these follow-up issues as part of this planning change.
