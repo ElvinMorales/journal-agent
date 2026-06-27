@@ -14,6 +14,8 @@ All notable changes to this artifact system will be documented here.
 - Added three public-safe synthetic Journal Mirror walkthroughs covering a freeform entry, a recent pattern review, and separate Memory/State proposal decisions.
 - Added manual eval cases for template avoidance, evidence-bound reflection, Memory overreach, State staleness, required proposal fields, clinical scope, crisis routing, and selected-context privacy.
 - Updated eval guidance, workflow and private-runtime docs, taxonomy mappings, roadmap, and backlog for the issue #15 walkthrough/eval layer without adding runtime automation.
+- Added a design-only future MCP/VPS controller contract defining the private runtime edge, data classes, narrow allowed operations, denied operations, approval gates, audit expectations, failure mitigations, threat model, and pre-implementation checklist.
+- Added synthetic manual future-controller boundary cases and linked the contract through architecture, workflow, lifecycle, proposal-review, privacy, security, taxonomy, roadmap, and navigation docs; no runtime implementation or private artifacts were added.
 
 ## v0.1.0 - 2026-05-31
 

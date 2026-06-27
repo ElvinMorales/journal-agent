@@ -24,12 +24,13 @@ This release is a foundation, not the end of the sprint. It should make the dire
 - Covered by issues #13 and #6: practical selected-context session prompts, capability modules, and privacy-first trust metadata for journal skills.
 - Covered by issue #14: separate reviewable Memory and State proposal schemas, synthetic lifecycle examples, and manual review guidance without persistence automation.
 - Covered by issue #15: synthetic end-to-end Journal Mirror walkthroughs and manual safety/boundary evals using public-safe inputs only.
-- Remaining sprint work: future controller-contract documentation and release readiness.
+- Covered by issue #16: a design-only future MCP/VPS controller contract and synthetic manual controller-boundary evals, with no runtime implementation.
+- Remaining sprint work: release readiness.
 
 ## Maybe-Later Scope
 
 - Additional eval depth and release notes.
-- A future controller contract for MCP or VPS-based private runtimes.
+- Any implementation of the documented future controller contract, only after its checklist and approval boundaries are satisfied.
 - Optional setup helpers that do not read or move private journal content.
 
 ## Explicit Non-Goals
@@ -66,13 +67,13 @@ The agent remains a reflection companion, not a clinical product or care provide
 - [x] Separate Memory and State proposal schemas, synthetic examples, and manual review guidance keep updates review-only.
 - [x] Synthetic walkthroughs cover freeform reflection, recent pattern review, and separate Memory/State proposal review.
 - [x] Manual evals cover template avoidance, evidence limits, proposal lifecycle, clinical scope, crisis routing, and privacy boundaries.
+- [x] A future MCP/VPS controller contract defines narrow private-runtime operations, denied operations, approvals, audit expectations, and threats without implementation.
 - [ ] `git diff --check` passes.
 - [ ] `python scripts/validate-json-schemas.py` passes.
 - [ ] `git ls-files private` contains placeholders only.
 
 ## Follow-Up Issue Candidates
 
-- Specify a future MCP/VPS controller contract without implementation.
 - Complete `v0.2.0` release-readiness and navigation review.
 
 Do not treat the completed prompt surfaces as completion of the full v0.2 release.
