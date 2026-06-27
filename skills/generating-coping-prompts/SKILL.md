@@ -1,8 +1,19 @@
 ---
 name: generating-coping-prompts
-skill_category: coping
-artifact_categories: [capability, template, output]
 description: Generate short coping prompts or coping cards matched to the user's stated emotion, energy, context, and safety state.
+metadata:
+  skill_category: coping
+  artifact_categories: [capability, template, output]
+  trust:
+    capability_type: gentle_next_action
+    privacy_level: private_context_required
+    data_boundary: user_selected_context_only
+    retention: no_automatic_retention
+    memory_writes: none
+    state_writes: none
+    human_review_required: true
+    clinical_boundary: non_clinical_reflection_only
+    runtime_access: no_vault_access
 ---
 
 # Generating Coping Prompts
@@ -31,11 +42,25 @@ Use when the user asks for coping ideas, grounding, calming prompts, or a reusab
 5. Keep actions reversible and low-pressure.
 6. Create a coping card if requested.
 
-## Output
+## Outputs
 
 Use `schemas/coping-card.schema.json` or `templates/coping-card-template.md`.
 
-## Verification
+For a single low-pressure action, follow `prompts/gentle-next-action.md`.
+
+## Boundaries
+
+Do not frame options as treatment, pressure the user to act, or continue action planning when safety routing is needed.
+
+## Privacy Handling
+
+Use the minimum user-selected context needed. Do not access a vault or retain a coping card automatically.
+
+## Memory/State Handling
+
+Do not create Memory or State proposals as part of this capability. A reusable coping preference requires a separate, explicitly requested review.
+
+## Validation Checklist
 
 - No grand claims of effectiveness.
 - No unsafe or extreme coping suggestions.

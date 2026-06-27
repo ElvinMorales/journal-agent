@@ -6,6 +6,9 @@ All notable changes to this artifact system will be documented here.
 
 - Started `v0.2.0` planning for the Journal Mirror runtime pattern: natural private writing first, reflection after selection, and user-reviewed Memory or State proposals.
 - Added a private Obsidian/private-notes runtime starter guide for manual setup, selected-context sessions, and reviewed Memory/State updates without a plugin or server.
+- Added Journal Mirror prompts for selected-context sessions, freeform entries, recent pattern review, gentle next actions, and separate Memory/State proposal review.
+- Added session and update-review capability modules, extended existing reflection capabilities, and added privacy-first trust metadata to journal skills.
+- Updated navigation, workflow, runtime, taxonomy, output, roadmap, and backlog documentation for the manual prompt surfaces.
 
 ## v0.1.0 - 2026-05-31
 

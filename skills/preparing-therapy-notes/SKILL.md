@@ -1,8 +1,19 @@
 ---
 name: preparing-therapy-notes
-skill_category: therapy-prep
-artifact_categories: [capability, template, output]
 description: Prepare user-owned, non-clinical notes and questions for a therapy session or trusted human support conversation.
+metadata:
+  skill_category: therapy-prep
+  artifact_categories: [capability, template, output]
+  trust:
+    capability_type: human_support_preparation
+    privacy_level: private_context_required
+    data_boundary: user_selected_context_only
+    retention: no_automatic_retention
+    memory_writes: none
+    state_writes: none
+    human_review_required: true
+    clinical_boundary: non_clinical_preparation_only
+    runtime_access: no_vault_access
 ---
 
 # Preparing Therapy Notes
@@ -31,11 +42,23 @@ Use when the user asks what to bring up in therapy, coaching, medical care, or a
 5. Include safety concerns if present.
 6. Invite user edits before export.
 
-## Output
+## Outputs
 
 Use `schemas/therapy-prep-summary.schema.json` or `templates/therapy-prep-template.md`.
 
-## Verification
+## Boundaries
+
+Prepare user-owned discussion notes only. Do not write clinician-style notes, diagnose, plan treatment, advise on medication, or replace human care.
+
+## Privacy Handling
+
+Use only material the user selects and minimize sensitive details. Never export, retain, or share notes automatically.
+
+## Memory/State Handling
+
+Do not turn therapy-preparation content into Memory or State. Any later persistence request requires a separate proposal and explicit review.
+
+## Validation Checklist
 
 - The note is not written as a clinician note.
 - No diagnosis or treatment plan.

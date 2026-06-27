@@ -79,10 +79,10 @@ Start manually by creating these folders and ordinary Markdown files in a privat
 
 1. Write naturally in the private vault.
 2. Select one entry, excerpt, or small group of entries. Use the smallest context that supports the question.
-3. Paste only that selected context into the Journal Mirror prompt or session.
-4. Ask for a tentative reflection, clarifying questions, optional small next steps, and optional separate Memory and State proposals.
+3. Paste only that selected context into `prompts/journal-mirror-session.md`. Use `prompts/freeform-entry-mirror.md` for one unstructured entry or `prompts/recent-pattern-review.md` for a small selected set.
+4. Ask for a tentative reflection, clarifying questions, or an optional low-pressure next step with `prompts/gentle-next-action.md`. Request separate Memory and State proposals only when wanted.
 5. Save any private reflection only in the private vault.
-6. Review each proposed update before adding it to private Memory or State. Approval for one destination does not approve the other.
+6. Review each proposed update with `prompts/update-proposal-review.md` before adding it to private Memory or State. Approval for one destination does not approve the other.
 7. Edit or discard anything that feels wrong, too broad, too clinical, or not useful.
 
 If crisis indicators appear, stop the ordinary reflection flow and follow `GUARDRAILS.md`: prioritize immediate safety, trusted human support, relevant emergency or crisis resources, and reducing access to harm.

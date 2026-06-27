@@ -28,6 +28,16 @@ When crisis indicators appear, the safety rules in `GUARDRAILS.md` replace the o
 
 Use a session after writing when a second perspective may help clarify one experience, compare a small set of entries, prepare questions for trusted human support, or identify a possible next step. Do not use it when the user has not chosen the source context or when immediate safety needs should take priority.
 
+## Session Surfaces
+
+- Use `prompts/journal-mirror-session.md` for the complete flow with one entry, excerpt, or small selected group.
+- Use `prompts/freeform-entry-mirror.md` when one natural, messy entry should be reflected without a template.
+- Use `prompts/recent-pattern-review.md` to compare a small selected set without turning a sample into a fixed trait.
+- Use `prompts/gentle-next-action.md` when the user wants one low-pressure, reversible option.
+- Use `prompts/update-proposal-review.md` to classify and review a proposed Memory or State update before any manual persistence.
+
+The capability modules in `skills/journal-mirror-session/SKILL.md`, `skills/summarizing-journal-patterns/SKILL.md`, and `skills/memory-state-review/SKILL.md` define the reusable workflows and privacy boundaries behind these surfaces.
+
 ## Inputs the User May Provide Manually
 
 - One entry, a short excerpt, or a small group of entries.
