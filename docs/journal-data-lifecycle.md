@@ -4,13 +4,19 @@
 
 Journal entries are user-authored and should be stored only in ignored private paths or another user-controlled private system.
 
+Capture stays in the private vault or notes system. A Journal Mirror session uses only the entry, excerpt, or small group of entries the user manually selects; it does not imply broad access to the journal.
+
 ## 2. Reflection
 
 The companion may generate analysis artifacts from one entry or a selected set of entries. Analysis should remain tentative and evidence-bound.
 
+Private reflections remain in the private data plane unless the user intentionally creates a synthetic, redacted public example. See `docs/obsidian-private-runtime-guide.md` for the manual private-vault flow.
+
 ## 3. Memory
 
 Durable memory requires explicit user approval. Do not infer durable traits from journal content.
+
+Memory and State remain separate. Each proposed update stays pending until the user reviews its wording and destination, then edits, approves, or discards it. State must not be promoted to Memory automatically.
 
 ## 4. Export
 
