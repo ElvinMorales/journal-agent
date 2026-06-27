@@ -10,3 +10,6 @@ private/**
 *.log
 tmp/
 .cache/
+
+# Local agent/Codex scratch workspace
+.agents/

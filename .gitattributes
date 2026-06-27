@@ -1,0 +1,18 @@
+# Normalize text files across platforms.
+* text=auto
+
+# Project documentation and configuration.
+*.md text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.py text eol=lf
+
+# Keep common binary/image/archive files untouched.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.pdf binary
+*.zip binary

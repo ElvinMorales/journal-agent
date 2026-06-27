@@ -1,12 +1,12 @@
 # Roadmap: v0.2.0
 
-Status: Draft planning note
+Status: Release-candidate ready after the issue #17 PR merges and validation passes
 
 ## Release Thesis
 
 `v0.2.0` establishes a usable Journal Mirror Agent scaffold. Natural writing happens first in a private notes system; the agent reflects only on context the user selects; any Memory or State changes are proposed for review before application.
 
-This release is a foundation, not the end of the sprint. It should make the direction inspectable and give later issues stable workflow, privacy, taxonomy, and approval boundaries.
+This release is a foundation rather than a live runtime. It makes the manual workflow inspectable and gives later issues stable workflow, privacy, taxonomy, approval, evaluation, and handoff boundaries.
 
 ## Must-Have Scope
 
@@ -25,11 +25,14 @@ This release is a foundation, not the end of the sprint. It should make the dire
 - Covered by issue #14: separate reviewable Memory and State proposal schemas, synthetic lifecycle examples, and manual review guidance without persistence automation.
 - Covered by issue #15: synthetic end-to-end Journal Mirror walkthroughs and manual safety/boundary evals using public-safe inputs only.
 - Covered by issue #16: a design-only future MCP/VPS controller contract and synthetic manual controller-boundary evals, with no runtime implementation.
-- Remaining sprint work: release readiness.
+- Covered by issue #17: release notes, a usable-product handoff, a pre-release checklist, README/navigation updates, and a repository-wide release-readiness consistency pass.
+- Covered by issue #5: conservative cross-platform line-ending normalization and an ignore rule for the local `.agents/` scratch workspace, without a broad renormalization diff.
+
+The documentation scope for `v0.2.0` is covered. The release remains a candidate until this PR merges, final validation passes on merged `main`, and a maintainer separately decides to create a tag and GitHub release.
 
 ## Maybe-Later Scope
 
-- Additional eval depth and release notes.
+- Additional eval depth after private use, represented publicly only through independent synthetic or deliberately redacted artifacts.
 - Any implementation of the documented future controller contract, only after its checklist and approval boundaries are satisfied.
 - Optional setup helpers that do not read or move private journal content.
 
@@ -68,12 +71,17 @@ The agent remains a reflection companion, not a clinical product or care provide
 - [x] Synthetic walkthroughs cover freeform reflection, recent pattern review, and separate Memory/State proposal review.
 - [x] Manual evals cover template avoidance, evidence limits, proposal lifecycle, clinical scope, crisis routing, and privacy boundaries.
 - [x] A future MCP/VPS controller contract defines narrow private-runtime operations, denied operations, approvals, audit expectations, and threats without implementation.
-- [ ] `git diff --check` passes.
-- [ ] `python scripts/validate-json-schemas.py` passes.
-- [ ] `git ls-files private` contains placeholders only.
+- [x] Release notes accurately summarize what is usable now and what remains intentionally unimplemented.
+- [x] A usable-product handoff gives public readers and private adopters a minimal start path.
+- [x] A pre-release checklist covers documentation, links, privacy, Memory/State, schemas, evals, safety, runtime scope, Git hygiene, and release actions.
+- [x] `git diff --check` passes on the release-readiness branch.
+- [x] `python scripts/validate-json-schemas.py` passes on the release-readiness branch.
+- [x] `git ls-files private` contains placeholders only on the release-readiness branch.
 
 ## Follow-Up Issue Candidates
 
-- Complete `v0.2.0` release-readiness and navigation review.
+- Plan any implementation of the future controller contract as a separate issue with explicit authorization and private-runtime safeguards.
+- Add sanitized synthetic evals and examples after private use reveals useful gaps.
+- Create the actual release tag and GitHub release after merge and final validation, if desired.
 
-Do not treat the completed prompt surfaces as completion of the full v0.2 release.
+Do not treat documentation readiness as evidence that a live runtime, vault integration, or automatic persistence exists.
