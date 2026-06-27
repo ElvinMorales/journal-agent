@@ -23,11 +23,12 @@ This release is a foundation, not the end of the sprint. It should make the dire
 - Covered by issue #12: a manual private Obsidian/private-notes runtime starter guide, with no plugin, server, or vault automation.
 - Covered by issues #13 and #6: practical selected-context session prompts, capability modules, and privacy-first trust metadata for journal skills.
 - Covered by issue #14: separate reviewable Memory and State proposal schemas, synthetic lifecycle examples, and manual review guidance without persistence automation.
-- Remaining sprint work: synthetic walkthroughs and safety evals, future controller-contract documentation, and release readiness.
+- Covered by issue #15: synthetic end-to-end Journal Mirror walkthroughs and manual safety/boundary evals using public-safe inputs only.
+- Remaining sprint work: future controller-contract documentation and release readiness.
 
 ## Maybe-Later Scope
 
-- Synthetic walkthroughs, expanded evals, and release notes.
+- Additional eval depth and release notes.
 - A future controller contract for MCP or VPS-based private runtimes.
 - Optional setup helpers that do not read or move private journal content.
 
@@ -63,13 +64,14 @@ The agent remains a reflection companion, not a clinical product or care provide
 - [x] Selected-context Journal Mirror prompts and capability surfaces support manual sessions without template-first writing.
 - [x] Journal skills declare privacy-first trust metadata and proposal-only persistence boundaries.
 - [x] Separate Memory and State proposal schemas, synthetic examples, and manual review guidance keep updates review-only.
+- [x] Synthetic walkthroughs cover freeform reflection, recent pattern review, and separate Memory/State proposal review.
+- [x] Manual evals cover template avoidance, evidence limits, proposal lifecycle, clinical scope, crisis routing, and privacy boundaries.
 - [ ] `git diff --check` passes.
 - [ ] `python scripts/validate-json-schemas.py` passes.
 - [ ] `git ls-files private` contains placeholders only.
 
 ## Follow-Up Issue Candidates
 
-- Add synthetic end-to-end walkthroughs and safety evals.
 - Specify a future MCP/VPS controller contract without implementation.
 - Complete `v0.2.0` release-readiness and navigation review.
 

@@ -11,6 +11,9 @@ All notable changes to this artifact system will be documented here.
 - Updated navigation, workflow, runtime, taxonomy, output, roadmap, and backlog documentation for the manual prompt surfaces.
 - Added separate Memory and State update proposal schemas, four synthetic lifecycle examples, and a manual review guide for approve, edit, discard, and expiration decisions.
 - Clarified that proposal artifacts remain private and review-only, approved wording is copied manually, and no automatic persistence or State-to-Memory promotion is implemented.
+- Added three public-safe synthetic Journal Mirror walkthroughs covering a freeform entry, a recent pattern review, and separate Memory/State proposal decisions.
+- Added manual eval cases for template avoidance, evidence-bound reflection, Memory overreach, State staleness, required proposal fields, clinical scope, crisis routing, and selected-context privacy.
+- Updated eval guidance, workflow and private-runtime docs, taxonomy mappings, roadmap, and backlog for the issue #15 walkthrough/eval layer without adding runtime automation.
 
 ## v0.1.0 - 2026-05-31
 
