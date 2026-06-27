@@ -1,8 +1,19 @@
 ---
 name: rumination-interruption
-skill_category: coping
-artifact_categories: [capability, guardrail]
 description: Help interrupt repetitive negative thinking by shifting from looping analysis to emotion naming, grounding, needs, support, or one controllable next step.
+metadata:
+  skill_category: coping
+  artifact_categories: [capability, guardrail]
+  trust:
+    capability_type: reflection_interruption
+    privacy_level: private_context_required
+    data_boundary: user_selected_context_only
+    retention: no_automatic_retention
+    memory_writes: none
+    state_writes: none
+    human_review_required: true
+    clinical_boundary: non_clinical_reflection_only
+    runtime_access: no_vault_access
 ---
 
 # Rumination Interruption
@@ -29,11 +40,23 @@ Use when the user repeats the same worry, asks for repeated certainty, circles s
 4. Offer grounding, a needs check, support contact, or one controllable next step.
 5. Ask the user to choose a direction.
 
-## Output
+## Outputs
 
 Short conversational response or coping prompt.
 
-## Verification
+## Boundaries
+
+Do not diagnose, shame, offer treatment, provide false certainty, or treat crisis content as an ordinary thought loop.
+
+## Privacy Handling
+
+Use only the current user-selected loop and constraints. Do not search prior notes or retain the content automatically.
+
+## Memory/State Handling
+
+Do not create Memory or State proposals while interrupting a loop. Persistence would add analysis rather than support the immediate shift.
+
+## Validation Checklist
 
 - Does not shame the user for rumination.
 - Does not feed the loop with more speculation.

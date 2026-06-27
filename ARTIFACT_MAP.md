@@ -8,20 +8,22 @@ It also shows how repo files relate to the Agentic AI Artifact Taxonomy. See `do
 |---|---|---|
 | 1. Identity | Defines the Journal Mirror purpose and scope. | `AGENTS.md`, `README.md`, `docs/product-vision.md` |
 | 2. Operating style | Defines tentative, non-clinical reflection behavior. | `AGENTS.md`, `GUARDRAILS.md` |
-| 3. Capability modules | Packages task workflows. | `skills/*/SKILL.md` |
+| 3. Capability modules | Packages task workflows, including selected-context sessions, pattern reflection, and update review. | `skills/journal-mirror-session/SKILL.md`, `skills/summarizing-journal-patterns/SKILL.md`, `skills/memory-state-review/SKILL.md`, `skills/*/SKILL.md` |
 | 4. Tools | Provides local validation and redaction utilities. | `scripts/*.py` |
 | 5. Knowledge and resources | Holds longer reusable references, including private setup guidance. | `references/`, `docs/`, `docs/obsidian-private-runtime-guide.md` |
-| 6. Prompts and interfaces | Defines user-invoked reflection surfaces. The Journal Mirror workflow is a primary interface description. | `prompts/*.md`, `templates/*.md`, `docs/journal-mirror-workflow.md` |
-| 7. Memory | Defines durable, user-approved context without storing live Memory publicly. | `MEMORY.md.example`, `private/memory/` |
-| 8. State | Defines temporary session context without storing live State publicly. | `STATE.md.example`, `private/state/` |
-| 9. Planning and orchestration | Defines the post-writing session flow, manual private setup, and review gates. | `docs/journal-mirror-workflow.md`, `docs/obsidian-private-runtime-guide.md` |
-| 10. Guardrails and governance | Defines safety, privacy, approvals, and architectural decisions. | `GUARDRAILS.md`, `PRIVACY.md`, `SECURITY.md`, `docs/obsidian-private-runtime-guide.md`, `docs/decisions/0002-journal-mirror-runtime-pattern.md` |
-| 11. Outputs and schemas | Defines structured response contracts. | `OUTPUT_FORMATS.md`, `schemas/*.json` |
+| 6. Prompts and interfaces | Defines user-invoked reflection, pattern review, next-action, and proposal-review surfaces. | `prompts/journal-mirror-session.md`, `prompts/freeform-entry-mirror.md`, `prompts/recent-pattern-review.md`, `prompts/gentle-next-action.md`, `prompts/update-proposal-review.md`, `prompts/*.md`, `templates/*.md` |
+| 7. Memory | Defines durable, user-approved context and review-only proposals without storing live Memory publicly. | `MEMORY.md.example`, `prompts/update-proposal-review.md`, `skills/memory-state-review/SKILL.md`, `private/memory/` |
+| 8. State | Defines temporary session context and review-only proposals without storing live State publicly. | `STATE.md.example`, `prompts/update-proposal-review.md`, `skills/memory-state-review/SKILL.md`, `private/state/` |
+| 9. Planning and orchestration | Defines selected-context session flow, manual private setup, and review gates. | `skills/journal-mirror-session/SKILL.md`, `docs/journal-mirror-workflow.md`, `docs/obsidian-private-runtime-guide.md` |
+| 10. Guardrails and governance | Defines safety, privacy, trust metadata, approvals, and architectural decisions. | `GUARDRAILS.md`, `PRIVACY.md`, `SECURITY.md`, `skills/*/SKILL.md`, `docs/obsidian-private-runtime-guide.md`, `docs/decisions/0002-journal-mirror-runtime-pattern.md` |
+| 11. Outputs and schemas | Defines structured response contracts and human-readable session output shapes. | `OUTPUT_FORMATS.md`, `schemas/*.json`, `prompts/*.md` |
 | 12. Evaluation and observability | Supports synthetic regression and safety review. | `EVALS.md`, `evals/*` |
 | 13. Runtime and deployment | Defines the public-control-plane/private-data-plane boundary and manual private setup without implementing a live runtime. | `docs/obsidian-private-runtime-guide.md`, `docs/decisions/0002-journal-mirror-runtime-pattern.md`, `mobile/` |
 | 14. Learning and iteration | Tracks release direction and follow-up work, including runtime-guide coverage. | `docs/roadmap-v0.2.0.md`, `CHANGELOG.md`, `BACKLOG.md` |
 
 `docs/journal-mirror-workflow.md` maps mainly to Planning and orchestration and Prompts and interfaces. `docs/obsidian-private-runtime-guide.md` maps mainly to Knowledge and resources, Planning and orchestration, Guardrails and governance, and Runtime and deployment. `docs/roadmap-v0.2.0.md` maps mainly to Learning and iteration. `docs/decisions/0002-journal-mirror-runtime-pattern.md` maps mainly to Guardrails and governance and Runtime and deployment.
+
+No new Evaluation and observability artifact is added by the session surfaces; synthetic walkthroughs and safety evals remain follow-up work in bucket 12.
 
 ## Progressive Disclosure
 

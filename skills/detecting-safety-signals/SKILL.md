@@ -1,8 +1,19 @@
 ---
 name: detecting-safety-signals
-skill_category: safety
-artifact_categories: [capability, guardrail, output]
 description: Detect crisis or high-safety-sensitivity signals in journal text and route to non-scored safety-first responses instead of ordinary reflection.
+metadata:
+  skill_category: safety
+  artifact_categories: [capability, guardrail, output]
+  trust:
+    capability_type: safety_routing
+    privacy_level: private_context_required
+    data_boundary: user_selected_context_only
+    retention: no_automatic_retention
+    memory_writes: none
+    state_writes: none
+    human_review_required: true
+    clinical_boundary: non_clinical_safety_routing_only
+    runtime_access: no_vault_access
 ---
 
 # Detecting Safety Signals
@@ -30,11 +41,23 @@ Use before reflection when an entry mentions self-harm, suicide, danger from oth
 5. Encourage trusted human support and emergency/crisis resources.
 6. For U.S. users, include 988 for call, text, or chat crisis support when relevant.
 
-## Output
+## Outputs
 
 Use `schemas/safety-triage.schema.json`.
 
-## Verification
+## Boundaries
+
+Do not diagnose, score risk numerically, provide crisis counseling, include harm-enabling details, or resume ordinary reflection while urgent safety needs remain.
+
+## Privacy Handling
+
+Use only context the user supplies. Minimize repetition of sensitive details and do not retain, export, or claim access to private notes.
+
+## Memory/State Handling
+
+Do not generate Memory or State proposals during safety routing. Immediate safety and connection to human support take priority over persistence.
+
+## Validation Checklist
 
 - No numerical suicide or self-harm score.
 - No self-harm method details.

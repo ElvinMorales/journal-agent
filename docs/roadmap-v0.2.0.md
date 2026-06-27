@@ -21,11 +21,11 @@ This release is a foundation, not the end of the sprint. It should make the dire
 ## Implementation Progress
 
 - Covered by issue #12: a manual private Obsidian/private-notes runtime starter guide, with no plugin, server, or vault automation.
-- Remaining sprint work: dedicated session prompts, reviewable Memory/State proposal contracts, synthetic walkthroughs and safety evals, future controller-contract documentation, and release readiness.
+- Covered by issues #13 and #6: practical selected-context session prompts, capability modules, and privacy-first trust metadata for journal skills.
+- Remaining sprint work: reviewable Memory/State proposal schemas and examples, synthetic walkthroughs and safety evals, future controller-contract documentation, and release readiness.
 
 ## Maybe-Later Scope
 
-- Dedicated Journal Mirror session prompts.
 - Structured pending-proposal schemas for Memory and State.
 - Synthetic walkthroughs, expanded evals, and release notes.
 - A future controller contract for MCP or VPS-based private runtimes.
@@ -60,16 +60,17 @@ The agent remains a reflection companion, not a clinical product or care provide
 - [ ] No private runtime artifacts, identifying data, secrets, or local paths are added.
 - [ ] No MCP server, hosted runtime, or Obsidian plugin is implemented.
 - [x] A private Obsidian/private-notes runtime guide documents manual setup without adding private runtime artifacts.
+- [x] Selected-context Journal Mirror prompts and capability surfaces support manual sessions without template-first writing.
+- [x] Journal skills declare privacy-first trust metadata and proposal-only persistence boundaries.
 - [ ] `git diff --check` passes.
 - [ ] `python scripts/validate-json-schemas.py` passes.
 - [ ] `git ls-files private` contains placeholders only.
 
 ## Follow-Up Issue Candidates
 
-- Add Journal Mirror session prompts for manually selected context.
 - Define separate reviewable Memory and State proposal contracts.
 - Add synthetic end-to-end walkthroughs and safety evals.
 - Specify a future MCP/VPS controller contract without implementation.
 - Complete `v0.2.0` release-readiness and navigation review.
 
-Do not implement these follow-up issues as part of this planning change.
+Do not treat the completed prompt surfaces as completion of the full v0.2 release.
