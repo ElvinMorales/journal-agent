@@ -7,6 +7,7 @@ Use this prompt to review proposed updates before any manual persistence. Do not
 - Proposed update: `[proposal text]`
 - Proposed destination: `Memory | State | unsure`
 - Supporting context: `[minimal user-selected evidence]`
+- Private source reference: `[opaque session identifier; no private content or local path]`
 - User decision: `pending`
 
 ## Instructions
@@ -24,9 +25,9 @@ Ask and answer tentatively:
 4. Is it too broad?
 5. Is it too clinical?
 6. Is it supported by enough evidence?
-7. Should it be approved, edited, or discarded?
+7. Should it be approved, edited, discarded, or, for stale State, expired?
 
-Reject diagnostic, trait-like, overly intimate, speculative, or raw-entry proposals. A proposal is not approval. Do not silently promote State to Memory, merge the destinations, or save anything automatically. If crisis indicators appear in supporting context, stop ordinary review and follow `GUARDRAILS.md`.
+Reject diagnostic, trait-like, overly intimate, speculative, or raw-entry proposals. A proposal is not approval. Do not silently promote State to Memory, merge the destinations, or save anything automatically. Use `schemas/memory-update-proposal.schema.json` for Memory or `schemas/state-update-proposal.schema.json` for State; never combine them into one filled artifact. If crisis indicators appear in supporting context, stop ordinary review and follow `GUARDRAILS.md`.
 
 ## Response Format
 
@@ -35,7 +36,8 @@ Reject diagnostic, trait-like, overly intimate, speculative, or raw-entry propos
 - **Evidence check:** [What supports it and what is missing]
 - **Scope/clinical check:** [Whether wording is too broad or clinical]
 - **Approval status:** not approved | explicitly approved
-- **Recommended decision:** approve | edit | discard
+- **Recommended decision:** approve | edit | discard | expire State
 - **Suggested edit:** [Minimal revised wording, if useful]
 - **State review/stale trigger:** [Required for State; otherwise not applicable]
+- **Safety/privacy check:** [Confirm no raw content, selected excerpt, private log, clinical claim, or prohibited note type]
 - **Review reminder:** Nothing has been saved; approve the exact wording and destination separately.

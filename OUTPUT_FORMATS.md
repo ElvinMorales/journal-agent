@@ -11,10 +11,10 @@ Structured outputs should be validated against `schemas/*.json` when possible.
 - `therapy-prep-summary`: user-reviewed topics and questions for human care.
 - `coping-card`: short, reusable coping support.
 - `journal-mirror-session`: grounding, tentative reflection, uncertainty, questions, reversible options, and optional separate review-only proposals.
-- `memory-update-proposal`: optional durable-context proposal that remains pending exact user approval.
-- `state-update-proposal`: optional temporary-context proposal with a review or stale trigger that remains pending exact user approval.
+- `memory-update-proposal`: optional durable-context candidate defined by `schemas/memory-update-proposal.schema.json`. It records minimal proposed wording, evidence and uncertainty, an opaque private source reference, safety/privacy checks, and a review decision.
+- `state-update-proposal`: optional temporary-context candidate defined by `schemas/state-update-proposal.schema.json`. It records the active context or open loop, a required review or stale trigger, optional expiration, minimal evidence and uncertainty, safety/privacy checks, and a review decision.
 
-The prompt surfaces define human-readable shapes for these three outputs. Reviewable proposal schemas and filled synthetic examples remain future work; no schema or automatic persistence is introduced here.
+Both proposal outputs are proposal-only and require human review of the exact wording and destination. Memory and State remain separate: State cannot be silently promoted to Memory, and approval for one destination does not approve the other. Neither output permits automatic persistence or raw private content. Real filled proposals remain private; the public fixtures in `examples/memory-state-proposals/` are synthetic.
 
 ## Style Requirements
 

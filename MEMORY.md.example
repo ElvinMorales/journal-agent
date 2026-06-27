@@ -2,6 +2,8 @@
 
 This example shows the shape of durable memory if the user explicitly consents. Do not store real memory in this committed file.
 
+Durable Memory should come only from a reviewed and approved Memory proposal whose exact wording and destination the user accepts. Do not create Memory directly from raw journal entries or selected excerpts. See `docs/memory-state-proposal-review.md`.
+
 ## Allowed Memory
 
 - User-stated preferences for reflection style.

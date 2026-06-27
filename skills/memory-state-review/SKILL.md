@@ -40,7 +40,8 @@ Use after a reflection produces an optional proposal or when the user supplies a
 3. Check evidence, breadth, clinical framing, necessity, and privacy sensitivity.
 4. Require an explicit decision about the exact wording and destination.
 5. For State, require a review or stale trigger.
-6. Recommend approve, edit, or discard without performing a write.
+6. Recommend approve, edit, discard, or expire stale State without performing a write.
+7. Represent the result with the separate Memory or State schema when structured output is needed.
 
 ## Outputs
 
@@ -50,6 +51,7 @@ Use after a reflection produces an optional proposal or when the user supplies a
 - Approval status and recommended decision
 - Minimal suggested edit when useful
 - Review or stale trigger for State
+- Schema-aligned safety/privacy checks and an opaque private source reference
 
 ## Boundaries
 
@@ -61,7 +63,7 @@ Use the minimum user-selected evidence. Do not fetch source notes, expose privat
 
 ## Memory/State Handling
 
-Memory must be durable, explicitly supported, minimally stated, and approved. State must be temporary, useful now, minimally stated, approved, and paired with a review or stale trigger. Approval for one destination never authorizes the other.
+Memory must be durable, explicitly supported, minimally stated, and approved. State must be temporary, useful now, minimally stated, approved, and paired with a review or stale trigger. Approval for one destination never authorizes the other. An approved or edited proposal still requires the user to copy the exact approved wording manually; the review capability does not persist it.
 
 ## Failure Modes
 
@@ -78,12 +80,15 @@ Memory must be durable, explicitly supported, minimally stated, and approved. St
 - Wording is minimal, non-clinical, and not trait-like.
 - Exact user approval is required.
 - State includes a review or stale trigger.
-- The outcome is approve, edit, or discard.
+- The outcome is approve, edit, discard, or expire stale State.
 - Nothing was written automatically.
 
 ## References
 
 - `prompts/update-proposal-review.md`
+- `schemas/memory-update-proposal.schema.json`
+- `schemas/state-update-proposal.schema.json`
+- `docs/memory-state-proposal-review.md`
 - `MEMORY.md.example`
 - `STATE.md.example`
 - `docs/journal-data-lifecycle.md`

@@ -1,0 +1,31 @@
+{
+  "proposal_id": "memory-proposal-synthetic-validation-first",
+  "proposal_type": "memory",
+  "destination": "private_memory",
+  "status": "pending",
+  "proposed_durable_text": "The user prefers reflection that starts with validation before pattern analysis.",
+  "reason_it_may_remain_useful": "A stable response-order preference could improve future reflection sessions.",
+  "evidence_summary": "Synthetic session summaries indicate that this response order was requested more than once.",
+  "uncertainty_or_counterevidence": "The preference may depend on context and still requires confirmation as a durable default.",
+  "source_reference": {
+    "private_session_id": "session-synthetic-memory-001"
+  },
+  "review_decision": "pending",
+  "reviewer_notes": null,
+  "edited_approved_text": null,
+  "created_at": "2026-06-01T14:00:00Z",
+  "updated_at": "2026-06-01T14:00:00Z",
+  "reviewed_at": null,
+  "safety_privacy_checks": {
+    "contains_raw_journal_content": false,
+    "contains_selected_excerpts": false,
+    "contains_therapy_or_crisis_notes": false,
+    "contains_clinical_claims": false,
+    "is_broad_trait_claim": false,
+    "enough_evidence_for_durable_context": true,
+    "exact_wording_and_destination_approved": false
+  },
+  "proposal_only": true,
+  "human_review_required": true,
+  "review_reminder": "Proposal only: a human must approve the exact wording and private Memory destination before manually copying any update."
+}

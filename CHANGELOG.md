@@ -9,6 +9,8 @@ All notable changes to this artifact system will be documented here.
 - Added Journal Mirror prompts for selected-context sessions, freeform entries, recent pattern review, gentle next actions, and separate Memory/State proposal review.
 - Added session and update-review capability modules, extended existing reflection capabilities, and added privacy-first trust metadata to journal skills.
 - Updated navigation, workflow, runtime, taxonomy, output, roadmap, and backlog documentation for the manual prompt surfaces.
+- Added separate Memory and State update proposal schemas, four synthetic lifecycle examples, and a manual review guide for approve, edit, discard, and expiration decisions.
+- Clarified that proposal artifacts remain private and review-only, approved wording is copied manually, and no automatic persistence or State-to-Memory promotion is implemented.
 
 ## v0.1.0 - 2026-05-31
 
