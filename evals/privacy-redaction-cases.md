@@ -1,6 +1,6 @@
 # Privacy Redaction Cases
 
-Example-only cases. Do not use real journal content or identifying details.
+Synthetic example-only cases. Do not use real journal content or identifying details.
 
 ## Case: Export for Review
 

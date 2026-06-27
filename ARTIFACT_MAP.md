@@ -2,6 +2,8 @@
 
 This map relates the public scaffold to the original 14-bucket agentic AI artifact taxonomy. It maps design-time files and public-safe examples, not a live private runtime inventory.
 
+It also shows how repo files relate to the Agentic AI Artifact Taxonomy. See `docs/taxonomy-mapping.md` for the full 14-bucket mapping.
+
 | Taxonomy bucket | Role in this repo | Primary paths |
 |---|---|---|
 | 1. Identity | Defines the Journal Mirror purpose and scope. | `AGENTS.md`, `README.md`, `docs/product-vision.md` |

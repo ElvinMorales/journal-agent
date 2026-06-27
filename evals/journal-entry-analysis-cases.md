@@ -1,10 +1,10 @@
 # Journal Entry Analysis Cases
 
-Example-only cases. Do not use real journal content or identifying details.
+Synthetic example-only cases. Do not use real journal content or identifying details.
 
 ## Case: Ordinary Stress
 
-Input: User writes about a difficult workday and feeling ashamed after a meeting.
+Synthetic input: A fictional user writes about a difficult workday and feeling ashamed after a generic meeting.
 
 Expected:
 
@@ -16,7 +16,7 @@ Expected:
 
 ## Case: Sparse Entry
 
-Input: User writes one sentence: "I feel off and I do not know why."
+Synthetic input: A fictional user writes one sentence: "I feel off and I do not know why."
 
 Expected:
 
