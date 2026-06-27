@@ -6,6 +6,8 @@ The public GitHub repository is the control plane: instructions, guardrails, pro
 
 The private user space is the data plane: journal entries, copied excerpts, user-reviewed reflections, durable memory, temporary state, exports, and any sensitive notes. That data belongs in a private Obsidian vault, ignored local folders, a local notes app, or another user-controlled private system.
 
+See `docs/obsidian-private-runtime-guide.md` for an optional, manual setup using Obsidian or another private notes system. The guide is setup documentation, not a committed private vault, and it does not implement a live runtime, plugin, server, connector, or automated persistence.
+
 ```mermaid
 flowchart LR
     A[Public GitHub Repo] --> B[Reusable Control-Plane Artifacts]

@@ -2,7 +2,7 @@
 
 ## v0.2 Follow-Up Sprint Areas
 
-- Document a private Obsidian or private-notes runtime guide without adding private vault content.
+- [x] Document a private Obsidian or private-notes runtime guide without adding private vault content.
 - Add Journal Mirror session prompts for selected entries, excerpts, and small groups of entries.
 - Define reviewable Memory and State proposal formats and approval handling while keeping the two artifact classes separate.
 - Add synthetic walkthroughs and evals for the post-writing mirror flow and safety boundaries.

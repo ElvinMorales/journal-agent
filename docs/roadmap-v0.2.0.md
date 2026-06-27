@@ -18,9 +18,13 @@ This release is a foundation, not the end of the sprint. It should make the dire
 - Preserve the canonical 14-bucket taxonomy and document Strategic Mirror as a working pattern only.
 - Keep all examples synthetic and the repository public-safe.
 
+## Implementation Progress
+
+- Covered by issue #12: a manual private Obsidian/private-notes runtime starter guide, with no plugin, server, or vault automation.
+- Remaining sprint work: dedicated session prompts, reviewable Memory/State proposal contracts, synthetic walkthroughs and safety evals, future controller-contract documentation, and release readiness.
+
 ## Maybe-Later Scope
 
-- A private Obsidian runtime guide.
 - Dedicated Journal Mirror session prompts.
 - Structured pending-proposal schemas for Memory and State.
 - Synthetic walkthroughs, expanded evals, and release notes.
@@ -55,13 +59,13 @@ The agent remains a reflection companion, not a clinical product or care provide
 - [ ] Strategic Mirror is identified only as a working implementation pattern.
 - [ ] No private runtime artifacts, identifying data, secrets, or local paths are added.
 - [ ] No MCP server, hosted runtime, or Obsidian plugin is implemented.
+- [x] A private Obsidian/private-notes runtime guide documents manual setup without adding private runtime artifacts.
 - [ ] `git diff --check` passes.
 - [ ] `python scripts/validate-json-schemas.py` passes.
 - [ ] `git ls-files private` contains placeholders only.
 
 ## Follow-Up Issue Candidates
 
-- Document the private Obsidian runtime boundary and setup flow.
 - Add Journal Mirror session prompts for manually selected context.
 - Define separate reviewable Memory and State proposal contracts.
 - Add synthetic end-to-end walkthroughs and safety evals.

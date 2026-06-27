@@ -36,15 +36,15 @@ The taxonomy defines an agentic AI artifact as anything an agent system depends 
 | Operating style | `AGENTS.md`, `GUARDRAILS.md` | Defines tone, caution, crisis boundary, tentative reflection style, and non-clinical behavior | Public behavior rules only | Covered |
 | Capability modules | `skills/*/SKILL.md` | Reusable workflows for reflection tasks | Public workflow instructions only | Partial |
 | Tools | `scripts/` | Validation and redaction helpers; future connectors remain implementation-edge mappings | Public tooling; no private outputs committed | Partial |
-| Knowledge/resources | `references/`, `docs/` | Supporting public reference material | Public-safe material only | Partial |
+| Knowledge/resources | `references/`, `docs/`, `docs/obsidian-private-runtime-guide.md` | Supporting public reference material and private-runtime setup guidance | Public-safe guidance only; private vault content stays outside Git | Covered for starter guide |
 | Prompts/interfaces | `prompts/`, `templates/`, `docs/journal-mirror-workflow.md` | User-invoked flows, optional templates, and selected-context Journal Mirror workflow | Templates public; filled entries private | Covered |
 | Memory | `MEMORY.md.example`, `private/memory/` | Durable user facts only with explicit consent and review | Example public; real memory private/ignored | Boundary documented |
 | State | `STATE.md.example`, `private/state/` | Temporary session continuity and active reflection context | Example public; real state private/ignored | Boundary documented |
-| Planning/orchestration | `skills/`, `prompts/`, `docs/journal-mirror-workflow.md` | Workflow sequencing, selected-context reflection, proposal, and review gates | Public instructions only | Covered for v0.2 planning |
-| Guardrails/governance | `GUARDRAILS.md`, `PRIVACY.md`, `SECURITY.md`, `CONTRIBUTING.md`, `docs/decisions/` | Safety, privacy, reporting, contribution rules, and architectural decisions | Public rules; no sensitive reports in issues | Covered |
+| Planning/orchestration | `skills/`, `prompts/`, `docs/journal-mirror-workflow.md`, `docs/obsidian-private-runtime-guide.md` | Workflow sequencing, manual private setup, selected-context reflection, proposal, and review gates | Public instructions only; session artifacts remain private | Covered for manual flow |
+| Guardrails/governance | `GUARDRAILS.md`, `PRIVACY.md`, `SECURITY.md`, `CONTRIBUTING.md`, `docs/decisions/`, `docs/obsidian-private-runtime-guide.md` | Safety, privacy, reporting, contribution rules, private/public boundaries, and architectural decisions | Public rules; no sensitive reports or runtime artifacts in issues | Covered |
 | Outputs/schemas | `OUTPUT_FORMATS.md`, `schemas/` | Structured output contracts and future proposal records | Schemas public; filled outputs private unless synthetic | Covered |
 | Evaluation/observability | `EVALS.md`, `evals/` | Regression and safety review cases | Synthetic cases only; private traces excluded | Partial |
-| Runtime/deployment | `mobile/`, `.gitignore`, `.github/workflows/`, `scripts/`, `docs/decisions/0002-journal-mirror-runtime-pattern.md` | Local/mobile/no-code guidance, validation surfaces, and public-control-plane/private-data-plane boundary | Runtime private data stays out of repo | Partial |
+| Runtime/deployment | `mobile/`, `.gitignore`, `.github/workflows/`, `scripts/`, `docs/obsidian-private-runtime-guide.md`, `docs/decisions/0002-journal-mirror-runtime-pattern.md` | Local/mobile/no-code guidance, manual private setup, validation surfaces, and public-control-plane/private-data-plane boundary | Runtime private data stays out of repo; no live runtime is implemented | Manual starter guide covered |
 | Learning/iteration | `CHANGELOG.md`, `BACKLOG.md`, release checklists, `docs/roadmap-v0.2.0.md` | Change history, roadmap, and future work | Public project tracking only | Partial |
 
 ## Intentional Non-Goals
@@ -58,7 +58,6 @@ The taxonomy defines an agentic AI artifact as anything an agent system depends 
 
 ## Known Gaps After v0.2.0 Planning
 
-- Private Obsidian runtime guidance still needs a dedicated starter guide.
 - Journal Mirror session prompts need to be expanded for selected entries, excerpts, and small groups of entries.
 - Memory and State update proposals need explicit schemas and examples.
 - Evaluation remains lightweight and needs additional synthetic cases for template forcing, memory overreach, and unsafe clinical framing.

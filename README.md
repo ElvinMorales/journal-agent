@@ -46,11 +46,12 @@ This repo applies that lens to a journaling companion by making public artifacts
 - `docs/decisions/0002-journal-mirror-runtime-pattern.md` for the Journal Mirror runtime-pattern decision.
 - `docs/roadmap-v0.2.0.md` for the v0.2 planning direction.
 - `docs/journal-mirror-workflow.md` for the post-writing reflection workflow.
+- [Private runtime starter guide](docs/obsidian-private-runtime-guide.md) for a manual setup that works with Obsidian or any private notes system, with no plugin or server required.
 
 ## Start Here
 
 1. Write naturally in a private Obsidian vault or another user-controlled private notes system.
-2. Use the workflow in `docs/journal-mirror-workflow.md` on one selected entry, excerpt, or small group of entries.
+2. Use the [private runtime starter guide](docs/obsidian-private-runtime-guide.md) to set up a minimal private runtime, then follow `docs/journal-mirror-workflow.md` with one selected entry, excerpt, or small group of entries.
 3. Review any proposed Memory or State updates before applying, editing, or discarding them. Nothing durable changes automatically.
 4. Use `templates/` only when a structured starting point is helpful; templates are optional, not a required journal format.
 
