@@ -6,6 +6,8 @@ This guide helps a user create a private runtime/data plane for the Journal Mirr
 
 The setup is optional and Obsidian-friendly, not Obsidian-required. Plain folders and Markdown files in any private notes system are enough. No plugin, server, connector, or automated vault access is required. No private journal content belongs in the public repository.
 
+If a controller is implemented later, it must follow `docs/future-mcp-vps-controller-contract.md`. It may not scan the vault, monitor notes in the background, or save reflections, Memory, or State automatically. The current setup remains manual and has no live controller.
+
 ## Public Repo vs Private Vault
 
 | Public repo/control plane | Private vault/data plane |

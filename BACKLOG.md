@@ -7,11 +7,11 @@
 - [x] Add privacy-first trust metadata to journal skills.
 - [x] Define separate reviewable Memory and State proposal schemas, synthetic lifecycle examples, and manual review guidance without automatic persistence.
 - [x] Add synthetic walkthroughs and evals for the post-writing mirror flow and safety boundaries.
+- [x] Define a future MCP/VPS controller contract as a public-safe, design-only interface specification with synthetic boundary evals and no runtime implementation.
 - Complete the `v0.2.0` release-readiness pass across navigation, validation, and public-safety review.
 
 ## Later
 
-- Define a future MCP/VPS controller contract as a public-safe interface specification, without implementing a server or hosted runtime.
 - Consider model/runtime integration only after the manual, file-first workflow and approval boundaries are validated.
 - Add consent UI or command flow for Memory and State writes only after proposal review behavior is specified and evaluated.
 - Add schema validation to a GitHub Actions workflow after local validation is stable.

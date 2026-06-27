@@ -22,6 +22,7 @@ The eval suite checks whether the companion follows reflection, safety, privacy,
 - `evals/memory-state-proposal-cases.md`
 - `evals/safety-boundary-cases.md`
 - `evals/privacy-redaction-cases.md`
+- `evals/future-controller-boundary-cases.md`
 - `evals/rubric.md`
 
 The end-to-end synthetic fixtures are:
@@ -39,3 +40,5 @@ The end-to-end synthetic fixtures are:
 5. When proposal schemas are involved, also run `python scripts/validate-json-schemas.py`.
 
 These evals test system boundaries and review behavior. They do not measure mental-health outcomes, replace expert safety review, or validate the system for clinical use.
+
+The future-controller cases are manual, synthetic, design-boundary checks. They verify the specification's denied operations, approval gates, prompt-injection handling, and metadata-only logging expectations; they do not exercise an MCP server, controller, plugin, or hosted runtime.

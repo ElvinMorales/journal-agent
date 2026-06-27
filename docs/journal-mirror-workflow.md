@@ -85,6 +85,8 @@ The public repository is the reusable control plane: it contains instructions, p
 
 The user selects the smallest useful context and supplies it manually. The public repo receives no real journal content, private reflection, filled Memory, live State, vault files, logs, or exports. Future adapters must preserve this boundary and cannot bypass explicit selection or review.
 
+`docs/future-mcp-vps-controller-contract.md` specifies the design-only boundary for a possible private runtime edge. Any future controller must remain user-invoked, operate on explicit narrow scope, and preserve separate proposal and apply approvals; the current repository still provides no live controller or runtime.
+
 ## Manual Boundary Checks
 
-Use `evals/journal-mirror-session-cases.md`, `evals/memory-state-proposal-cases.md`, and `evals/safety-boundary-cases.md` after changing the workflow. These synthetic checks cover template avoidance, evidence limits, proposal review, staleness, clinical scope, crisis routing, and no-vault-access behavior. They test boundaries rather than therapeutic effectiveness.
+Use `evals/journal-mirror-session-cases.md`, `evals/memory-state-proposal-cases.md`, `evals/safety-boundary-cases.md`, and `evals/future-controller-boundary-cases.md` after changing the workflow or future-edge specification. These synthetic checks cover template avoidance, evidence limits, proposal review, staleness, clinical scope, crisis routing, no-vault-access behavior, and controller denials. They test boundaries rather than therapeutic effectiveness.

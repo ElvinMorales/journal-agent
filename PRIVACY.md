@@ -14,6 +14,10 @@ Journal data is highly sensitive. This repository must assume entries may includ
 
 Durable memory should be explicit, minimal, editable, and deletable. The companion should not silently convert journal content into long-term memory.
 
+## Future Controller Boundary
+
+Any future private controller must follow `docs/future-mcp-vps-controller-contract.md`: user-selected context only, destination-specific approval, and no automatic Memory or State writes. Private vault content, pending proposals, approved Memory, current State, controller configuration, secrets, and runtime logs stay in the private data plane and out of Git.
+
 ## Exports
 
 Exports should distinguish user-authored text from agent-generated summaries. Therapy-prep summaries should be concise, user-reviewed, and framed as the user's notes, not clinical conclusions.

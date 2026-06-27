@@ -21,6 +21,8 @@ proposal created
 
 Nothing is saved automatically. Creating, reviewing, or marking a proposal approved does not itself update Memory or State. The user manually copies only the exact approved wording into the approved destination.
 
+A future controller must preserve the same gates. Proposal creation, review status, destination approval, exact-wording approval, and application are distinct operations. Approval for Memory never authorizes State, approval for State never authorizes Memory, and edited wording must be reviewed again. See `docs/future-mcp-vps-controller-contract.md`.
+
 The separate contracts are:
 
 - `schemas/memory-update-proposal.schema.json` for durable candidates.

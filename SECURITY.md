@@ -27,3 +27,7 @@ Please report:
 This repository is not an emergency or crisis-support channel. If someone may be
 in immediate danger, contact local emergency services or a crisis resource in
 the person's location.
+
+## Future Controller Boundary
+
+`docs/future-mcp-vps-controller-contract.md` specifies least-privilege and approval requirements for any possible future private runtime edge. It is not an implementation. Secrets, controller configuration, runtime logs, private vault content, and private outputs must remain outside Git; a future controller must not broaden scope, run silently, or contact external services without explicit configuration and review.

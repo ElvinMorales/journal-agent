@@ -8,6 +8,8 @@ The private user space is the data plane: journal entries, copied excerpts, user
 
 See `docs/obsidian-private-runtime-guide.md` for an optional, manual setup using Obsidian or another private notes system. The guide is setup documentation, not a committed private vault, and it does not implement a live runtime, plugin, server, connector, or automated persistence.
 
+A possible future controller would be a narrow runtime edge inside the private environment, between user-approved operations and the private data plane. `docs/future-mcp-vps-controller-contract.md` defines that design boundary. No controller, MCP server, VPS service, vault reader, or live runtime is implemented in this repository.
+
 ```mermaid
 flowchart LR
     A[Public GitHub Repo] --> B[Reusable Control-Plane Artifacts]
@@ -23,6 +25,9 @@ flowchart LR
     C --> C2[Ignored private/ folder]
     C --> C3[Local notes app]
     C --> C4[User-reviewed exports]
+
+    D[Future Private Controller Edge<br/>Design Only] -. approved narrow operations .-> C
+    B -. governs .-> D
 
     B -. guides .-> C
     C -. never committed .-> A
@@ -49,6 +54,10 @@ Private user space contains real journal data and generated private artifacts. I
 - Runtime exports, local logs, memory, and state.
 
 These materials must not be committed to the public repo.
+
+## Future Runtime Edge
+
+If implemented later, a controller must run within the private runtime boundary, accept only explicit user-selected scope, expose least-privilege operations, and preserve separate review gates for Memory and State. It must not scan the vault, monitor in the background, or persist private artifacts without destination-specific confirmation. The controller contract is a specification, not current access or executable behavior.
 
 ## Memory vs State
 

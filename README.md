@@ -47,6 +47,7 @@ This repo applies that lens to a journaling companion by making public artifacts
 - `docs/roadmap-v0.2.0.md` for the v0.2 planning direction.
 - `docs/journal-mirror-workflow.md` for the post-writing reflection workflow.
 - [Private runtime starter guide](docs/obsidian-private-runtime-guide.md) for a manual setup that works with Obsidian or any private notes system, with no plugin or server required.
+- [Future MCP/VPS controller contract](docs/future-mcp-vps-controller-contract.md) for the design-only boundary of a possible private runtime edge; it includes no MCP/VPS server or controller implementation.
 
 ## Start Here
 
