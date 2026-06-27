@@ -85,6 +85,8 @@ Start manually by creating these folders and ordinary Markdown files in a privat
 6. Review each proposed update with `prompts/update-proposal-review.md` before adding it to private Memory or State. Approval for one destination does not approve the other.
 7. Edit or discard anything that feels wrong, too broad, too clinical, or not useful.
 
+For a public demonstration of these steps, see `examples/journal-mirror-walkthroughs/`. Those walkthroughs are synthetic only. Never publish a real walkthrough, selected excerpt, generated reflection, or session record; keep those artifacts in the private vault.
+
 If crisis indicators appear, stop the ordinary reflection flow and follow `GUARDRAILS.md`: prioritize immediate safety, trusted human support, relevant emergency or crisis resources, and reducing access to harm.
 
 ## Memory vs State in the Private Vault

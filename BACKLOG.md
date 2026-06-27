@@ -6,7 +6,7 @@
 - [x] Add Journal Mirror session prompts and capability modules for selected entries, excerpts, and small groups of entries.
 - [x] Add privacy-first trust metadata to journal skills.
 - [x] Define separate reviewable Memory and State proposal schemas, synthetic lifecycle examples, and manual review guidance without automatic persistence.
-- Add synthetic walkthroughs and evals for the post-writing mirror flow and safety boundaries.
+- [x] Add synthetic walkthroughs and evals for the post-writing mirror flow and safety boundaries.
 - Complete the `v0.2.0` release-readiness pass across navigation, validation, and public-safety review.
 
 ## Later

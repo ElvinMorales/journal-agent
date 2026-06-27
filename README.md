@@ -57,6 +57,8 @@ This repo applies that lens to a journaling companion by making public artifacts
 
 See [all session prompts](prompts/), the [Journal Mirror session capability](skills/journal-mirror-session/SKILL.md), and the [Memory/State review capability](skills/memory-state-review/SKILL.md). Read `docs/journal-mirror-workflow.md` for the complete flow, `docs/memory-state-proposal-review.md` for the proposal lifecycle and publishing checklist, `ARTIFACT_MAP.md` for the artifact layout, and `GUARDRAILS.md` before running reflection workflows.
 
+To inspect the flow without private content, use the [synthetic Journal Mirror walkthroughs](examples/journal-mirror-walkthroughs/) and the [manual synthetic eval suite](EVALS.md). They demonstrate selected-context reflection, proposal review, expiration, privacy limits, and safety routing; they are not private traces or clinical validation.
+
 ## Safety and Privacy Warnings
 
 Do not commit filled journal entries, private notes, summaries, memory, state, exports, crisis notes, therapy notes, logs, databases, environment files, secrets, screenshots, local identifying paths, or identifying information.
@@ -67,4 +69,5 @@ Use synthetic examples only. If crisis indicators appear in actual use, stop ord
 
 - Read `CONTRIBUTING.md` before opening issues or pull requests.
 - Report sensitive-data exposure or safety issues using `SECURITY.md`.
+- Run the synthetic manual checks described in `EVALS.md` after changing prompts, capabilities, guardrails, or proposal review behavior.
 - Run `python scripts/validate-json-schemas.py` after schema changes.

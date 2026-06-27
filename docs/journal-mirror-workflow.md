@@ -38,6 +38,8 @@ Use a session after writing when a second perspective may help clarify one exper
 
 The capability modules in `skills/journal-mirror-session/SKILL.md`, `skills/summarizing-journal-patterns/SKILL.md`, and `skills/memory-state-review/SKILL.md` define the reusable workflows and privacy boundaries behind these surfaces.
 
+Public-safe end-to-end examples are available in `examples/journal-mirror-walkthroughs/`: a freeform entry session, a recent pattern review, and a Memory/State proposal review. They use invented inputs and expected outputs only; real sessions and retained reflections remain private.
+
 ## Inputs the User May Provide Manually
 
 - One entry, a short excerpt, or a small group of entries.
@@ -82,3 +84,7 @@ Natural writing should not be forced into an analysis-friendly form. Templates c
 The public repository is the reusable control plane: it contains instructions, policies, prompts, schemas, and synthetic examples. A private Obsidian vault or other private notes system is the runtime/data plane: it contains real writing and any user-approved private records.
 
 The user selects the smallest useful context and supplies it manually. The public repo receives no real journal content, private reflection, filled Memory, live State, vault files, logs, or exports. Future adapters must preserve this boundary and cannot bypass explicit selection or review.
+
+## Manual Boundary Checks
+
+Use `evals/journal-mirror-session-cases.md`, `evals/memory-state-proposal-cases.md`, and `evals/safety-boundary-cases.md` after changing the workflow. These synthetic checks cover template avoidance, evidence limits, proposal review, staleness, clinical scope, crisis routing, and no-vault-access behavior. They test boundaries rather than therapeutic effectiveness.

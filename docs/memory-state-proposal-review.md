@@ -26,6 +26,8 @@ The separate contracts are:
 - `schemas/memory-update-proposal.schema.json` for durable candidates.
 - `schemas/state-update-proposal.schema.json` for temporary candidates.
 
+See `examples/journal-mirror-walkthroughs/memory-state-review.synthetic.md` for a public-safe review of a good Memory candidate, a good State candidate, an overbroad discarded Memory candidate, and an expired State candidate. Use `evals/memory-state-proposal-cases.md` for manual regression checks of classification, required fields, approval, and expiration.
+
 ## Review Questions
 
 - Is this Memory or State?
