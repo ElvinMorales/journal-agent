@@ -4,6 +4,10 @@ All notable changes to this artifact system will be documented here.
 
 ## Unreleased
 
+- Added the `v0.3.0` MCP runtime and guided-intake roadmap.
+- Added ADR 0003 for the proposed local/private Journal Mirror MCP runtime direction.
+- Clarified `v0.2.0` as the current manual/control-plane release and `v0.3.0` as the MCP-connected private-runtime sprint.
+- Added planning boundaries only; no MCP runtime, connector configuration, vault initializer, local viewer, endpoint, or executable implementation was added.
 - Started `v0.2.0` planning for the Journal Mirror runtime pattern: natural private writing first, reflection after selection, and user-reviewed Memory or State proposals.
 - Added a private Obsidian/private-notes runtime starter guide for manual setup, selected-context sessions, and reviewed Memory/State updates without a plugin or server.
 - Added Journal Mirror prompts for selected-context sessions, freeform entries, recent pattern review, gentle next actions, and separate Memory/State proposal review.

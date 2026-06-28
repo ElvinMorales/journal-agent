@@ -1,5 +1,20 @@
 # Backlog
 
+## v0.3 MCP Runtime and Guided Intake — Issue #25
+
+- [x] Issue #26: establish the `v0.3.0` roadmap and proposed MCP runtime architecture in a focused docs-only planning PR.
+- [ ] Design guided intake and initialization.
+- [ ] Define intake schemas, synthetic examples, and evals.
+- [ ] Build the private-vault runtime package and initializer.
+- [ ] Build a minimal local MCP server.
+- [ ] Implement proposal approval and exact-wording apply through MCP.
+- [ ] Document ChatGPT connector setup and a first-run walkthrough.
+- [ ] Add an optional local HTML viewer.
+- [ ] Add MCP runtime tests and safety evals.
+- [ ] Complete `v0.3.0` release readiness.
+
+Issue #26 records direction only. No runtime implementation is included; the remaining issue #25 child work stays separately scoped and reviewable.
+
 ## v0.2 Follow-Up Sprint Areas
 
 - [x] Document a private Obsidian or private-notes runtime guide without adding private vault content.

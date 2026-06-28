@@ -1,6 +1,6 @@
 # Journal Mirror Agent
 
-`journal-agent` is a public, file-first scaffold for a private-first Journal Mirror Agent and a reference implementation of the Agentic AI Artifact Taxonomy. The `v0.2.0` release candidate supports natural private writing first, selected-context reflection after, and reviewable Memory or State update proposals.
+`journal-agent` is a public, file-first scaffold for a private-first Journal Mirror Agent and a reference implementation of the Agentic AI Artifact Taxonomy. `v0.2.0` is the current manual/control-plane release: it supports natural private writing first, selected-context reflection after, and reviewable Memory or State update proposals.
 
 It does not store journal entries and it is not therapy, diagnosis, crisis counseling, medical advice, treatment planning, medication guidance, a mental health product, clinical decision support system, hosted service, Obsidian plugin, or private journal database.
 
@@ -45,6 +45,8 @@ This repo applies that lens to a journaling companion by making public artifacts
 - `docs/decisions/0001-public-artifacts-private-journal.md` for the core boundary decision.
 - `docs/decisions/0002-journal-mirror-runtime-pattern.md` for the Journal Mirror runtime-pattern decision.
 - `docs/roadmap-v0.2.0.md` for the v0.2 planning direction.
+- [`docs/roadmap-v0.3.0.md`](docs/roadmap-v0.3.0.md) for the MCP runtime and guided-intake sprint direction.
+- [`docs/decisions/0003-journal-mirror-mcp-runtime.md`](docs/decisions/0003-journal-mirror-mcp-runtime.md) for the proposed local/private MCP runtime architecture.
 - `docs/journal-mirror-workflow.md` for the post-writing reflection workflow.
 - [Private runtime starter guide](docs/obsidian-private-runtime-guide.md) for a manual setup that works with Obsidian or any private notes system, with no plugin or server required.
 - [Future MCP/VPS controller contract](docs/future-mcp-vps-controller-contract.md) for the design-only boundary of a possible private runtime edge; it includes no MCP/VPS server or controller implementation.
@@ -67,6 +69,14 @@ To inspect the flow without private content, use the [synthetic Journal Mirror w
 ## v0.2.0 Scope
 
 `v0.2.0` adds usable manual Journal Mirror sessions, private-notes setup guidance, prompt and capability surfaces, separate reviewable Memory and State proposal contracts, synthetic walkthroughs and evals, and a design-only future controller contract. It does not add a live MCP/VPS runtime, vault access, an Obsidian plugin, automatic persistence, a clinical product, or crisis automation.
+
+The `v0.2.0` manual workflow remains the usable path while `v0.3.0` is planned and built.
+
+## v0.3.0 Planning Status
+
+`v0.3.0` planning has started under issue #25. The sprint will focus on a narrow MCP runtime, guided intake, private-vault initialization, proposal approval and exact-wording apply, ChatGPT connector setup, runtime tests and safety evals, release readiness, and eventually an optional local HTML viewer.
+
+No MCP runtime, connector setup, private-vault initializer, or local viewer exists yet. The [v0.3.0 roadmap](docs/roadmap-v0.3.0.md) defines the planned user flow and sprint groups; [ADR 0003](docs/decisions/0003-journal-mirror-mcp-runtime.md) records the proposed architecture and denied operations without implementing them.
 
 ## Safety and Privacy Warnings
 
