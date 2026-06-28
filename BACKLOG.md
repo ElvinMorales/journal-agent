@@ -8,12 +8,12 @@
 - [x] Issue #29: build the private-vault runtime package and initializer.
 - [x] Issue #30: build a minimal local MCP server with explicit private-vault configuration, narrow tools, inert proposals, metadata-only audit, and synthetic boundary tests.
 - [x] Issue #31: implement proposal approval and exact-wording apply through MCP with destination-specific confirmation, fixed target allowlists, State triggers, append-only writes, double-apply refusal, and metadata-only audit.
-- [ ] Issue #32 and later: document ChatGPT connector setup and a first-run walkthrough.
-- [ ] Issue #32 and later: add an optional local HTML viewer.
-- [ ] Issue #32 and later: expand MCP runtime tests and safety evals.
-- [ ] Complete `v0.3.0` release readiness.
+- [x] Issue #32: document ChatGPT connector setup, tool review/permissions, a synthetic first-run walkthrough, refusal checks, and disconnect guidance without adding live connectivity.
+- [ ] Issue #33: add an optional local HTML viewer for Journal Mirror runtime state.
+- [ ] Issue #34: expand MCP runtime tests and safety evals.
+- [ ] Issue #35: complete `v0.3.0` release readiness.
 
-Issues #26 through #31 cover architecture, intake design, structured intake artifacts, the private-vault package, the minimal local MCP server, and exact-approved-wording apply. Issue #32 is the next likely work for ChatGPT connector setup and a first-run walkthrough. Viewer, expanded eval, and release work stay future, separately scoped, and reviewable. Parent sprint #25 remains open.
+Issues #26 through #32 cover architecture, intake design, structured intake artifacts, the private-vault package, the minimal local MCP server, exact-approved-wording apply, and ChatGPT connector onboarding. Issue #33 is the next likely work: a local HTML viewer for Journal Mirror runtime state. Issues #34 and #35 keep expanded eval and release work future, separately scoped, and reviewable. Parent sprint #25 remains open.
 
 ## v0.2 Follow-Up Sprint Areas
 

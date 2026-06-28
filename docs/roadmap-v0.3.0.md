@@ -2,7 +2,7 @@
 
 ## Status
 
-Implementation in progress. Guided intake, the private-vault package and initializer, the minimal local MCP server, and proposal approval/exact-wording apply are addressed. Connector setup, viewer work, expanded evals, and release readiness remain open.
+Implementation in progress. Guided intake, the private-vault package and initializer, the minimal local MCP server, proposal approval/exact-wording apply, and ChatGPT connector onboarding/first-run documentation are addressed. Viewer work, expanded evals, and release readiness remain open.
 
 ## Release Positioning
 
@@ -10,7 +10,7 @@ Implementation in progress. Guided intake, the private-vault package and initial
 
 `v0.3.0` aims to reduce the setup and operating friction that remains in that manual workflow. The target is a private runtime usable through ChatGPT, a narrow MCP connection, and a user-controlled private vault. The runtime must preserve review-based persistence: generating or approving a proposal is not permission to write it, and only exact wording approved for a named destination may be applied.
 
-This roadmap tracks sprint direction. Issues #30 and #31 add reusable local server and strict proposal-apply code but no private data, configured private path, connector, hosted endpoint, tunnel, or viewer.
+This roadmap tracks sprint direction. Issues #30 and #31 add reusable local server and strict proposal-apply code. Issue #32 adds connector and first-run documentation only. It adds no private data, configured private path, live connector configuration, hosted endpoint, tunnel, or viewer.
 
 ## Target User Flow
 
@@ -37,12 +37,12 @@ Issue #25 organizes the `v0.3.0` sprint into these groups:
 4. Build the private-vault runtime package and initializer.
 5. Build a minimal local MCP server. **Addressed by issue #30.**
 6. Implement proposal approval and exact-wording apply through MCP. **Addressed by issue #31.**
-7. Document ChatGPT connector setup and a first-run walkthrough.
+7. Document ChatGPT connector setup and a first-run walkthrough. **Addressed by issue #32.**
 8. Add an optional local HTML viewer.
 9. Add MCP runtime tests and safety evals.
 10. Complete `v0.3.0` release-readiness work.
 
-Issue #26 addressed the first group. Issue #27 added the guided intake prompt and design guidance. Issue #28 added the structured intake schema, synthetic examples, walkthrough, and deeper boundary eval coverage. Issue #29 addressed the fourth group with a generic private-vault package, standard-library initializer, and safety tests. Issue #30 addressed the fifth group with a Python local stdio server, nine narrow tools, explicit outside-repository vault configuration, and synthetic boundary tests. Issue #31 activates exact-approved-wording append only after matching proposal review, destination confirmation, allowlisted target checks, and State trigger enforcement; it also prevents double apply and records metadata-only audit. Every remaining group requires its own reviewed issue and must preserve the boundaries below. Parent sprint #25 remains open.
+Issue #26 addressed the first group. Issue #27 added the guided intake prompt and design guidance. Issue #28 added the structured intake schema, synthetic examples, walkthrough, and deeper boundary eval coverage. Issue #29 addressed the fourth group with a generic private-vault package, standard-library initializer, and safety tests. Issue #30 addressed the fifth group with a Python local stdio server, nine narrow tools, explicit outside-repository vault configuration, and synthetic boundary tests. Issue #31 activates exact-approved-wording append only after matching proposal review, destination confirmation, allowlisted target checks, and State trigger enforcement; it also prevents double apply and records metadata-only audit. Issue #32 documents the required remote/tunnel connectivity boundary, Developer mode and permissions, tool review, safe first-run prompts, refusal checks, and disconnect steps without implementing connectivity. Every remaining group requires its own reviewed issue and must preserve the boundaries below. Parent sprint #25 remains open.
 
 ## Architecture Boundaries
 
@@ -84,9 +84,8 @@ The public repository may contain reusable implementation code in later issues, 
 
 ## Open Questions
 
-Issues #30 and #31 resolve Python as the minimal local-server stack, explicit CLI/environment vault configuration, the nine-tool surface, proposal review/apply gates, and metadata-only apply audit records. These questions remain for later issues:
+Issues #30 through #32 resolve Python as the minimal local-server stack, explicit CLI/environment vault configuration, the nine-tool surface, proposal review/apply gates, metadata-only apply audit records, and documented ChatGPT onboarding through a separately reviewed reachable MCP path. These questions remain for later issues:
 
-- How should a future ChatGPT connector reach the local server without weakening the private boundary?
 - Should the HTML viewer read files directly or consume a generated local index?
 - What retention and purge controls should apply to private metadata-only audit records?
 
@@ -101,6 +100,10 @@ Issues #30 and #31 resolve Python as the minimal local-server stack, explicit CL
 - `scripts/init-private-vault.py`
 - `docs/mcp-local-server.md`
 - `docs/mcp-proposal-approval-workflow.md`
+- `docs/chatgpt-mcp-connector-setup.md`
+- `docs/first-run-chatgpt-walkthrough.md`
+- `docs/chatgpt-tool-review-and-permissions.md`
+- `examples/chatgpt/first-run-prompts.synthetic.md`
 - `examples/mcp/proposal-approval-workflow.synthetic.md`
 - `docs/journal-mirror-workflow.md`
 - `docs/memory-state-proposal-review.md`

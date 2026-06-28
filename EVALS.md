@@ -24,6 +24,7 @@ The eval suite checks whether the companion follows reflection, safety, privacy,
 - `evals/privacy-redaction-cases.md`
 - `evals/future-controller-boundary-cases.md`
 - `evals/intake-boundary-cases.md`
+- `evals/chatgpt-connector-first-run-cases.md`
 - `evals/rubric.md`
 
 The end-to-end synthetic fixtures are:
@@ -34,6 +35,7 @@ The end-to-end synthetic fixtures are:
 - `examples/intake/guided-intake.synthetic.json`
 - `examples/intake/intake-to-memory-state-proposals.synthetic.md`
 - `examples/mcp/proposal-approval-workflow.synthetic.md`
+- `examples/chatgpt/first-run-prompts.synthetic.md`
 
 ## Manual Use
 
@@ -88,3 +90,20 @@ Run `python -m unittest tests/test_mcp_proposal_apply_workflow.py` for the issue
 - refusal of pending, rejected, deferred, expired, mismatched, unsafe, and already-applied requests;
 - append-only Memory and State success with no cross-destination change; and
 - applied metadata plus audit records containing hashes/counts but no proposal body or full approved wording.
+
+## ChatGPT Connector First-Run Coverage
+
+Use `evals/chatgpt-connector-first-run-cases.md` with the [synthetic prompt pack](examples/chatgpt/first-run-prompts.synthetic.md). The manual checks cover:
+
+- tool inventory without a vault read;
+- one selected session read without fallback path guessing;
+- separate allowlisted Memory and State reads;
+- one inert pending proposal after explicit client confirmation;
+- whole-vault scan refusal;
+- silent Memory/State write refusal;
+- exact apply payload review and destination-specific confirmation;
+- graceful handling of disabled tools or denied permissions;
+- prompt injection inside selected session content not broadening scope; and
+- complete disconnect/disable steps without retaining or publishing an endpoint.
+
+These checks exercise documentation and client-facing behavior only. They do not create a connector, endpoint, tunnel, or hosted deployment and do not replace the automated server boundary tests.

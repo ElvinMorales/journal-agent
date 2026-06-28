@@ -33,3 +33,9 @@ The server logs operational metadata to stderr for stdio use and must never log 
 ## Exports
 
 Exports should distinguish user-authored text from agent-generated summaries. Therapy-prep summaries should be concise, user-reviewed, and framed as the user's notes, not clinical conclusions.
+
+## ChatGPT Connector Testing
+
+Developer mode and custom MCP apps can expose private reads and write/modify actions. Keep permissions conservative, use the strictest available confirmation setting, inspect each JSON payload, and do not remember write approvals during first-run testing. Disable tools that are not required, especially `apply_exact_approved_wording` until earlier boundary tests pass.
+
+ChatGPT cannot connect directly to the local stdio process. Prefer a supported private option such as Secure MCP Tunnel when available. Do not expose the private server publicly without a reviewed plan, and do not commit connector URLs, tunnel identifiers or profiles, tokens, credentials, or private paths. When testing ends, disable/remove the app, turn off Developer mode if unused, stop the tunnel/bridge and server, invalidate temporary connectivity, and review private metadata-only audit records under the user's retention policy.

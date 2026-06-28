@@ -4,13 +4,17 @@
 
 This public-safe specification defines the boundary for controllers at the edge of a private Journal Mirror runtime. It keeps local and any future VPS-hosted integration narrow, visible, and user-approved.
 
-Issues #30 and #31 implement a minimal local stdio MCP server and exact-approved-wording apply under `mcp_server/`; this document remains the broader contract and future VPS design boundary. The local server grants access only when a user explicitly configures an initialized private vault outside the repository. No VPS hosting, client, plugin, connector, hosted endpoint, tunnel, background job, or viewer is implemented.
+Issues #30 and #31 implement a minimal local stdio MCP server and exact-approved-wording apply under `mcp_server/`; issue #32 adds ChatGPT connector setup and first-run documentation. This document remains the broader contract and future VPS design boundary. The local server grants access only when a user explicitly configures an initialized private vault outside the repository. No VPS hosting, client, plugin, live connector configuration, hosted endpoint, tunnel, background job, or viewer is implemented.
 
 ### Issues #30 and #31 Local Implementation Status
 
 The local server implements selected-session reads, allowlisted approved Memory reads, allowlisted current State reads, separate inert Memory/State proposal creation, pending-proposal metadata listing, review status updates, exact-approved-wording append, and metadata-only private audit entries. Apply requires a matching reviewed proposal, exact wording, confirmation specific to Memory or State, a matching target allowlist, and State lifecycle triggers. Status review remains non-persistent. See `docs/mcp-local-server.md` and `docs/mcp-proposal-approval-workflow.md`.
 
 Remote/VPS deployment remains future-facing. Local implementation does not authorize hosting, connector setup, broad filesystem access, whole-vault scans, silent persistence, State-to-Memory promotion, or bypassing destination-specific approval.
+
+### Issue #32 Connector Documentation Status
+
+The connector setup guide documents that ChatGPT cannot connect directly to local stdio and instead requires a separately reviewed supported remote MCP endpoint or Secure MCP Tunnel path. It covers conservative Developer mode permissions, tool review, synthetic first-run and refusal checks, and disconnect steps. It does not deploy or host this controller contract, create connectivity, add credentials, or change the denied operations below.
 
 ## 2. Architecture Boundary
 

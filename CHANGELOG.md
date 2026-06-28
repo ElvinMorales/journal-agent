@@ -4,6 +4,11 @@ All notable changes to this artifact system will be documented here.
 
 ## Unreleased
 
+- Added a ChatGPT MCP connector setup guide for the existing local server, including the local-stdio/reachable-remote boundary, Secure MCP Tunnel guidance, temporary HTTPS tunnel risks, draft app setup, and disconnect steps.
+- Added a synthetic first-run ChatGPT walkthrough covering selected-context and allowlisted Memory/State reads, separate pending proposals, metadata review, exact apply confirmation, broad-scan refusal, and silent-write refusal.
+- Added a tool-by-tool ChatGPT review and permissions guide plus a copyable synthetic first-run prompt pack and manual connector safety cases.
+- Updated privacy, security, eval, taxonomy, roadmap, and runtime onboarding docs for conservative permissions, JSON payload review, private connectivity, and shutdown.
+- Added no live connector configuration, reachable endpoint, tunnel configuration or identifier, hosted deployment, viewer, private data, configured private path, token, secret, or credential.
 - Added the proposal review and exact-approved-wording apply workflow for the local MCP server.
 - Added strict apply gates for matching reviewed proposal metadata, character-exact wording, destination-specific confirmation, and fixed Memory/State target allowlists.
 - Added State review/stale and expiration trigger enforcement during approval and apply, append-only writes, cross-destination refusal, and double-apply prevention.
