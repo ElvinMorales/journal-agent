@@ -80,9 +80,11 @@ The initializer cannot make a storage location confidential. The user remains re
 
 The manual workflow in `docs/obsidian-private-runtime-guide.md` remains available for users who prefer to create or customize folders without running a script.
 
-## Future MCP Boundary
+## Minimal Local MCP Server
 
-This package prepares a predictable private folder layout for a future narrow MCP runtime. It does not implement MCP, expose the vault, configure a connector, create an endpoint, or grant automated write permission. Future MCP work must remain separately scoped and preserve selected-context reads, separate Memory and State proposals, destination-specific exact-wording approval, and denial of silent writes.
+This initializer creates the exact folder structure required by the [minimal local MCP server](mcp-local-server.md). The server still requires the user to pass the initialized vault's explicit absolute path and refuses the public repository root, paths inside it, missing roots, and roots missing required folders.
+
+The issue #30 server permits selected-session and allowlisted Memory/State reads, inert proposal creation, proposal metadata/status updates, and metadata-only private audit entries. It does not configure a connector, create an endpoint or tunnel, grant broad vault access, or apply proposal wording. Exact-wording apply remains disabled until issue #31. Generated vault content remains outside Git.
 
 ## Before Committing Public Repository Changes
 

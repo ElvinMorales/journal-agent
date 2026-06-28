@@ -2,9 +2,15 @@
 
 ## 1. Purpose
 
-This public-safe specification defines the boundary for a possible future controller at the edge of a private Journal Mirror runtime. It exists to keep any later MCP server, local controller, VPS-hosted private controller, or similar integration narrow, visible, and user-approved.
+This public-safe specification defines the boundary for controllers at the edge of a private Journal Mirror runtime. It keeps local and any future VPS-hosted integration narrow, visible, and user-approved.
 
-This document is design-only. It implements no MCP server, VPS hosting, client, plugin, connector, vault reader, automation, background job, or controller. It grants no current access to a vault or private notes. The repository still has no live runtime. The contract is written now so future runtime work cannot quietly expand into broad access, silent persistence, or invasive collection.
+Issue #30 implements a minimal local stdio MCP server under `mcp_server/`; this document remains the broader contract and future VPS design boundary. The local server grants access only when a user explicitly configures an initialized private vault outside the repository. No VPS hosting, client, plugin, connector, hosted endpoint, tunnel, background job, or viewer is implemented.
+
+### Issue #30 Local Implementation Status
+
+The local server now implements selected-session reads, allowlisted approved Memory reads, allowlisted current State reads, separate inert Memory/State proposal creation, pending-proposal metadata listing, status-only proposal updates, and metadata-only private audit entries. `apply_exact_approved_wording` is discoverable but always refuses; issue #31 owns apply behavior. See `docs/mcp-local-server.md`.
+
+Remote/VPS deployment remains future-facing. Local implementation does not authorize hosting, connector setup, broad filesystem access, whole-vault scans, silent persistence, State-to-Memory promotion, or bypassing destination-specific approval.
 
 ## 2. Architecture Boundary
 
@@ -12,7 +18,7 @@ The architecture has three distinct parts:
 
 - **Public repo / control plane:** reusable instructions, guardrails, prompts, schemas, templates, synthetic examples, evals, docs, and validation. It contains no private runtime data.
 - **Private vault / data plane:** journal content, deliberately selected context, private reflections, pending proposals, approved Memory, current State, exports, logs, and private configuration.
-- **Future controller / runtime edge:** a narrow, user-approved interface that, if implemented, operates only inside the private runtime environment and only on explicitly authorized artifact classes and scopes.
+- **Controller / runtime edge:** the minimal local server, or a future private controller, operates only inside the private runtime environment and only on explicitly authorized artifact classes and scopes.
 
 The controller must never make the public repository an operating data store. Private inputs, outputs, proposals, Memory, State, exports, logs, and configuration must not be committed or published here. Deployment location does not relax this boundary: a local process and a private VPS controller must follow the same least-privilege and approval rules.
 
@@ -27,7 +33,7 @@ This contract does not authorize or describe:
 - Automatic publishing, cross-device sync, or cloud sync assumptions.
 - A clinical triage engine, therapy replacement, crisis automation, or user-risk scoring.
 - Secret management in public documentation.
-- An executable implementation in this change.
+- Hosted or VPS implementation through this contract.
 
 ## 4. Data Classes
 

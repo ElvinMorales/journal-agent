@@ -1,6 +1,6 @@
 # Journal Mirror Agent
 
-`journal-agent` is a public, file-first scaffold for a private-first Journal Mirror Agent and a reference implementation of the Agentic AI Artifact Taxonomy. `v0.2.0` is the current manual/control-plane release: it supports natural private writing first, selected-context reflection after, and reviewable Memory or State update proposals.
+`journal-agent` is a public, file-first scaffold for a private-first Journal Mirror Agent and a reference implementation of the Agentic AI Artifact Taxonomy. `v0.2.0` is the current manual/control-plane release: it supports natural private writing first, selected-context reflection after, and reviewable Memory or State update proposals. Work toward `v0.3.0` now includes a minimal local MCP server for a user-controlled private vault.
 
 It does not store journal entries and it is not therapy, diagnosis, crisis counseling, medical advice, treatment planning, medication guidance, a mental health product, clinical decision support system, hosted service, Obsidian plugin, or private journal database.
 
@@ -19,7 +19,7 @@ Taxonomy source of truth: [agentic-ai-artifact-taxonomy](https://github.com/Elvi
 
 - Not therapy, diagnosis, crisis counseling, medical advice, treatment planning, medication guidance, or a replacement for licensed care.
 - Not a mental health product or clinical decision support system.
-- Not a private journal database, hosted service, Obsidian plugin, PWA, or app backend.
+- Not a private journal database, hosted service, Obsidian plugin, PWA, or app backend. The local MCP server is a narrow stdio process, not a hosted service.
 - Not a place to store real journal entries, summaries, memory, state, logs, screenshots, exports, therapy notes, crisis notes, secrets, or identifying details.
 
 ## Public Artifacts vs Private Journal Content
@@ -49,6 +49,7 @@ This repo applies that lens to a journaling companion by making public artifacts
 - [`docs/decisions/0003-journal-mirror-mcp-runtime.md`](docs/decisions/0003-journal-mirror-mcp-runtime.md) for the proposed local/private MCP runtime architecture.
 - [Guided intake prompt](prompts/guided-intake.md) and [guided intake guide](docs/guided-intake.md), supported by an [intake response schema](schemas/intake-response.schema.json), [synthetic example](examples/intake/guided-intake.synthetic.json), [review walkthrough](examples/intake/intake-to-memory-state-proposals.synthetic.md), and [boundary evals](evals/intake-boundary-cases.md). These artifacts create reviewable pending proposals only; they do not persist data.
 - [Private vault runtime package](docs/private-vault-runtime-package.md) and [`scripts/init-private-vault.py`](scripts/init-private-vault.py) for creating a blank, generic private runtime structure at an explicit path outside this repository. The initializer writes no private content and runs no Git commands.
+- [Minimal local MCP server](docs/mcp-local-server.md) for nine narrow selected-context, approved Memory, current State, pending-proposal, status, guarded-apply, and metadata-only audit tools. It requires an explicit initialized private-vault path outside the repository and exposes no arbitrary filesystem operation.
 - `docs/journal-mirror-workflow.md` for the post-writing reflection workflow.
 - [Private runtime starter guide](docs/obsidian-private-runtime-guide.md) for a manual setup that works with Obsidian or any private notes system, with no plugin or server required.
 - [Future MCP/VPS controller contract](docs/future-mcp-vps-controller-contract.md) for the design-only boundary of a possible private runtime edge; it includes no MCP/VPS server or controller implementation.
@@ -77,9 +78,9 @@ The `v0.2.0` manual workflow remains the usable path while `v0.3.0` is planned a
 
 ## v0.3.0 Planning Status
 
-`v0.3.0` work has started under issue #25. Guided intake provides a manual, plain-language way to avoid starting from a blank slate, plus a schema, synthetic example, review walkthrough, and boundary evals for separate pending Memory and State proposals. The private vault initializer now creates blank, generic runtime folders and starter files outside the public repo. The remaining sprint will focus on a narrow MCP runtime, proposal approval and exact-wording apply, ChatGPT connector setup, runtime tests and safety evals, release readiness, and eventually an optional local HTML viewer.
+`v0.3.0` work has started under issue #25. Guided intake provides a manual, plain-language way to avoid starting from a blank slate, plus a schema, synthetic example, review walkthrough, and boundary evals for separate pending Memory and State proposals. The private vault initializer creates blank, generic runtime folders and starter files outside the public repo. The minimal local MCP server now provides a narrow runtime boundary for selected session reads, allowlisted Memory/State reads, inert proposal creation, proposal metadata/status, and metadata-only private audit entries.
 
-No MCP runtime, connector setup, or local viewer exists yet. The initializer does not access or write private content, and it does not add generated files to Git. Intake remains proposal-only; schema validation is not user approval, and no intake artifact persists wording. The [guided intake guide](docs/guided-intake.md) explains the manual flow and future MCP boundary; the [v0.3.0 roadmap](docs/roadmap-v0.3.0.md) defines the planned user flow and sprint groups; [ADR 0003](docs/decisions/0003-journal-mirror-mcp-runtime.md) records the proposed architecture and denied operations without implementing them.
+The server requires an explicit private-vault path outside the repository and exposes only its documented tools. `apply_exact_approved_wording` is an explicit no-op/refusal until issue #31, so no proposal is copied into Memory or State. No ChatGPT connector setup, hosted endpoint, tunnel, or local viewer exists yet. The initializer does not access or write private content, and it does not add generated files to Git. Intake remains proposal-only; schema validation is not user approval. See the [local server guide](docs/mcp-local-server.md), [guided intake guide](docs/guided-intake.md), [v0.3.0 roadmap](docs/roadmap-v0.3.0.md), and [ADR 0003](docs/decisions/0003-journal-mirror-mcp-runtime.md).
 
 ## Safety and Privacy Warnings
 

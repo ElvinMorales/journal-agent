@@ -2,7 +2,7 @@
 
 ## Status
 
-Implementation in progress. Guided intake is manually usable, and the private-vault package and initializer are addressed. MCP runtime implementation has not started.
+Implementation in progress. Guided intake, the private-vault package and initializer, and the minimal local MCP server group are addressed. Proposal apply, connector setup, viewer work, expanded evals, and release readiness remain open.
 
 ## Release Positioning
 
@@ -10,7 +10,7 @@ Implementation in progress. Guided intake is manually usable, and the private-va
 
 `v0.3.0` aims to reduce the setup and operating friction that remains in that manual workflow. The target is a private runtime usable through ChatGPT, a narrow MCP connection, and a user-controlled private vault. The runtime must preserve review-based persistence: generating or approving a proposal is not permission to write it, and only exact wording approved for a named destination may be applied.
 
-This roadmap establishes sprint direction. It adds no executable runtime or private data access.
+This roadmap tracks sprint direction. Issue #30 adds reusable local server code but no private data, configured private path, connector, hosted endpoint, tunnel, or viewer.
 
 ## Target User Flow
 
@@ -35,14 +35,14 @@ Issue #25 organizes the `v0.3.0` sprint into these groups:
 2. Design guided intake and initialization.
 3. Define intake schemas, synthetic examples, and evals.
 4. Build the private-vault runtime package and initializer.
-5. Build a minimal local MCP server.
+5. Build a minimal local MCP server. **Addressed by issue #30.**
 6. Implement proposal approval and exact-wording apply through MCP.
 7. Document ChatGPT connector setup and a first-run walkthrough.
 8. Add an optional local HTML viewer.
 9. Add MCP runtime tests and safety evals.
 10. Complete `v0.3.0` release-readiness work.
 
-Issue #26 addressed the first group. Issue #27 added the guided intake prompt and design guidance. Issue #28 added the structured intake schema, synthetic examples, walkthrough, and deeper boundary eval coverage. Issue #29 addresses the fourth group with a generic private-vault package, standard-library initializer, and safety tests; it does not implement MCP or private data access. Every remaining runtime implementation group requires its own reviewed issue and must preserve the boundaries below.
+Issue #26 addressed the first group. Issue #27 added the guided intake prompt and design guidance. Issue #28 added the structured intake schema, synthetic examples, walkthrough, and deeper boundary eval coverage. Issue #29 addressed the fourth group with a generic private-vault package, standard-library initializer, and safety tests. Issue #30 addresses the fifth group with a Python local stdio server, nine narrow tools, explicit outside-repository vault configuration, and synthetic boundary tests. It creates inert proposals and status metadata only; exact-wording apply remains disabled for issue #31. Every remaining group requires its own reviewed issue and must preserve the boundaries below. Parent sprint #25 remains open.
 
 ## Architecture Boundaries
 
@@ -84,14 +84,11 @@ The public repository may contain reusable implementation code in later issues, 
 
 ## Open Questions
 
-These questions remain undecided and belong in later design or implementation issues:
+Issue #30 resolves Python as the minimal local-server stack, explicit CLI/environment vault configuration, the first nine-tool surface, and metadata-only audit records. These questions remain for later issues:
 
-- Should `v0.3.0` use Node/TypeScript, Python, or another MCP server stack?
-- Should ChatGPT connector setup assume a tunnel during development?
-- How should local paths be configured without committing them?
-- What is the minimum safe first MCP tool set?
+- How should a future ChatGPT connector reach the local server without weakening the private boundary?
 - Should the HTML viewer read files directly or consume a generated local index?
-- What logging is useful without copying private content?
+- What retention and purge controls should apply to private metadata-only audit records?
 
 ## Related Artifacts
 

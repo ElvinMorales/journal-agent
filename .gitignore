@@ -4,6 +4,11 @@ private/**
 
 .env
 .env.*
+.venv/
+venv/
+private-vault/
+.journal-mirror-vault/
+journal-mirror-vault/
 *.sqlite
 *.sqlite3
 *.db

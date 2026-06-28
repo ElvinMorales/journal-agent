@@ -2,7 +2,7 @@
 
 ## Status
 
-Proposed
+Accepted; minimally implemented locally by issue #30
 
 ## Context
 
@@ -26,11 +26,11 @@ Guided intake will initialize reviewable Memory and State proposals, not unquest
 
 The local HTML viewer is planned as a local inspection aid for Memory, State, proposals, and sessions. It is not a public dashboard, a substitute write path, or authorization to reveal raw journal content by default.
 
-Implementation is intentionally deferred to later issues. This decision adds no MCP server, connector configuration, vault initializer, viewer, endpoint, runtime configuration, or tool handler.
+Issue #30 implements the first local subset through `mcp_server/`: narrow read, inert proposal, proposal-metadata/status, guarded apply-refusal, and metadata-only audit handlers. Exact-wording apply, connector configuration, hosted endpoints, tunnels, and viewer behavior remain deferred to later issues.
 
-### Initial Proposed MCP Tool Categories
+### MCP Tool Categories
 
-These categories define planning boundaries, not final tool names or code:
+These categories define the issue #30 local tool boundary and the future apply boundary:
 
 - Selected-context reads.
 - Approved Memory reads.
@@ -82,9 +82,9 @@ Rejected. Intake is incomplete and user-correctable context; it must produce pro
 
 Rejected. The planned viewer is local-only and exists for inspection, not publication or remote access.
 
-### Implement the Runtime in This PR
+### Implement the Runtime in the Architecture PR
 
-Rejected. Architecture and sprint boundaries require review before stack, transport, configuration, and tool-handler decisions are made.
+Rejected at the architecture stage. Issue #30 subsequently added the separately reviewed minimal local implementation.
 
 ## Safety and Privacy Notes
 

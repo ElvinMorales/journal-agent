@@ -35,3 +35,9 @@ the person's location.
 ## Private Vault Initializer Boundary
 
 `scripts/init-private-vault.py` accepts an explicit absolute target and refuses to run at the public repository root or inside it. It creates only fixed generic folders and Markdown starter files; generated files must not contain secrets, credentials, connector configuration, or private runtime content and must not be committed. Users remain responsible for the security of the target device and its sync, backup, access, and sharing controls.
+
+## Minimal Local MCP Server Boundary
+
+`mcp_server/` implements a local stdio server for one explicit initialized private-vault root. Startup refuses relative, missing, uninitialized, repository-root, and inside-repository paths. Named tools enforce fixed directories, filename allowlists, traversal and wildcard refusal, regular-file checks, and read-size limits. There is no whole-vault scan, broad search, arbitrary read/write primitive, silent Memory/State write, or State-to-Memory promotion.
+
+Pending Memory and State destinations stay separate. Proposal status changes do not apply wording, and `apply_exact_approved_wording` refuses until issue #31. Private audit entries contain small metadata fields only. Operational logs go to stderr and must not include raw private content. This change includes no connector configuration, hosted endpoint, tunnel, or viewer. Users remain responsible for MCP client approvals, local process isolation, filesystem permissions, device security, sync, backup, and retention.
