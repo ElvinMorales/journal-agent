@@ -6,6 +6,8 @@ This guide helps a user create a private runtime/data plane for the Journal Mirr
 
 The setup is optional and Obsidian-friendly, not Obsidian-required. Plain folders and Markdown files in any private notes system are enough. No plugin, server, connector, or automated vault access is required. No private journal content belongs in the public repository.
 
+For an easier generic setup path, use the [private vault runtime package and initializer](private-vault-runtime-package.md). It creates the blank structure at an explicit path outside this repository and works with ordinary local folders, Obsidian, or another private notes system. The manual instructions below remain fully usable if a script is not wanted or a different structure is preferred.
+
 If a controller is implemented later, it must follow `docs/future-mcp-vps-controller-contract.md`. It may not scan the vault, monitor notes in the background, or save reflections, Memory, or State automatically. The current setup remains manual and has no live controller.
 
 ## Public Repo vs Private Vault
@@ -75,7 +77,7 @@ State/
 Exports/
 ```
 
-Start manually by creating these folders and ordinary Markdown files in a private notes system. Add `Reflections/` or `Approved Updates/` only if those distinctions become useful. This workflow does not require automation.
+Run `python scripts/init-private-vault.py --vault-root <absolute-private-path> --dry-run` from the public repo to preview the standard generic structure, or create these folders and ordinary Markdown files manually. Add `Reflections/` or `Approved Updates/` only if those distinctions become useful. This workflow does not require automation.
 
 ## How to Run a Manual Journal Mirror Session
 

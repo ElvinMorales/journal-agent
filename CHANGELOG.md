@@ -4,6 +4,11 @@ All notable changes to this artifact system will be documented here.
 
 ## Unreleased
 
+- Added private vault runtime package documentation for a generic local notes structure outside the public repository.
+- Added a Python standard-library private vault initializer with dry-run, idempotent default behavior, managed-starter `--force`, and resolved-path repository refusal checks.
+- Added initializer tests for creation, dry-run, idempotency, force scope, unsafe path refusal, generic content, and separate Memory, State, and pending-proposal destinations.
+- Updated setup, navigation, taxonomy, privacy, and security documentation for the initializer boundary.
+- Added no MCP runtime, connector configuration, endpoint, hosted runtime, or local viewer implementation.
 - Added a guided intake response schema for structured, reviewable, proposal-only output.
 - Added an independently synthetic guided intake JSON example that validates against the new schema.
 - Added a synthetic intake-to-Memory/State walkthrough covering approve, edit, move, discard, and expiration-trigger review decisions.

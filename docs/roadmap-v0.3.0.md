@@ -2,7 +2,7 @@
 
 ## Status
 
-Planning and prompt/design work in progress. Guided intake is manually usable; runtime implementation has not started.
+Implementation in progress. Guided intake is manually usable, and the private-vault package and initializer are addressed. MCP runtime implementation has not started.
 
 ## Release Positioning
 
@@ -42,7 +42,7 @@ Issue #25 organizes the `v0.3.0` sprint into these groups:
 9. Add MCP runtime tests and safety evals.
 10. Complete `v0.3.0` release-readiness work.
 
-Issue #26 addressed the first group. Issue #27 added the guided intake prompt and design guidance. Issue #28 adds the structured intake schema, synthetic examples, walkthrough, and deeper boundary eval coverage without runtime implementation. Every runtime implementation group requires its own reviewed issue and must preserve the boundaries below.
+Issue #26 addressed the first group. Issue #27 added the guided intake prompt and design guidance. Issue #28 added the structured intake schema, synthetic examples, walkthrough, and deeper boundary eval coverage. Issue #29 addresses the fourth group with a generic private-vault package, standard-library initializer, and safety tests; it does not implement MCP or private data access. Every remaining runtime implementation group requires its own reviewed issue and must preserve the boundaries below.
 
 ## Architecture Boundaries
 
@@ -56,11 +56,10 @@ Issue #26 addressed the first group. Issue #27 added the guided intake prompt an
 
 The public repository may contain reusable implementation code in later issues, but not real runtime inputs or outputs. The MCP server must mediate narrow permissions rather than exposing the private vault as a filesystem. The viewer is an inspection aid, not an alternate write path.
 
-## Non-Goals for This Planning PR
+## Out of Scope for the Private Vault Initializer
 
 - No server implementation.
 - No connector setup.
-- No private-vault initializer.
 - No local HTML viewer.
 - No runtime configuration.
 - No live endpoints.
@@ -88,7 +87,6 @@ The public repository may contain reusable implementation code in later issues, 
 These questions remain undecided and belong in later design or implementation issues:
 
 - Should `v0.3.0` use Node/TypeScript, Python, or another MCP server stack?
-- Should the private-vault initializer be a script, CLI command, or MCP tool?
 - Should ChatGPT connector setup assume a tunnel during development?
 - How should local paths be configured without committing them?
 - What is the minimum safe first MCP tool set?
@@ -102,6 +100,8 @@ These questions remain undecided and belong in later design or implementation is
 - `docs/architecture.md`
 - `docs/roadmap-v0.2.0.md`
 - `docs/obsidian-private-runtime-guide.md`
+- `docs/private-vault-runtime-package.md`
+- `scripts/init-private-vault.py`
 - `docs/journal-mirror-workflow.md`
 - `docs/memory-state-proposal-review.md`
 - `prompts/guided-intake.md`
