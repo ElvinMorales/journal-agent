@@ -4,11 +4,11 @@
 
 This public-safe specification defines the boundary for controllers at the edge of a private Journal Mirror runtime. It keeps local and any future VPS-hosted integration narrow, visible, and user-approved.
 
-Issue #30 implements a minimal local stdio MCP server under `mcp_server/`; this document remains the broader contract and future VPS design boundary. The local server grants access only when a user explicitly configures an initialized private vault outside the repository. No VPS hosting, client, plugin, connector, hosted endpoint, tunnel, background job, or viewer is implemented.
+Issues #30 and #31 implement a minimal local stdio MCP server and exact-approved-wording apply under `mcp_server/`; this document remains the broader contract and future VPS design boundary. The local server grants access only when a user explicitly configures an initialized private vault outside the repository. No VPS hosting, client, plugin, connector, hosted endpoint, tunnel, background job, or viewer is implemented.
 
-### Issue #30 Local Implementation Status
+### Issues #30 and #31 Local Implementation Status
 
-The local server now implements selected-session reads, allowlisted approved Memory reads, allowlisted current State reads, separate inert Memory/State proposal creation, pending-proposal metadata listing, status-only proposal updates, and metadata-only private audit entries. `apply_exact_approved_wording` is discoverable but always refuses; issue #31 owns apply behavior. See `docs/mcp-local-server.md`.
+The local server implements selected-session reads, allowlisted approved Memory reads, allowlisted current State reads, separate inert Memory/State proposal creation, pending-proposal metadata listing, review status updates, exact-approved-wording append, and metadata-only private audit entries. Apply requires a matching reviewed proposal, exact wording, confirmation specific to Memory or State, a matching target allowlist, and State lifecycle triggers. Status review remains non-persistent. See `docs/mcp-local-server.md` and `docs/mcp-proposal-approval-workflow.md`.
 
 Remote/VPS deployment remains future-facing. Local implementation does not authorize hosting, connector setup, broad filesystem access, whole-vault scans, silent persistence, State-to-Memory promotion, or bypassing destination-specific approval.
 
@@ -45,8 +45,8 @@ This contract does not authorize or describe:
 | Private raw journal content | Private vault | Only the context explicitly selected for one session | No | Selection required before read | No |
 | Manually selected context | Private vault/session boundary | Yes, for the authorized session only | No; it must not expand or duplicate the selection | Explicit selection approval | No |
 | Private reflection outputs | Private vault | Only when explicitly retained and selected | Only to a user-approved private destination | Retention and destination approval | No |
-| Pending Memory proposals | Private vault, separate Memory proposal area | Yes, within an approved proposal scope | May create or update review status; cannot update Memory | Exact wording and destination review | Synthetic fixtures only |
-| Pending State proposals | Private vault, separate State proposal area | Yes, within an approved proposal scope | May create or update review/expiration status; cannot update State without a separate gate | Exact wording, destination, and stale/expiration review | Synthetic fixtures only |
+| Pending Memory proposals | Private vault, separate Memory proposal area | Yes, within an approved proposal scope | May create or update review status; a separate strict apply gate updates Memory | Exact wording and destination review | Synthetic fixtures only |
+| Pending State proposals | Private vault, separate State proposal area | Yes, within an approved proposal scope | May create or update review/expiration status; a separate strict apply gate updates State | Exact wording, destination, and stale/expiration review | Synthetic fixtures only |
 | Approved Memory | Private vault Memory area | After explicit authorization | Only exact approved wording after a separate apply confirmation | Required for wording and destination | Blank examples or synthetic fixtures only |
 | Current State | Private vault State area | After explicit authorization | Only exact approved wording after a separate apply confirmation | Required for wording, destination, and review trigger | Blank examples or synthetic fixtures only |
 | Private exports | Private export area | Only for a specifically requested export review | Only to an explicitly approved private export destination | Export and redaction review | Only a separately reviewed synthetic/redacted example |
@@ -55,7 +55,7 @@ This contract does not authorize or describe:
 
 ## 5. Allowed Future Operations
 
-These are proposed contract operations, not implemented functions.
+These are contract operations. The local issue #30/#31 subset implements the read, proposal, review, exact-wording apply, and metadata-only audit operations described in its local server documentation; remote/VPS behavior remains future work.
 
 | Proposed operation | Input boundary | Output boundary | Required approval | Forbidden behavior | Related artifact |
 |---|---|---|---|---|---|
@@ -65,8 +65,8 @@ These are proposed contract operations, not implemented functions.
 | Create pending Memory proposal | Minimal session result and opaque source reference | Separate private pending-Memory area | Explicit request to create a Memory proposal | Writing Memory, copying raw text, or combining destinations | `schemas/memory-update-proposal.schema.json` |
 | Create pending State proposal | Minimal session result, opaque source reference, and review/stale trigger | Separate private pending-State area | Explicit request to create a State proposal | Writing State, omitting staleness, or creating a Memory proposal implicitly | `schemas/state-update-proposal.schema.json` |
 | List pending proposal metadata | Explicit proposal collection | IDs, types, statuses, and timestamps only | User request to review pending proposals | Returning raw journal text or expanding into source notes | `docs/memory-state-proposal-review.md` |
-| Mark proposal status | One named pending proposal and requested decision | Approved, edited, discarded, or, for State, expired status | User confirmation for that proposal | Treating a status change as permission to apply it | Proposal schemas |
-| Apply exact approved wording | One approved proposal, named destination, and exact text | Private Memory **or** private State | Separate confirmation at apply time | Editing wording, changing destination, bulk applying, or promoting State to Memory | `docs/memory-state-proposal-review.md` |
+| Mark proposal status | One named pending proposal and requested decision | Approved-for-apply, rejected, deferred, pending, or, for State, expired status | Exact wording and destination phrase when approving | Treating a status change as permission to apply it | Proposal schemas |
+| Apply exact approved wording | One approved proposal, named destination, exact text, matching confirmation, and allowlisted target | Private Memory **or** private State | Separate destination-specific confirmation at apply time | Editing wording, changing destination, bulk applying, overwriting, double apply, or promoting State to Memory | `docs/mcp-proposal-approval-workflow.md` |
 | Write private audit entry | Metadata for one authorized action | Private audit store | Approval under the runtime logging policy | Logging selected text, reflection bodies, secrets, or full proposal content | `SECURITY.md`; `PRIVACY.md` |
 | Export a synthetic/redacted example | One explicitly selected draft export | User-named export destination | Explicit review of the final redacted artifact | Exporting a real session by default or publishing automatically | `EVALS.md` |
 
@@ -103,7 +103,7 @@ Applying an approved proposal requires a distinct confirmation at the point of p
 
 ## 8. Logging and Audit Expectations
 
-Any future implementation should log minimal metadata by default: action type, timestamp, target artifact class, decision, and whether user confirmation was recorded. Logs must avoid raw journal text, selected excerpts, reflection bodies, proposal wording, and secrets.
+The local apply workflow logs minimal metadata: action type, timestamp, destination, proposal and target filenames, and approved-wording hash/count. Any future implementation should remain at least as narrow. Logs must avoid raw journal text, selected excerpts, reflection bodies, proposal wording, and secrets.
 
 Audit records belong only in the private runtime. They must not be committed to this repository. A future implementation must define retention, user inspection, and purge/delete behavior before logging is enabled. Logging is evidence of bounded actions, not a second copy of the journal.
 

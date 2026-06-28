@@ -22,7 +22,7 @@ Issues #27 and #28 add prompt, schema, synthetic example, eval, and documentatio
 | Intake answer | Private, user-provided context about use, preferences, boundaries, supports, or the current season | Remains in the private interaction context; it is not automatically retained |
 | Candidate Memory proposal | Minimal wording that may remain useful across future sessions | Pending until the user reviews the exact wording and Memory destination |
 | Candidate State proposal | Minimal temporary context useful now, with a review/stale trigger and, when known, an expiration trigger | Pending until the user reviews the exact wording, State destination, and trigger |
-| Approved Memory | Durable context the user has explicitly approved for private Memory | Added only through a separate manual copy or future exact-wording apply operation |
+| Approved Memory | Durable context the user has explicitly approved for private Memory | Added only through a separate manual copy or strict exact-wording apply operation |
 | Current State | Temporary context the user has explicitly approved for private State | Added separately and reviewed or expired at its trigger |
 
 An intake answer is evidence for a candidate, not permission to persist it. A candidate proposal is not approved Memory or current State. The model's confidence is not approval. Memory and State remain separate throughout intake, review, and any later apply step.
@@ -43,7 +43,7 @@ open prompts/guided-intake.md
 
 Run intake in a private model session. Do not paste the answers, generated proposals, or completed private records into this repository. The user may skip, pause, stop, or answer at a broad category level. Manual copying is a deliberate persistence action; the prompt itself writes nothing.
 
-## Future MCP Use
+## MCP Proposal Use
 
 ```text
 run guided intake in ChatGPT
@@ -54,7 +54,7 @@ run guided intake in ChatGPT
 -> MCP applies only the approved wording to the named private destination
 ```
 
-This is a future design target, not behavior implemented by issue #27. A future MCP runtime must keep proposal creation, review status, exact-wording approval, destination approval, and apply as distinct operations. It must not scan a vault, treat intake as blanket consent, bulk apply proposals, or promote State to Memory.
+Issue #27 established this design target; issues #30 and #31 implement the local proposal, review, and strict apply subset. Proposal creation, review status, exact-wording approval, destination approval, and apply remain distinct operations. The runtime must not scan a vault, treat intake as blanket consent, bulk apply proposals, or promote State to Memory.
 
 ## Question Design Principles
 

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Memory and State proposals are private, reviewable runtime artifacts. They preserve exact proposed wording, destination, evidence limits, and the user's decision without performing a write. Real proposals remain in the private data plane; only deliberately synthetic examples belong in this public repository.
+Memory and State proposals are private, reviewable runtime artifacts. They preserve exact proposed wording, destination, evidence limits, and the user's decision before any separate write. Real proposals remain in the private data plane; only deliberately synthetic examples belong in this public repository.
 
 ## Memory vs State
 
@@ -15,13 +15,16 @@ State is temporary context for the current session, week, question, or open loop
 ```text
 proposal created
 -> pending review
--> user edits, approves, discards, or lets it expire
--> approved wording is manually copied into private Memory or State
+-> user edits, approves for apply, rejects, defers, or expires State
+-> exact approved wording is separately applied or manually copied
+-> applied proposal and metadata-only audit record the result
 ```
 
-Nothing is saved automatically. Creating, reviewing, or marking a proposal approved does not itself update Memory or State. The user manually copies only the exact approved wording into the approved destination.
+Nothing is saved automatically. Creating, reviewing, or marking a proposal approved does not itself update Memory or State. Manual copy remains supported. The local MCP server can separately append only the exact approved wording to an allowlisted file after it verifies the reviewed proposal, matching destination, and destination-specific confirmation.
 
-A future controller must preserve the same gates. Proposal creation, review status, destination approval, exact-wording approval, and application are distinct operations. Approval for Memory never authorizes State, approval for State never authorizes Memory, and edited wording must be reviewed again. See `docs/future-mcp-vps-controller-contract.md`.
+The MCP `mark_proposal_status` operation supports `approved_for_apply`, `rejected`, `deferred`, return to `pending_review`, and State-only `expired`. Approval requires exact wording and `I approve this exact wording for Memory` or `I approve this exact wording for State`. Proposal creation, review status, destination approval, exact-wording approval, and application remain distinct operations. Approval for Memory never authorizes State, approval for State never authorizes Memory, and edited wording replaces the approved text that apply must match character-for-character.
+
+State approval and apply both require review/stale and expiration triggers. Memory and State use different proposal folders, confirmation phrases, target allowlists, and output files. A move between destinations is a new proposal and review, not a promotion. See [the MCP workflow](mcp-proposal-approval-workflow.md) and `docs/future-mcp-vps-controller-contract.md`.
 
 The separate contracts are:
 
@@ -44,7 +47,7 @@ Apply the same review rules to intake-originated candidates:
 - Treat an edit or move between Memory and State as a new candidate requiring review.
 - Omit skipped, uncertain, sensitive, identifying, or unnecessary intake information rather than inferring or retaining it.
 
-The intake schema uses `pending_review` markers. A retained candidate can move into the existing destination-specific schema only during separate review. Exact approved wording and destination are required before any future apply operation. Nothing is written by intake, validation, review status, or schema conversion.
+The intake schema uses `pending_review` markers. A retained candidate can move into the existing destination-specific schema only during separate review. Exact approved wording and destination are required before apply. Nothing is written by intake, validation, review status, or schema conversion. Schema validation and model confidence are not approval or persistence.
 
 ## Review Questions
 

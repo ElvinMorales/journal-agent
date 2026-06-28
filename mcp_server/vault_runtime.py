@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import re
 import tempfile
+import threading
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path, PurePosixPath, PureWindowsPath
@@ -37,8 +39,12 @@ APPROVED_STATE_FILES = frozenset(
     {"current-state.md", "active-themes.md", "open-questions.md"}
 )
 ALLOWED_STATUSES = frozenset(
-    {"pending_review", "approved_for_apply", "rejected", "deferred"}
+    {"pending_review", "approved_for_apply", "rejected", "deferred", "expired"}
 )
+APPROVAL_CONFIRMATIONS = {
+    "Memory": "I approve this exact wording for Memory",
+    "State": "I approve this exact wording for State",
+}
 
 MAX_READ_BYTES = 20 * 1024
 MAX_PROPOSAL_CHARS = 4_000
@@ -191,6 +197,28 @@ def _validate_text(
     return cleaned
 
 
+def _validate_exact_text(
+    value: str,
+    field: str,
+    max_chars: int,
+    *,
+    max_lines: int | None = None,
+) -> str:
+    """Validate approval text without normalizing any approved character."""
+
+    cleaned = _validate_text(value, field, max_chars, max_lines=max_lines)
+    if cleaned != value:
+        raise VaultBoundaryError(f"{field} must not have leading or trailing whitespace")
+    return value
+
+
+def _validate_proposal_filename(filename: str) -> str:
+    relative = validate_relative_file_path(filename)
+    if len(relative.parts) != 1 or relative.suffix != ".json":
+        raise VaultBoundaryError("proposal filename must identify one JSON proposal")
+    return filename
+
+
 def _atomic_json_write(path: Path, value: dict[str, Any]) -> None:
     path.parent.mkdir(parents=False, exist_ok=True)
     descriptor, temporary_name = tempfile.mkstemp(
@@ -220,6 +248,7 @@ class VaultRuntime:
         self.audit = self.root / "Journal Mirror/Audit"
         self.memory = self.root / "Memory"
         self.state = self.root / "State"
+        self._apply_lock = threading.Lock()
 
     @staticmethod
     def _run(operation: Any) -> dict[str, Any]:
@@ -292,14 +321,25 @@ class VaultRuntime:
         target = safe_join(directory, filename)
         record: dict[str, Any] = {
             "artifact_type": "journal_mirror_pending_proposal",
+            "proposal_id": filename.removesuffix(".json"),
+            "proposal_filename": filename,
             "title": f"Pending {destination} proposal",
             "destination": destination,
             "status": "pending_review",
+            "review_status": "pending_review",
             "created_at": now,
             "updated_at": now,
+            "reviewed_at": None,
             "requires_user_approval": True,
             "inert": True,
             "applied": False,
+            "approved_wording": None,
+            "approved_destination": None,
+            "approval_confirmation": None,
+            "applied_at": None,
+            "applied_to": None,
+            "applied_wording_hash": None,
+            "apply_note": None,
             "notice": "Inert proposal only. It has not been applied to Memory or State.",
             "proposal": proposal,
             "rationale": rationale,
@@ -382,6 +422,9 @@ class VaultRuntime:
                             "filename": target.name,
                             "destination": label,
                             "status": record.get("status", "unknown"),
+                            "review_status": record.get("review_status", "unknown"),
+                            "applied": record.get("applied", False) is True,
+                            "applied_to": record.get("applied_to"),
                             "created_at": record.get("created_at"),
                             "title": f"Pending {label} proposal",
                         }
@@ -396,14 +439,17 @@ class VaultRuntime:
         filename: str,
         status: str,
         review_note: str = "",
+        approved_wording: str = "",
+        approval_confirmation: str = "",
     ) -> dict[str, Any]:
         def operation() -> dict[str, Any]:
             if destination not in {"Memory", "State"}:
                 raise VaultBoundaryError("destination must be Memory or State")
             if status not in ALLOWED_STATUSES:
                 raise VaultBoundaryError("unsupported proposal status")
-            if not filename.endswith(".json"):
-                raise VaultBoundaryError("proposal filename must identify one JSON proposal")
+            if status == "expired" and destination != "State":
+                raise VaultBoundaryError("only State proposals may expire")
+            _validate_proposal_filename(filename)
             note = _validate_text(
                 review_note,
                 "review_note",
@@ -420,10 +466,45 @@ class VaultRuntime:
                 or record.get("destination") != destination
             ):
                 raise VaultBoundaryError("proposal destination does not match request")
+            if record.get("applied") is True:
+                raise VaultBoundaryError("an applied proposal cannot be reviewed again")
+
+            now = _utc_now()
+            if status == "approved_for_apply":
+                wording = _validate_exact_text(
+                    approved_wording,
+                    "approved_wording",
+                    MAX_PROPOSAL_CHARS,
+                    max_lines=40,
+                )
+                expected_confirmation = APPROVAL_CONFIRMATIONS[destination]
+                if approval_confirmation != expected_confirmation:
+                    raise VaultBoundaryError("destination-specific approval confirmation is required")
+                if destination == "State":
+                    _validate_text(
+                        record.get("review_or_stale_trigger", ""),
+                        "review_or_stale_trigger",
+                        MAX_REVIEW_NOTE_CHARS,
+                        max_lines=4,
+                    )
+                    _validate_text(
+                        record.get("expiration_trigger", ""),
+                        "expiration_trigger",
+                        MAX_REVIEW_NOTE_CHARS,
+                        max_lines=4,
+                    )
+                record["approved_wording"] = wording
+                record["approved_destination"] = destination
+                record["approval_confirmation"] = approval_confirmation
+            else:
+                record["approved_wording"] = None
+                record["approved_destination"] = None
+                record["approval_confirmation"] = None
             record["status"] = status
-            record["updated_at"] = _utc_now()
+            record["review_status"] = status
+            record["updated_at"] = now
+            record["reviewed_at"] = now
             record["review_note"] = note
-            record["applied"] = False
             record["status_notice"] = "Status only; this proposal has not been applied."
             _atomic_json_write(target, record)
             return tool_ok(
@@ -439,15 +520,152 @@ class VaultRuntime:
     def apply_exact_approved_wording(
         self,
         destination: str,
+        filename: str,
         approved_wording: str,
         target_file: str,
+        approval_confirmation: str,
         approval_note: str = "",
     ) -> dict[str, Any]:
-        del destination, approved_wording, target_file, approval_note
-        return tool_error(
-            "apply_not_implemented",
-            "Exact-wording apply is intentionally disabled in issue #30 and reserved for issue #31. No files were changed.",
-        )
+        def operation() -> dict[str, Any]:
+            if destination not in {"Memory", "State"}:
+                raise VaultBoundaryError("destination must be Memory or State")
+            _validate_proposal_filename(filename)
+            wording = _validate_exact_text(
+                approved_wording,
+                "approved_wording",
+                MAX_PROPOSAL_CHARS,
+                max_lines=40,
+            )
+            expected_confirmation = APPROVAL_CONFIRMATIONS[destination]
+            if approval_confirmation != expected_confirmation:
+                raise VaultBoundaryError("destination-specific approval confirmation is required")
+            note = _validate_text(
+                approval_note,
+                "approval_note",
+                MAX_AUDIT_NOTE_CHARS,
+                required=False,
+                max_lines=4,
+            )
+
+            pending_directory = (
+                self.pending_memory if destination == "Memory" else self.pending_state
+            )
+            proposal_target = safe_join(pending_directory, filename, require_file=True)
+            record = json.loads(read_text_limited(proposal_target))
+            if (
+                not isinstance(record, dict)
+                or record.get("artifact_type") != "journal_mirror_pending_proposal"
+                or record.get("destination") != destination
+            ):
+                raise VaultBoundaryError("proposal destination does not match request")
+            if record.get("applied") is True:
+                raise VaultBoundaryError("proposal was already applied")
+            if (
+                record.get("status") != "approved_for_apply"
+                or record.get("review_status") != "approved_for_apply"
+            ):
+                raise VaultBoundaryError("proposal has not been approved for apply")
+            if (
+                not isinstance(record.get("reviewed_at"), str)
+                or not record["reviewed_at"]
+                or record.get("requires_user_approval") is not True
+            ):
+                raise VaultBoundaryError("proposal review metadata is incomplete")
+            if record.get("approved_destination") != destination:
+                raise VaultBoundaryError("approved destination does not match request")
+            if record.get("approved_wording") != wording:
+                raise VaultBoundaryError("approved wording does not exactly match review")
+            if record.get("approval_confirmation") != expected_confirmation:
+                raise VaultBoundaryError("stored approval confirmation does not match destination")
+
+            allowed_files = (
+                APPROVED_MEMORY_FILES if destination == "Memory" else APPROVED_STATE_FILES
+            )
+            destination_directory = self.memory if destination == "Memory" else self.state
+            validate_relative_file_path(target_file)
+            if target_file not in allowed_files:
+                raise VaultBoundaryError("target file is not allowlisted for destination")
+            content_target = safe_join(
+                destination_directory, target_file, require_file=True
+            )
+
+            review_trigger = None
+            expiration_trigger = None
+            if destination == "State":
+                review_trigger = _validate_text(
+                    record.get("review_or_stale_trigger", ""),
+                    "review_or_stale_trigger",
+                    MAX_REVIEW_NOTE_CHARS,
+                    max_lines=4,
+                )
+                expiration_trigger = _validate_text(
+                    record.get("expiration_trigger", ""),
+                    "expiration_trigger",
+                    MAX_REVIEW_NOTE_CHARS,
+                    max_lines=4,
+                )
+
+            applied_at = _utc_now()
+            if destination == "Memory":
+                appended = (
+                    f"\n\n## Approved Item — {applied_at}\n\n"
+                    f"- Source proposal: {filename}\n"
+                    f"- Approved wording:\n\n{wording}\n"
+                )
+            else:
+                appended = (
+                    f"\n\n## Approved State Item — {applied_at}\n\n"
+                    f"- Source proposal: {filename}\n"
+                    f"- Approved wording:\n\n{wording}\n"
+                    f"- Review/stale trigger: {review_trigger}\n"
+                    f"- Expiration trigger: {expiration_trigger}\n"
+                )
+
+            wording_hash = hashlib.sha256(wording.encode("utf-8")).hexdigest()
+            with content_target.open("a", encoding="utf-8", newline="\n") as handle:
+                handle.write(appended)
+                handle.flush()
+                os.fsync(handle.fileno())
+
+            record["applied"] = True
+            record["inert"] = False
+            record["applied_at"] = applied_at
+            record["applied_to"] = target_file
+            record["applied_wording_hash"] = wording_hash
+            record["apply_note"] = note
+            record["updated_at"] = applied_at
+            record["notice"] = "Exact approved wording was appended to the approved destination."
+            _atomic_json_write(proposal_target, record)
+
+            audit_filename = _safe_filename("audit")
+            audit_target = safe_join(self.audit, audit_filename)
+            _atomic_json_write(
+                audit_target,
+                {
+                    "artifact_type": "journal_mirror_private_audit_metadata",
+                    "timestamp": applied_at,
+                    "event_type": "proposal_applied",
+                    "destination": destination,
+                    "proposal_filename": filename,
+                    "target_file": target_file,
+                    "approved_wording_hash": wording_hash,
+                    "approved_wording_characters": len(wording),
+                    "content_logged": False,
+                    "notice": "Private, user-controlled metadata only; no journal, proposal body, or approved wording is stored.",
+                },
+            )
+            return tool_ok(
+                destination=destination,
+                target_file=target_file,
+                proposal_filename=filename,
+                applied=True,
+                applied_at=applied_at,
+                audit_filename=audit_filename,
+                message="Exact approved wording appended; proposal marked applied and metadata-only audit recorded.",
+            )
+
+        with self._apply_lock:
+            return self._run(operation)
 
     def write_private_audit_entry(
         self,
