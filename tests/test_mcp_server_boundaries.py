@@ -117,6 +117,10 @@ class MCPServerBoundaryTests(unittest.TestCase):
         self.assertTrue(record["requires_user_approval"])
         self.assertTrue(record["inert"])
         self.assertFalse(record["applied"])
+        self.assertEqual(record["review_status"], "pending_review")
+        self.assertIsNone(record["approved_wording"])
+        self.assertIsNone(record["approved_destination"])
+        self.assertIsNone(record["reviewed_at"])
         self.assertEqual(self.snapshot_files("Memory"), memory_before)
         self.assertEqual(self.snapshot_files("State"), state_before)
         self.assertEqual(list((self.vault / "Journal Mirror/Pending Updates/state").glob("*.json")), [])
@@ -175,7 +179,12 @@ class MCPServerBoundaryTests(unittest.TestCase):
         memory_before = self.snapshot_files("Memory")
         state_before = self.snapshot_files("State")
         result = self.runtime.mark_proposal_status(
-            "Memory", filename, "approved_for_apply", "Reviewed synthetic metadata."
+            "Memory",
+            filename,
+            "approved_for_apply",
+            "Reviewed synthetic metadata.",
+            "Minimal approved wording.",
+            "I approve this exact wording for Memory",
         )
         self.assertTrue(result["ok"])
         self.assertFalse(result["applied"])
@@ -195,13 +204,19 @@ class MCPServerBoundaryTests(unittest.TestCase):
             self.runtime.mark_proposal_status("Memory", "../proposal.json", "rejected")["ok"]
         )
 
-    def test_apply_exact_approved_wording_is_a_noop_refusal(self) -> None:
+    def test_apply_exact_approved_wording_refuses_unreviewed_proposal(self) -> None:
+        created = self.runtime.create_pending_memory_proposal(
+            "Approved synthetic wording.", "Synthetic reason."
+        )
         before = self.snapshot_files("Memory"), self.snapshot_files("State")
         result = self.runtime.apply_exact_approved_wording(
-            "Memory", "Approved synthetic wording.", "reflection-preferences.md", "Approved."
+            "Memory",
+            created["filename"],
+            "Approved synthetic wording.",
+            "reflection-preferences.md",
+            "I approve this exact wording for Memory",
         )
         self.assertFalse(result["ok"])
-        self.assertEqual(result["error"]["code"], "apply_not_implemented")
         self.assertEqual((self.snapshot_files("Memory"), self.snapshot_files("State")), before)
 
     def test_audit_entry_is_metadata_only_and_rejects_raw_sized_notes(self) -> None:

@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted; minimally implemented locally by issue #30
+Accepted; minimally implemented locally by issues #30 and #31
 
 ## Context
 
@@ -26,11 +26,11 @@ Guided intake will initialize reviewable Memory and State proposals, not unquest
 
 The local HTML viewer is planned as a local inspection aid for Memory, State, proposals, and sessions. It is not a public dashboard, a substitute write path, or authorization to reveal raw journal content by default.
 
-Issue #30 implements the first local subset through `mcp_server/`: narrow read, inert proposal, proposal-metadata/status, guarded apply-refusal, and metadata-only audit handlers. Exact-wording apply, connector configuration, hosted endpoints, tunnels, and viewer behavior remain deferred to later issues.
+Issue #30 implements the first local subset through `mcp_server/`: narrow read, inert proposal, proposal-metadata/status, guarded apply-refusal, and metadata-only audit handlers. Issue #31 activates strict exact-wording append after matching review, destination confirmation, fixed target allowlists, and State trigger checks. Connector configuration, hosted endpoints, tunnels, and viewer behavior remain deferred to later issues.
 
 ### MCP Tool Categories
 
-These categories define the issue #30 local tool boundary and the future apply boundary:
+These categories define the issues #30 and #31 local tool boundary:
 
 - Selected-context reads.
 - Approved Memory reads.

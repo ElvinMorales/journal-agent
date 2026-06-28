@@ -75,7 +75,7 @@ The initializer cannot make a storage location confidential. The user remains re
 2. Use `Journal Mirror/Sessions/session-template.md` with only deliberately selected context; raw entries are not required.
 3. Keep proposed durable updates under `Pending Updates/memory/` and proposed temporary updates under `Pending Updates/state/`.
 4. Review every proposal's exact wording and destination. Add a review, stale, or expiration trigger to State items.
-5. Manually copy approved wording to the corresponding Memory or State file. Nothing applies automatically.
+5. Manually copy approved wording, or use the separate local MCP approval/apply workflow with exact wording, destination-specific confirmation, and an allowlisted target. Nothing applies from creation or status review alone.
 6. Keep audit notes metadata-only and review/redact exports before sharing.
 
 The manual workflow in `docs/obsidian-private-runtime-guide.md` remains available for users who prefer to create or customize folders without running a script.
@@ -84,7 +84,7 @@ The manual workflow in `docs/obsidian-private-runtime-guide.md` remains availabl
 
 This initializer creates the exact folder structure required by the [minimal local MCP server](mcp-local-server.md). The server still requires the user to pass the initialized vault's explicit absolute path and refuses the public repository root, paths inside it, missing roots, and roots missing required folders.
 
-The issue #30 server permits selected-session and allowlisted Memory/State reads, inert proposal creation, proposal metadata/status updates, and metadata-only private audit entries. It does not configure a connector, create an endpoint or tunnel, grant broad vault access, or apply proposal wording. Exact-wording apply remains disabled until issue #31. Generated vault content remains outside Git.
+The issue #30 server permits selected-session and allowlisted Memory/State reads, inert proposal creation, proposal metadata/status updates, and metadata-only private audit entries. Issue #31 adds a separate exact-approved-wording apply gate: a matching reviewed proposal, destination confirmation, allowlisted target, and State triggers are required before append. Proposal creation and status changes still do not write Memory or State. The server does not configure a connector, create an endpoint or tunnel, grant broad vault access, overwrite destination files, or scan the vault. Generated vault content remains outside Git.
 
 ## Before Committing Public Repository Changes
 

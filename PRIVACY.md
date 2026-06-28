@@ -16,7 +16,7 @@ Durable memory should be explicit, minimal, editable, and deletable. The compani
 
 ## Future Controller Boundary
 
-Any future private controller must follow `docs/future-mcp-vps-controller-contract.md`: user-selected context only, destination-specific approval, and no automatic Memory or State writes. Private vault content, pending proposals, approved Memory, current State, controller configuration, secrets, and runtime logs stay in the private data plane and out of Git.
+Any private controller must follow `docs/future-mcp-vps-controller-contract.md`: user-selected context only, destination-specific approval, and no automatic Memory or State writes. Private vault content, pending proposals, approved Memory, current State, controller configuration, secrets, and runtime logs stay in the private data plane and out of Git.
 
 ## Private Vault Initializer
 
@@ -24,9 +24,11 @@ Any future private controller must follow `docs/future-mcp-vps-controller-contra
 
 ## Minimal Local MCP Server
 
-The local MCP server requires an explicit initialized private-vault path outside the public repository and refuses the repository root or any path inside it. It exposes no whole-vault scan, broad search, arbitrary filesystem read/write, State-to-Memory promotion, or silent Memory/State write. Reads are limited to one selected session file or an allowlisted Memory/State file. Writes are limited to separate inert pending-proposal folders, proposal status metadata, and metadata-only private audit records; apply is disabled for issue #30.
+The local MCP server requires an explicit initialized private-vault path outside the public repository and refuses the repository root or any path inside it. It exposes no whole-vault scan, broad search, arbitrary filesystem read/write, State-to-Memory promotion, or silent Memory/State write. Reads are limited to one selected session file or an allowlisted Memory/State file. Proposal creation and status review write only pending metadata. The separate apply operation requires exact stored wording, destination-specific confirmation in both the proposal and request, matching reviewed destination metadata, a destination allowlist, and State lifecycle triggers. It appends; it does not overwrite or delete existing Memory or State.
 
-The server logs operational metadata to stderr for stdio use and must never log journal, session, proposal, Memory, or State content. No connector configuration, hosted endpoint, or tunnel is included. Users remain responsible for local process and client approvals, filesystem permissions, device access, sync, backup, retention, and sharing controls.
+Successful apply audit records are metadata-only: event, timestamp, destination, proposal filename, target filename, wording hash, and character count. They do not contain raw journal content, proposal bodies, or full approved wording.
+
+The server logs operational metadata to stderr for stdio use and must never log journal, session, proposal, Memory, or State content. No connector configuration, hosted endpoint, or tunnel is included. Users remain responsible for reviewing exact wording and destination and for local process/client permissions, filesystem controls, device access, sync, backup, audit retention, and sharing controls.
 
 ## Exports
 

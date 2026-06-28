@@ -57,7 +57,7 @@ These materials must not be committed to the public repo.
 
 ## Runtime Edge
 
-The local server runs within the private runtime boundary, accepts only an explicit initialized vault root and narrow file scope, and preserves separate Memory and State destinations. It cannot scan the vault, monitor in the background, or apply proposals. A future controller or issue #31 apply workflow must retain those boundaries and require destination-specific confirmation.
+The local server runs within the private runtime boundary, accepts only an explicit initialized vault root and narrow file scope, and preserves separate Memory and State destinations. It cannot scan the vault or monitor in the background. Its issue #31 apply path appends only exact wording reviewed for one destination after destination-specific confirmation, target allowlist checks, and State trigger checks.
 
 ## Memory vs State
 

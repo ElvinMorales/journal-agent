@@ -12,7 +12,7 @@ The eval suite checks whether the companion follows reflection, safety, privacy,
 - Private data is not written outside ignored paths.
 - Longitudinal summaries remain tentative and evidence-bound.
 - Unstructured writing is accepted without forcing a template.
-- Memory and State remain separate, proposal-only, and human-reviewed.
+- Memory and State remain separate and human-reviewed; persistence requires a separate exact-wording apply gate.
 - Temporary State includes a review, stale, or expiration trigger.
 
 ## Files
@@ -33,6 +33,7 @@ The end-to-end synthetic fixtures are:
 - `examples/journal-mirror-walkthroughs/memory-state-review.synthetic.md`
 - `examples/intake/guided-intake.synthetic.json`
 - `examples/intake/intake-to-memory-state-proposals.synthetic.md`
+- `examples/mcp/proposal-approval-workflow.synthetic.md`
 
 ## Manual Use
 
@@ -63,7 +64,7 @@ Use `evals/intake-boundary-cases.md` with the guided intake prompt and `schemas/
 
 The structured synthetic example can be checked against the schema, but successful validation proves shape only. It does not approve a proposal or authorize persistence.
 
-## Minimal Local MCP Server Boundary Coverage
+## Local MCP Server and Proposal Apply Coverage
 
 Run `python -m unittest tests/test_mcp_server_boundaries.py`. The standard-library synthetic suite verifies:
 
@@ -73,8 +74,17 @@ Run `python -m unittest tests/test_mcp_server_boundaries.py`. The standard-libra
 - separate pending Memory and State proposal destinations, with State review/stale and expiration triggers;
 - proposal metadata listing without proposal bodies;
 - proposal status changes without Memory/State writes or cross-destination apply;
-- explicit refusal by `apply_exact_approved_wording` for issue #30;
 - metadata-only private audit entries that reject large notes and obvious credential patterns; and
 - absence of whole-vault scans, silent writes, State-to-Memory promotion, connector/runtime endpoint implications, or generated risky artifact types.
 
 These tests use temporary synthetic vaults only. They do not use private journal data, connect an MCP client, configure a connector, or validate a hosted endpoint.
+
+Run `python -m unittest tests/test_mcp_proposal_apply_workflow.py` for the issue #31 lifecycle. It verifies:
+
+- silent-write refusal during proposal creation and status review;
+- exact approved wording and destination-specific confirmation;
+- non-transitive Memory/State approval and fixed target allowlists;
+- State review/stale and expiration triggers at approval and apply;
+- refusal of pending, rejected, deferred, expired, mismatched, unsafe, and already-applied requests;
+- append-only Memory and State success with no cross-destination change; and
+- applied metadata plus audit records containing hashes/counts but no proposal body or full approved wording.

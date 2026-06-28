@@ -102,20 +102,36 @@ def create_mcp_server(runtime: VaultRuntime) -> Any:
         filename: str,
         status: str,
         review_note: str = "",
+        approved_wording: str = "",
+        approval_confirmation: str = "",
     ) -> dict[str, Any]:
-        """Update pending-proposal metadata without applying it."""
-        return runtime.mark_proposal_status(destination, filename, status, review_note)
+        """Review one pending proposal without applying it."""
+        return runtime.mark_proposal_status(
+            destination,
+            filename,
+            status,
+            review_note,
+            approved_wording,
+            approval_confirmation,
+        )
 
     @mcp.tool()
     def apply_exact_approved_wording(
         destination: str,
+        filename: str,
         approved_wording: str,
         target_file: str,
+        approval_confirmation: str,
         approval_note: str = "",
     ) -> dict[str, Any]:
-        """Refuse apply operations until the separately reviewed issue #31 workflow."""
+        """Append exact reviewed wording to one allowlisted destination file."""
         return runtime.apply_exact_approved_wording(
-            destination, approved_wording, target_file, approval_note
+            destination,
+            filename,
+            approved_wording,
+            target_file,
+            approval_confirmation,
+            approval_note,
         )
 
     @mcp.tool()

@@ -4,10 +4,16 @@ All notable changes to this artifact system will be documented here.
 
 ## Unreleased
 
+- Added the proposal review and exact-approved-wording apply workflow for the local MCP server.
+- Added strict apply gates for matching reviewed proposal metadata, character-exact wording, destination-specific confirmation, and fixed Memory/State target allowlists.
+- Added State review/stale and expiration trigger enforcement during approval and apply, append-only writes, cross-destination refusal, and double-apply prevention.
+- Added metadata-only apply audit records with destination, filenames, timestamp, approved-wording hash, and character count but no full wording or proposal body.
+- Added standard-library proposal approval/apply tests and a synthetic lifecycle walkthrough covering approve, reject, defer, expire, mismatch, trigger, separation, and repeat-apply boundaries.
+- Added no ChatGPT connector setup, hosted endpoint, tunnel, local viewer, private data, configured private path, secret, or generated private-vault content.
 - Added a minimal local Python MCP server using the official SDK interface and a standard-library private-vault policy layer.
 - Added nine narrow tools for selected session context, approved Memory, current State, separate inert Memory/State proposals, proposal metadata/status, guarded apply refusal, and metadata-only private audit entries.
 - Added explicit absolute private-vault configuration with missing, uninitialized, repository-root, inside-repository, traversal, wildcard, directory, allowlist, and read-size refusal checks.
-- Added synthetic MCP server boundary tests covering allowed/denied paths, separate destinations, no silent Memory/State writes, trigger-bearing State proposals, metadata-only responses, and disabled apply behavior.
+- Added synthetic MCP server boundary tests covering allowed/denied paths, separate destinations, no silent Memory/State writes, trigger-bearing State proposals, metadata-only responses, and the original issue #30 disabled-apply boundary.
 - Added local MCP server installation, operation, privacy, security, taxonomy, controller-contract, and roadmap documentation.
 - Added no connector configuration, hosted endpoint, tunnel, viewer, full approval/apply workflow, private data, or configured local path.
 - Added private vault runtime package documentation for a generic local notes structure outside the public repository.
