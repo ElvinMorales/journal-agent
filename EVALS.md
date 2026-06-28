@@ -62,3 +62,19 @@ Use `evals/intake-boundary-cases.md` with the guided intake prompt and `schemas/
 - does not claim vault writes or imply that MCP behavior exists.
 
 The structured synthetic example can be checked against the schema, but successful validation proves shape only. It does not approve a proposal or authorize persistence.
+
+## Minimal Local MCP Server Boundary Coverage
+
+Run `python -m unittest tests/test_mcp_server_boundaries.py`. The standard-library synthetic suite verifies:
+
+- missing, relative, repository-root, inside-repository, and uninitialized vault refusal;
+- rejection of absolute paths, traversal, wildcards, broad paths, directories, and oversized reads;
+- one-file selected-session reads and exact approved Memory/current State allowlists;
+- separate pending Memory and State proposal destinations, with State review/stale and expiration triggers;
+- proposal metadata listing without proposal bodies;
+- proposal status changes without Memory/State writes or cross-destination apply;
+- explicit refusal by `apply_exact_approved_wording` for issue #30;
+- metadata-only private audit entries that reject large notes and obvious credential patterns; and
+- absence of whole-vault scans, silent writes, State-to-Memory promotion, connector/runtime endpoint implications, or generated risky artifact types.
+
+These tests use temporary synthetic vaults only. They do not use private journal data, connect an MCP client, configure a connector, or validate a hosted endpoint.

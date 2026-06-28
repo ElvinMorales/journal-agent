@@ -4,6 +4,12 @@ All notable changes to this artifact system will be documented here.
 
 ## Unreleased
 
+- Added a minimal local Python MCP server using the official SDK interface and a standard-library private-vault policy layer.
+- Added nine narrow tools for selected session context, approved Memory, current State, separate inert Memory/State proposals, proposal metadata/status, guarded apply refusal, and metadata-only private audit entries.
+- Added explicit absolute private-vault configuration with missing, uninitialized, repository-root, inside-repository, traversal, wildcard, directory, allowlist, and read-size refusal checks.
+- Added synthetic MCP server boundary tests covering allowed/denied paths, separate destinations, no silent Memory/State writes, trigger-bearing State proposals, metadata-only responses, and disabled apply behavior.
+- Added local MCP server installation, operation, privacy, security, taxonomy, controller-contract, and roadmap documentation.
+- Added no connector configuration, hosted endpoint, tunnel, viewer, full approval/apply workflow, private data, or configured local path.
 - Added private vault runtime package documentation for a generic local notes structure outside the public repository.
 - Added a Python standard-library private vault initializer with dry-run, idempotent default behavior, managed-starter `--force`, and resolved-path repository refusal checks.
 - Added initializer tests for creation, dry-run, idempotency, force scope, unsafe path refusal, generic content, and separate Memory, State, and pending-proposal destinations.

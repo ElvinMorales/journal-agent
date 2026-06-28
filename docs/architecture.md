@@ -8,7 +8,7 @@ The private user space is the data plane: journal entries, copied excerpts, user
 
 See `docs/obsidian-private-runtime-guide.md` for an optional, manual setup using Obsidian or another private notes system. The guide is setup documentation, not a committed private vault, and it does not implement a live runtime, plugin, server, connector, or automated persistence.
 
-A possible future controller would be a narrow runtime edge inside the private environment, between user-approved operations and the private data plane. `docs/future-mcp-vps-controller-contract.md` defines that design boundary. No controller, MCP server, VPS service, vault reader, or live runtime is implemented in this repository.
+The minimal local MCP server is a narrow runtime edge inside the private environment, between explicitly scoped operations and the private data plane. `docs/mcp-local-server.md` documents the issue #30 implementation, and `docs/future-mcp-vps-controller-contract.md` defines the broader contract and future VPS boundary. No VPS service, connector, hosted endpoint, tunnel, or viewer is implemented.
 
 ```mermaid
 flowchart LR
@@ -26,7 +26,7 @@ flowchart LR
     C --> C3[Local notes app]
     C --> C4[User-reviewed exports]
 
-    D[Future Private Controller Edge<br/>Design Only] -. approved narrow operations .-> C
+    D[Local MCP Runtime Edge<br/>Narrow Tools] -. approved narrow operations .-> C
     B -. governs .-> D
 
     B -. guides .-> C
@@ -55,9 +55,9 @@ Private user space contains real journal data and generated private artifacts. I
 
 These materials must not be committed to the public repo.
 
-## Future Runtime Edge
+## Runtime Edge
 
-If implemented later, a controller must run within the private runtime boundary, accept only explicit user-selected scope, expose least-privilege operations, and preserve separate review gates for Memory and State. It must not scan the vault, monitor in the background, or persist private artifacts without destination-specific confirmation. The controller contract is a specification, not current access or executable behavior.
+The local server runs within the private runtime boundary, accepts only an explicit initialized vault root and narrow file scope, and preserves separate Memory and State destinations. It cannot scan the vault, monitor in the background, or apply proposals. A future controller or issue #31 apply workflow must retain those boundaries and require destination-specific confirmation.
 
 ## Memory vs State
 
