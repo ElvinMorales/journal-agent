@@ -118,4 +118,6 @@ The workflow denies arbitrary or traversing paths, wildcards, directory access, 
 
 ## Future Work
 
-Issue #31 implements the minimal local approval/apply contract only. ChatGPT connector setup and first-run guidance, an optional local viewer, broader runtime and safety evals, audit retention/purge controls, and `v0.3.0` release readiness remain separately reviewed work. Parent sprint #25 remains open.
+Issue #31 implements the minimal local approval/apply contract. Issue #32 documents ChatGPT connector onboarding and a [synthetic first-run walkthrough](first-run-chatgpt-walkthrough.md). During ChatGPT testing, use the strictest available confirmation setting, do not remember write approvals, and inspect the JSON payload before approving `mark_proposal_status` or `apply_exact_approved_wording`. Client permission review does not replace the exact-wording and destination checks described above.
+
+An optional local viewer, broader runtime and safety evals, audit retention/purge controls, and `v0.3.0` release readiness remain separately reviewed work. Parent sprint #25 remains open.

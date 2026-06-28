@@ -68,7 +68,9 @@ Successful apply appends a dated, delimited section without overwriting existing
 
 ## Local Responsibility
 
-Local and private-vault-scoped does not mean automatically confidential. The user remains responsible for the MCP client, process permissions, device access, filesystem permissions, sync, backup, retention, and client approval settings. No ChatGPT connector configuration, hosted endpoint, tunnel setup, or local HTML viewer is included here.
+Local and private-vault-scoped does not mean automatically confidential. The user remains responsible for the MCP client, process permissions, device access, filesystem permissions, sync, backup, retention, and client approval settings. This stdio process cannot be connected directly to ChatGPT; ChatGPT requires a supported reachable remote MCP transport or Secure MCP Tunnel path. No live connector configuration, reachable endpoint, tunnel setup, hosted deployment, or local HTML viewer is committed here.
+
+Use [ChatGPT MCP Connector Setup](chatgpt-mcp-connector-setup.md) for connectivity choices and [the first-run ChatGPT walkthrough](first-run-chatgpt-walkthrough.md) for conservative permissions, synthetic reads/proposals, refusal tests, and disconnect steps.
 
 Run the synthetic boundary suite with:
 

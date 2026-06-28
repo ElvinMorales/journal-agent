@@ -86,6 +86,8 @@ This initializer creates the exact folder structure required by the [minimal loc
 
 The issue #30 server permits selected-session and allowlisted Memory/State reads, inert proposal creation, proposal metadata/status updates, and metadata-only private audit entries. Issue #31 adds a separate exact-approved-wording apply gate: a matching reviewed proposal, destination confirmation, allowlisted target, and State triggers are required before append. Proposal creation and status changes still do not write Memory or State. The server does not configure a connector, create an endpoint or tunnel, grant broad vault access, overwrite destination files, or scan the vault. Generated vault content remains outside Git.
 
+For optional ChatGPT onboarding, use [ChatGPT MCP Connector Setup](chatgpt-mcp-connector-setup.md) and [the synthetic first-run walkthrough](first-run-chatgpt-walkthrough.md). Never point a connector at a vault inside this repository. The connector documentation adds no live endpoint, tunnel, connector configuration, or private path; private content and generated runtime artifacts remain outside Git.
+
 ## Before Committing Public Repository Changes
 
 Review `git status` and the staged diff. Do not commit the generated vault, real journal content, selected excerpts, filled Memory, live State, pending proposals, private exports, logs, databases, screenshots, secrets, credentials, connector configuration, or identifying local paths. Public changes should contain only reusable code, documentation, tests, schemas, and independently synthetic examples.
