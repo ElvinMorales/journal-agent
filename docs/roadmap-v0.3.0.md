@@ -42,7 +42,7 @@ Issue #25 organizes the `v0.3.0` sprint into these groups:
 9. Add MCP runtime tests and safety evals.
 10. Complete `v0.3.0` release-readiness work.
 
-Issue #26 addressed the first group. Issue #27 addresses the second group with `prompts/guided-intake.md` and `docs/guided-intake.md` only. Issue #28 owns the structured intake schema, synthetic examples, and deeper eval coverage. Every runtime implementation group requires its own reviewed issue and must preserve the boundaries below.
+Issue #26 addressed the first group. Issue #27 added the guided intake prompt and design guidance. Issue #28 adds the structured intake schema, synthetic examples, walkthrough, and deeper boundary eval coverage without runtime implementation. Every runtime implementation group requires its own reviewed issue and must preserve the boundaries below.
 
 ## Architecture Boundaries
 

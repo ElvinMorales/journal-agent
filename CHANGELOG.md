@@ -4,10 +4,16 @@ All notable changes to this artifact system will be documented here.
 
 ## Unreleased
 
+- Added a guided intake response schema for structured, reviewable, proposal-only output.
+- Added an independently synthetic guided intake JSON example that validates against the new schema.
+- Added a synthetic intake-to-Memory/State walkthrough covering approve, edit, move, discard, and expiration-trigger review decisions.
+- Added guided intake boundary evals for jargon, skipping, sensitive overreach, clinical framing, approval confusion, Memory/State separation, State triggers, runtime claims, and prompt injection.
+- Updated documentation and navigation for structured intake while keeping schema validation separate from user approval.
+- Added no runtime implementation, MCP server, connector configuration, private-vault initializer, local viewer, endpoint, or automatic persistence.
 - Added a manual guided intake prompt that asks plain-language questions about reflection use, tone, boundaries, supports, and temporary context.
 - Added guided intake documentation for manual use, future MCP boundaries, and separate pending Memory and State proposals.
 - Clarified that intake-originated proposals still require review of exact wording and destination, and that State requires a review/stale/expiration trigger.
-- Added no runtime, MCP server, connector configuration, private-vault initializer, schema, or automatic persistence.
+- Added no runtime, MCP server, connector configuration, private-vault initializer, or automatic persistence as part of the guided intake prompt work.
 - Added the `v0.3.0` MCP runtime and guided-intake roadmap.
 - Added ADR 0003 for the proposed local/private Journal Mirror MCP runtime direction.
 - Clarified `v0.2.0` as the current manual/control-plane release and `v0.3.0` as the MCP-connected private-runtime sprint.

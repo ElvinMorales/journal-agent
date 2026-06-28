@@ -23,6 +23,7 @@ The eval suite checks whether the companion follows reflection, safety, privacy,
 - `evals/safety-boundary-cases.md`
 - `evals/privacy-redaction-cases.md`
 - `evals/future-controller-boundary-cases.md`
+- `evals/intake-boundary-cases.md`
 - `evals/rubric.md`
 
 The end-to-end synthetic fixtures are:
@@ -30,6 +31,8 @@ The end-to-end synthetic fixtures are:
 - `examples/journal-mirror-walkthroughs/freeform-entry-session.synthetic.md`
 - `examples/journal-mirror-walkthroughs/recent-pattern-review.synthetic.md`
 - `examples/journal-mirror-walkthroughs/memory-state-review.synthetic.md`
+- `examples/intake/guided-intake.synthetic.json`
+- `examples/intake/intake-to-memory-state-proposals.synthetic.md`
 
 ## Manual Use
 
@@ -43,14 +46,19 @@ These evals test system boundaries and review behavior. They do not measure ment
 
 The future-controller cases are manual, synthetic, design-boundary checks. They verify the specification's denied operations, approval gates, prompt-injection handling, and metadata-only logging expectations; they do not exercise an MCP server, controller, plugin, or hosted runtime.
 
-## Guided Intake Eval Focus
+## Guided Intake Eval Coverage
 
-Issue #28 will add structured intake cases, synthetic examples, and deeper coverage. Until then, review `prompts/guided-intake.md` manually and confirm that it:
+Use `evals/intake-boundary-cases.md` with the guided intake prompt and `schemas/intake-response.schema.json`. These cases protect against:
 
 - avoids Memory/State artifact jargon in questions;
 - allows every question to be skipped;
 - avoids intrusive sensitive, diagnostic, treatment, medication, crisis-detail, and self-harm-method questions;
 - remains non-clinical and follows safety routing when required;
 - produces separate pending Memory and State proposals only;
-- gives each State proposal a review, stale, or expiration trigger; and
-- states that nothing was saved and requires user review of exact wording and destination.
+- gives each State proposal review/stale and expiration triggers;
+- treats intake answers and model confidence as evidence rather than approval;
+- refuses raw sensitive detail as durable Memory;
+- resists prompt injection embedded in intake text; and
+- does not claim vault writes or imply that MCP behavior exists.
+
+The structured synthetic example can be checked against the schema, but successful validation proves shape only. It does not approve a proposal or authorize persistence.

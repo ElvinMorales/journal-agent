@@ -1,0 +1,268 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/intake-response.schema.json",
+  "title": "Guided Intake Response",
+  "description": "A structured, reviewable guided-intake output. Validation does not indicate user approval and this artifact never authorizes or performs a Memory or State write.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "intake_id",
+    "created_at",
+    "source",
+    "status",
+    "privacy_level",
+    "intake_summary",
+    "reflection_preferences",
+    "tone_preferences",
+    "life_areas",
+    "current_context",
+    "durable_preferences",
+    "boundaries",
+    "support_preferences",
+    "action_preferences",
+    "safety_routing_preferences",
+    "items_not_to_save",
+    "skipped_questions",
+    "user_uncertainty",
+    "model_uncertainty",
+    "unanswered_questions",
+    "candidate_memory_proposals",
+    "candidate_state_proposals",
+    "review_notes"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "intake_id": {
+      "type": "string",
+      "pattern": "^intake-[a-z0-9][a-z0-9-]{2,63}$"
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "source": { "const": "guided_intake" },
+    "status": { "const": "pending_review" },
+    "privacy_level": {
+      "type": "string",
+      "enum": ["private", "synthetic_public_example"]
+    },
+    "intake_summary": {
+      "type": "string",
+      "minLength": 1,
+      "description": "A minimal, correction-friendly configuration summary rather than raw intake answers."
+    },
+    "reflection_preferences": { "$ref": "#/$defs/preference_group" },
+    "tone_preferences": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["preferred", "avoid"],
+      "properties": {
+        "preferred": { "$ref": "#/$defs/string_list" },
+        "avoid": { "$ref": "#/$defs/string_list" }
+      }
+    },
+    "life_areas": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "description": "A broad category only, without identifying details."
+      },
+      "uniqueItems": true
+    },
+    "current_context": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/current_context_item" }
+    },
+    "durable_preferences": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/durable_preference" }
+    },
+    "boundaries": { "$ref": "#/$defs/string_list" },
+    "support_preferences": { "$ref": "#/$defs/string_list" },
+    "action_preferences": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["when_requested", "when_overwhelmed", "ask_before_advice"],
+      "properties": {
+        "when_requested": { "$ref": "#/$defs/string_list" },
+        "when_overwhelmed": { "$ref": "#/$defs/string_list" },
+        "ask_before_advice": { "type": "boolean" }
+      }
+    },
+    "safety_routing_preferences": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["broad_level_only", "preferences"],
+      "properties": {
+        "broad_level_only": { "const": true },
+        "preferences": {
+          "$ref": "#/$defs/string_list",
+          "description": "High-level routing preferences only; no crisis specifics, methods, plans, means, or personal safety history."
+        }
+      }
+    },
+    "items_not_to_save": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["category", "handling"],
+        "properties": {
+          "category": { "type": "string", "minLength": 1 },
+          "handling": { "const": "omit_from_proposals" }
+        }
+      }
+    },
+    "skipped_questions": { "$ref": "#/$defs/string_list" },
+    "user_uncertainty": { "$ref": "#/$defs/string_list" },
+    "model_uncertainty": { "$ref": "#/$defs/string_list" },
+    "unanswered_questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["question", "status"],
+        "properties": {
+          "question": { "type": "string", "minLength": 1 },
+          "status": { "type": "string", "enum": ["skipped", "not_sure", "unanswered"] }
+        }
+      }
+    },
+    "candidate_memory_proposals": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/memory_candidate" }
+    },
+    "candidate_state_proposals": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/state_candidate" }
+    },
+    "review_notes": {
+      "$ref": "#/$defs/string_list",
+      "description": "Notes for user review. No note is an approval or apply instruction."
+    }
+  },
+  "$defs": {
+    "string_list": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "preference_group": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["writing_modes", "helpful_reflection", "interpretation_boundary"],
+      "properties": {
+        "writing_modes": { "$ref": "#/$defs/string_list" },
+        "helpful_reflection": { "$ref": "#/$defs/string_list" },
+        "interpretation_boundary": { "type": "string", "minLength": 1 }
+      }
+    },
+    "current_context_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["summary", "uncertainty", "review_or_stale_trigger", "expiration_trigger"],
+      "properties": {
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Minimal temporary context without raw sensitive details."
+        },
+        "uncertainty": { "type": "string", "minLength": 1 },
+        "review_or_stale_trigger": { "type": "string", "minLength": 1 },
+        "expiration_trigger": { "type": "string", "minLength": 1 }
+      }
+    },
+    "durable_preference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["summary", "uncertainty"],
+      "properties": {
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "description": "A minimal possible durable preference, not a diagnosis, fixed trait, or raw sensitive detail."
+        },
+        "uncertainty": { "type": "string", "minLength": 1 }
+      }
+    },
+    "memory_candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "proposal_id",
+        "proposal",
+        "reason_it_may_remain_useful",
+        "uncertainty",
+        "status",
+        "destination",
+        "requires_user_approval",
+        "source_intake_section"
+      ],
+      "properties": {
+        "proposal_id": { "type": "string", "pattern": "^intake-memory-[a-z0-9][a-z0-9-]{2,63}$" },
+        "proposal": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500,
+          "description": "Minimal durable wording only; never raw sensitive detail or a private excerpt."
+        },
+        "reason_it_may_remain_useful": { "type": "string", "minLength": 1 },
+        "uncertainty": { "type": "string", "minLength": 1 },
+        "status": { "const": "pending_review" },
+        "destination": { "const": "Memory" },
+        "requires_user_approval": { "const": true },
+        "source_intake_section": { "$ref": "#/$defs/source_section" }
+      }
+    },
+    "state_candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "proposal_id",
+        "proposal",
+        "reason_it_is_useful_now",
+        "review_or_stale_trigger",
+        "expiration_trigger",
+        "uncertainty",
+        "status",
+        "destination",
+        "requires_user_approval",
+        "source_intake_section"
+      ],
+      "properties": {
+        "proposal_id": { "type": "string", "pattern": "^intake-state-[a-z0-9][a-z0-9-]{2,63}$" },
+        "proposal": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500,
+          "description": "Minimal temporary wording only; never raw sensitive detail or a private excerpt."
+        },
+        "reason_it_is_useful_now": { "type": "string", "minLength": 1 },
+        "review_or_stale_trigger": { "type": "string", "minLength": 1 },
+        "expiration_trigger": {
+          "type": "string",
+          "minLength": 1,
+          "description": "A date or event when known; otherwise use 'review at trigger'."
+        },
+        "uncertainty": { "type": "string", "minLength": 1 },
+        "status": { "const": "pending_review" },
+        "destination": { "const": "State" },
+        "requires_user_approval": { "const": true },
+        "source_intake_section": { "$ref": "#/$defs/source_section" }
+      }
+    },
+    "source_section": {
+      "type": "string",
+      "enum": [
+        "reflection_preferences",
+        "tone_preferences",
+        "life_areas",
+        "current_context",
+        "durable_preferences",
+        "boundaries",
+        "support_preferences",
+        "action_preferences",
+        "safety_routing_preferences"
+      ]
+    }
+  }
+}

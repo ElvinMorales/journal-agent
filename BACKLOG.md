@@ -4,8 +4,8 @@
 
 - [x] Issue #26: establish the `v0.3.0` roadmap and proposed MCP runtime architecture in a focused docs-only planning PR.
 - [x] Issue #27: design guided intake and initial Memory/State proposal behavior in a focused prompt/docs change; no runtime or persistence implementation included.
-- [ ] Issue #28: define the structured intake schema, synthetic examples, and deeper eval coverage.
-- [ ] Build the private-vault runtime package and initializer.
+- [x] Issue #28: add the structured intake schema, synthetic examples, intake-to-proposal walkthrough, and deeper boundary eval coverage; no runtime or persistence implementation included.
+- [ ] Issue #29: build the private-vault runtime package and initializer.
 - [ ] Build a minimal local MCP server.
 - [ ] Implement proposal approval and exact-wording apply through MCP.
 - [ ] Document ChatGPT connector setup and a first-run walkthrough.
@@ -13,7 +13,7 @@
 - [ ] Add MCP runtime tests and safety evals.
 - [ ] Complete `v0.3.0` release readiness.
 
-Issues #26 and #27 record architecture and intake design only. No runtime implementation is included; issue #28 and the remaining issue #25 child work stay separately scoped and reviewable.
+Issues #26 through #28 cover architecture, intake design, and structured intake artifacts only. No runtime implementation is included. Issue #29 is the next likely work, while MCP runtime issues and the remaining issue #25 child work stay future, separately scoped, and reviewable. Parent sprint #25 remains open.
 
 ## v0.2 Follow-Up Sprint Areas
 

@@ -25,6 +25,7 @@ A future controller must preserve the same gates. Proposal creation, review stat
 
 The separate contracts are:
 
+- `schemas/intake-response.schema.json` for a structured bundle of intake-originated candidates that all remain pending review.
 - `schemas/memory-update-proposal.schema.json` for durable candidates.
 - `schemas/state-update-proposal.schema.json` for temporary candidates.
 
@@ -32,17 +33,18 @@ See `examples/journal-mirror-walkthroughs/memory-state-review.synthetic.md` for 
 
 ## Intake-Originated Proposals
 
-`prompts/guided-intake.md` can turn plain-language onboarding answers into candidate Memory and State proposals. Intake is another proposal source, not an approval path. Its summary, model confidence, or classification does not authorize persistence.
+`prompts/guided-intake.md` can turn plain-language onboarding answers into candidate Memory and State proposals represented by `schemas/intake-response.schema.json`. Intake is another proposal source, not an approval path. Its summary, model confidence, schema validity, or classification does not authorize persistence. All intake-originated candidates remain pending until reviewed.
 
 Apply the same review rules to intake-originated candidates:
 
+- Review Memory and State separately; approval for one destination does not transfer to the other.
 - Confirm the exact minimal wording and one destination.
 - Keep a durable preference or boundary in Memory only after explicit user approval.
-- Keep current context in State and require a review, stale, or expiration trigger.
+- Keep current context in State and require review/stale and expiration triggers; when no specific expiration is known, use `review at trigger`.
 - Treat an edit or move between Memory and State as a new candidate requiring review.
 - Omit skipped, uncertain, sensitive, identifying, or unnecessary intake information rather than inferring or retaining it.
 
-The intake prompt uses human-readable `pending_review` markers. Until issue #28 defines a structured intake contract, map a retained candidate to the existing destination-specific schema only during separate review. Nothing is written by intake or by schema conversion.
+The intake schema uses `pending_review` markers. A retained candidate can move into the existing destination-specific schema only during separate review. Exact approved wording and destination are required before any future apply operation. Nothing is written by intake, validation, review status, or schema conversion.
 
 ## Review Questions
 
