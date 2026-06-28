@@ -13,6 +13,10 @@ journal-mirror-vault/
 *.sqlite3
 *.db
 *.log
+runtime-viewer.html
+journal-mirror-runtime-viewer.html
+viewer-output/
+local-viewer-output/
 tmp/
 .cache/
 __pycache__/

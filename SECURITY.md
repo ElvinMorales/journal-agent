@@ -42,7 +42,13 @@ the person's location.
 
 Pending Memory and State destinations stay separate. Proposal creation and status changes do not apply wording. `apply_exact_approved_wording` is the only Memory/State write path and requires a matching reviewed proposal, character-exact wording, the destination-specific confirmation phrase in stored and request metadata, a target from the matching three-file allowlist, and State review/stale and expiration triggers. It appends and refuses cross-destination, arbitrary-path, triggerless, mismatched, or repeated apply.
 
-Successful apply audit entries contain only small metadata fields, including a wording hash and character count rather than the wording or proposal body. Operational logs go to stderr and must not include raw private content. There is still no whole-vault scan, connector configuration, hosted endpoint, tunnel, or viewer. Users remain responsible for reviewing the destination and wording, MCP client approvals, local process isolation, filesystem permissions, device security, sync, backup, audit retention, and recovery.
+Successful apply audit entries contain only small metadata fields, including a wording hash and character count rather than the wording or proposal body. Operational logs go to stderr and must not include raw private content. There is still no whole-vault scan, connector configuration, hosted endpoint, or tunnel. Users remain responsible for reviewing the destination and wording, MCP client approvals, local process isolation, filesystem permissions, device security, sync, backup, audit retention, and recovery.
+
+## Local Runtime Viewer Boundary
+
+`viewer/local_runtime_viewer.py` validates the same explicit initialized private-vault boundary and reads only fixed Memory, State, pending-proposal, session, and audit locations. Reads are file-size and item-count limited; link escapes, arbitrary folders, raw journal folders, missing output parents, and repository output paths are refused or excluded. Malformed JSON yields safe filename/status metadata without raw content.
+
+The generated page escapes all dynamic values, uses a restrictive CSP, and includes no JavaScript, external assets, fonts, analytics, forms, or network calls. Default rendering excludes full content and wording. Optional include flags create a more sensitive output. Generated HTML and screenshots must remain private and uncommitted; local access remains subject to device, filesystem, sync, backup, and retention controls.
 
 ## ChatGPT Connector Testing
 

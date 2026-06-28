@@ -4,7 +4,11 @@
 
 This public-safe specification defines the boundary for controllers at the edge of a private Journal Mirror runtime. It keeps local and any future VPS-hosted integration narrow, visible, and user-approved.
 
-Issues #30 and #31 implement a minimal local stdio MCP server and exact-approved-wording apply under `mcp_server/`; issue #32 adds ChatGPT connector setup and first-run documentation. This document remains the broader contract and future VPS design boundary. The local server grants access only when a user explicitly configures an initialized private vault outside the repository. No VPS hosting, client, plugin, live connector configuration, hosted endpoint, tunnel, background job, or viewer is implemented.
+Issues #30 and #31 implement a minimal local stdio MCP server and exact-approved-wording apply under `mcp_server/`; issue #32 adds ChatGPT connector setup and first-run documentation; issue #33 adds local-only static HTML observability. This document remains the broader contract and future VPS design boundary. The local server and viewer require an explicitly configured initialized private vault outside the repository. No VPS hosting, client, plugin, live connector configuration, hosted endpoint, tunnel, or background job is implemented.
+
+### Issue #33 Local Viewer Status
+
+`viewer/local_runtime_viewer.py` is a local file reader and static HTML generator, not a remote or VPS controller. It provides bounded metadata inspection, performs no write or approval operation, opens no endpoint, and does not change the denied operations in this contract.
 
 ### Issues #30 and #31 Local Implementation Status
 

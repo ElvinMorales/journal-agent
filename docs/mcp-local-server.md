@@ -4,7 +4,7 @@
 
 The minimal Journal Mirror MCP server is a local, stdio-based runtime edge between an MCP client and one user-controlled private vault. The public repository remains the reusable control plane. Journal entries, selected sessions, pending proposals, approved Memory, current State, and audit records remain in the private data plane outside Git.
 
-Issues #30 and #31 implement nine narrow tools, including a separately reviewed exact-wording apply operation. This is not a general filesystem server: it has no whole-vault scan, search, arbitrary path read/write, background monitoring, connector configuration, hosted endpoint, tunnel, or viewer.
+Issues #30 and #31 implement nine narrow tools, including a separately reviewed exact-wording apply operation. This is not a general filesystem server: it has no whole-vault scan, search, arbitrary path read/write, background monitoring, connector configuration, hosted endpoint, or tunnel.
 
 ## Install and Initialize
 
@@ -68,7 +68,9 @@ Successful apply appends a dated, delimited section without overwriting existing
 
 ## Local Responsibility
 
-Local and private-vault-scoped does not mean automatically confidential. The user remains responsible for the MCP client, process permissions, device access, filesystem permissions, sync, backup, retention, and client approval settings. This stdio process cannot be connected directly to ChatGPT; ChatGPT requires a supported reachable remote MCP transport or Secure MCP Tunnel path. No live connector configuration, reachable endpoint, tunnel setup, hosted deployment, or local HTML viewer is committed here.
+Local and private-vault-scoped does not mean automatically confidential. The user remains responsible for the MCP client, process permissions, device access, filesystem permissions, sync, backup, retention, and client approval settings. This stdio process cannot be connected directly to ChatGPT; ChatGPT requires a supported reachable remote MCP transport or Secure MCP Tunnel path. No live connector configuration, reachable endpoint, tunnel setup, or hosted deployment is committed here.
+
+The [local runtime viewer](local-runtime-viewer.md) is a separate static-file inspection tool. It reads documented runtime files directly from an explicit private vault; it is not an MCP tool endpoint and does not invoke the server. It cannot change MCP permissions, approve or apply proposals, or bypass any exact-wording and destination gate.
 
 Use [ChatGPT MCP Connector Setup](chatgpt-mcp-connector-setup.md) for connectivity choices and [the first-run ChatGPT walkthrough](first-run-chatgpt-walkthrough.md) for conservative permissions, synthetic reads/proposals, refusal tests, and disconnect steps.
 

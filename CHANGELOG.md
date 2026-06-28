@@ -4,6 +4,10 @@ All notable changes to this artifact system will be documented here.
 
 ## Unreleased
 
+- Added a Python standard-library local static HTML runtime viewer with separate Memory, State, pending proposal, session metadata, and audit metadata sections.
+- Added State review/stale and expiration trigger visibility, proposal status/applied metadata, default raw-content hiding, bounded reads, HTML escaping, restrictive CSP, and repository output-path refusal.
+- Added synthetic viewer safety tests, a local-use/privacy guide, synthetic fixture notes, manual boundary cases, and navigation/taxonomy updates.
+- Added no hosted dashboard, connector configuration, endpoint, tunnel, screenshots, public export, generated viewer HTML, private data, or private path.
 - Added a ChatGPT MCP connector setup guide for the existing local server, including the local-stdio/reachable-remote boundary, Secure MCP Tunnel guidance, temporary HTTPS tunnel risks, draft app setup, and disconnect steps.
 - Added a synthetic first-run ChatGPT walkthrough covering selected-context and allowlisted Memory/State reads, separate pending proposals, metadata review, exact apply confirmation, broad-scan refusal, and silent-write refusal.
 - Added a tool-by-tool ChatGPT review and permissions guide plus a copyable synthetic first-run prompt pack and manual connector safety cases.

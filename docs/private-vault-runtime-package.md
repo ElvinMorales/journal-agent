@@ -88,6 +88,10 @@ The issue #30 server permits selected-session and allowlisted Memory/State reads
 
 For optional ChatGPT onboarding, use [ChatGPT MCP Connector Setup](chatgpt-mcp-connector-setup.md) and [the synthetic first-run walkthrough](first-run-chatgpt-walkthrough.md). Never point a connector at a vault inside this repository. The connector documentation adds no live endpoint, tunnel, connector configuration, or private path; private content and generated runtime artifacts remain outside Git.
 
+## Local Runtime Viewer
+
+This initialized structure also supports the [local runtime viewer](local-runtime-viewer.md). It generates one static HTML snapshot from allowlisted runtime paths, keeps Memory and State separate, shows State lifecycle triggers, and hides raw content by default. Write its output only to `Journal Mirror/Exports` or another protected local folder outside this public repository. Generated HTML may contain private metadata and must not be committed or published.
+
 ## Before Committing Public Repository Changes
 
 Review `git status` and the staged diff. Do not commit the generated vault, real journal content, selected excerpts, filled Memory, live State, pending proposals, private exports, logs, databases, screenshots, secrets, credentials, connector configuration, or identifying local paths. Public changes should contain only reusable code, documentation, tests, schemas, and independently synthetic examples.

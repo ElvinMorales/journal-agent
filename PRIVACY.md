@@ -34,6 +34,12 @@ The server logs operational metadata to stderr for stdio use and must never log 
 
 Exports should distinguish user-authored text from agent-generated summaries. Therapy-prep summaries should be concise, user-reviewed, and framed as the user's notes, not clinical conclusions.
 
+## Local Runtime Viewer
+
+The viewer reads only its documented runtime allowlist from one explicit initialized vault and refuses output inside the public repository. Raw journal content, full Memory/State content, proposal bodies and exact approved wording, session content, and audit notes are hidden by default. Include-content flags increase privacy risk even though rendered values remain size-limited and escaped.
+
+Generated HTML may contain private filenames, timestamps, statuses, triggers, and other metadata. Store it only in the private vault or another protected local folder; do not commit it or publish screenshots. The page has no JavaScript, external assets, analytics, or network calls, but local file privacy still depends on operating-system permissions, device security, sync, backup, retention, and sharing controls. Delete and regenerate the file as needed.
+
 ## ChatGPT Connector Testing
 
 Developer mode and custom MCP apps can expose private reads and write/modify actions. Keep permissions conservative, use the strictest available confirmation setting, inspect each JSON payload, and do not remember write approvals during first-run testing. Disable tools that are not required, especially `apply_exact_approved_wording` until earlier boundary tests pass.
