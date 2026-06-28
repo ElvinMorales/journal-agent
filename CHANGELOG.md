@@ -4,6 +4,10 @@ All notable changes to this artifact system will be documented here.
 
 ## Unreleased
 
+- Added a manual guided intake prompt that asks plain-language questions about reflection use, tone, boundaries, supports, and temporary context.
+- Added guided intake documentation for manual use, future MCP boundaries, and separate pending Memory and State proposals.
+- Clarified that intake-originated proposals still require review of exact wording and destination, and that State requires a review/stale/expiration trigger.
+- Added no runtime, MCP server, connector configuration, private-vault initializer, schema, or automatic persistence.
 - Added the `v0.3.0` MCP runtime and guided-intake roadmap.
 - Added ADR 0003 for the proposed local/private Journal Mirror MCP runtime direction.
 - Clarified `v0.2.0` as the current manual/control-plane release and `v0.3.0` as the MCP-connected private-runtime sprint.

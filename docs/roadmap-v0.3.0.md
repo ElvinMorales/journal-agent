@@ -2,7 +2,7 @@
 
 ## Status
 
-Planning; implementation not started in this PR.
+Planning and prompt/design work in progress. Guided intake is manually usable; runtime implementation has not started.
 
 ## Release Positioning
 
@@ -42,7 +42,7 @@ Issue #25 organizes the `v0.3.0` sprint into these groups:
 9. Add MCP runtime tests and safety evals.
 10. Complete `v0.3.0` release-readiness work.
 
-Only the first group is addressed by this planning PR. Every implementation group requires its own reviewed issue and must preserve the boundaries below.
+Issue #26 addressed the first group. Issue #27 addresses the second group with `prompts/guided-intake.md` and `docs/guided-intake.md` only. Issue #28 owns the structured intake schema, synthetic examples, and deeper eval coverage. Every runtime implementation group requires its own reviewed issue and must preserve the boundaries below.
 
 ## Architecture Boundaries
 
@@ -104,3 +104,5 @@ These questions remain undecided and belong in later design or implementation is
 - `docs/obsidian-private-runtime-guide.md`
 - `docs/journal-mirror-workflow.md`
 - `docs/memory-state-proposal-review.md`
+- `prompts/guided-intake.md`
+- `docs/guided-intake.md`

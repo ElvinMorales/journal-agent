@@ -3,8 +3,8 @@
 ## v0.3 MCP Runtime and Guided Intake — Issue #25
 
 - [x] Issue #26: establish the `v0.3.0` roadmap and proposed MCP runtime architecture in a focused docs-only planning PR.
-- [ ] Design guided intake and initialization.
-- [ ] Define intake schemas, synthetic examples, and evals.
+- [x] Issue #27: design guided intake and initial Memory/State proposal behavior in a focused prompt/docs change; no runtime or persistence implementation included.
+- [ ] Issue #28: define the structured intake schema, synthetic examples, and deeper eval coverage.
 - [ ] Build the private-vault runtime package and initializer.
 - [ ] Build a minimal local MCP server.
 - [ ] Implement proposal approval and exact-wording apply through MCP.
@@ -13,7 +13,7 @@
 - [ ] Add MCP runtime tests and safety evals.
 - [ ] Complete `v0.3.0` release readiness.
 
-Issue #26 records direction only. No runtime implementation is included; the remaining issue #25 child work stays separately scoped and reviewable.
+Issues #26 and #27 record architecture and intake design only. No runtime implementation is included; issue #28 and the remaining issue #25 child work stay separately scoped and reviewable.
 
 ## v0.2 Follow-Up Sprint Areas
 
