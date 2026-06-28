@@ -48,6 +48,7 @@ This repo applies that lens to a journaling companion by making public artifacts
 - [`docs/roadmap-v0.3.0.md`](docs/roadmap-v0.3.0.md) for the MCP runtime and guided-intake sprint direction.
 - [`docs/decisions/0003-journal-mirror-mcp-runtime.md`](docs/decisions/0003-journal-mirror-mcp-runtime.md) for the proposed local/private MCP runtime architecture.
 - [Guided intake prompt](prompts/guided-intake.md) and [guided intake guide](docs/guided-intake.md), supported by an [intake response schema](schemas/intake-response.schema.json), [synthetic example](examples/intake/guided-intake.synthetic.json), [review walkthrough](examples/intake/intake-to-memory-state-proposals.synthetic.md), and [boundary evals](evals/intake-boundary-cases.md). These artifacts create reviewable pending proposals only; they do not persist data.
+- [Private vault runtime package](docs/private-vault-runtime-package.md) and [`scripts/init-private-vault.py`](scripts/init-private-vault.py) for creating a blank, generic private runtime structure at an explicit path outside this repository. The initializer writes no private content and runs no Git commands.
 - `docs/journal-mirror-workflow.md` for the post-writing reflection workflow.
 - [Private runtime starter guide](docs/obsidian-private-runtime-guide.md) for a manual setup that works with Obsidian or any private notes system, with no plugin or server required.
 - [Future MCP/VPS controller contract](docs/future-mcp-vps-controller-contract.md) for the design-only boundary of a possible private runtime edge; it includes no MCP/VPS server or controller implementation.
@@ -57,8 +58,8 @@ This repo applies that lens to a journaling companion by making public artifacts
 For the shortest orientation, read the [v0.2 usable-product handoff](docs/v0.2-usable-product-handoff.md). Then follow this manual flow:
 
 1. Optionally run the [guided intake prompt](prompts/guided-intake.md) to describe reflection preferences, boundaries, and current context in plain language. Review the separate pending proposals; intake writes nothing.
-2. Write naturally in a private Obsidian vault or another user-controlled private notes system.
-3. Use the [private runtime starter guide](docs/obsidian-private-runtime-guide.md) to set up a minimal private workflow, then start with the [Journal Mirror workflow](docs/journal-mirror-workflow.md), [session prompt](prompts/journal-mirror-session.md), or [freeform entry prompt](prompts/freeform-entry-mirror.md) and one selected entry, excerpt, or small group of entries.
+2. Create a blank private runtime outside this repo with the [private vault initializer](docs/private-vault-runtime-package.md), or follow the [manual private runtime starter guide](docs/obsidian-private-runtime-guide.md).
+3. Write naturally in a private Obsidian vault or another user-controlled private notes system, then start with the [Journal Mirror workflow](docs/journal-mirror-workflow.md), [session prompt](prompts/journal-mirror-session.md), or [freeform entry prompt](prompts/freeform-entry-mirror.md) and one selected entry, excerpt, or small group of entries.
 4. Review any proposed Memory or State updates with the [proposal review guide](docs/memory-state-proposal-review.md) and separate [Memory](schemas/memory-update-proposal.schema.json) or [State](schemas/state-update-proposal.schema.json) schema before manually copying, editing, or discarding them. Proposals are review-only; nothing changes automatically.
 5. Use `templates/` only when a structured starting point is helpful; templates are optional, not a required journal format.
 
@@ -76,9 +77,9 @@ The `v0.2.0` manual workflow remains the usable path while `v0.3.0` is planned a
 
 ## v0.3.0 Planning Status
 
-`v0.3.0` planning has started under issue #25. Guided intake now provides a manual, plain-language way to avoid starting from a blank slate, plus a schema, synthetic example, review walkthrough, and boundary evals for separate pending Memory and State proposals. The remaining sprint will focus on a narrow MCP runtime, private-vault initialization, proposal approval and exact-wording apply, ChatGPT connector setup, runtime tests and safety evals, release readiness, and eventually an optional local HTML viewer.
+`v0.3.0` work has started under issue #25. Guided intake provides a manual, plain-language way to avoid starting from a blank slate, plus a schema, synthetic example, review walkthrough, and boundary evals for separate pending Memory and State proposals. The private vault initializer now creates blank, generic runtime folders and starter files outside the public repo. The remaining sprint will focus on a narrow MCP runtime, proposal approval and exact-wording apply, ChatGPT connector setup, runtime tests and safety evals, release readiness, and eventually an optional local HTML viewer.
 
-No MCP runtime, connector setup, private-vault initializer, or local viewer exists yet. Intake remains proposal-only; schema validation is not user approval, and no intake artifact persists wording. The [guided intake guide](docs/guided-intake.md) explains the manual flow and future MCP boundary; the [v0.3.0 roadmap](docs/roadmap-v0.3.0.md) defines the planned user flow and sprint groups; [ADR 0003](docs/decisions/0003-journal-mirror-mcp-runtime.md) records the proposed architecture and denied operations without implementing them.
+No MCP runtime, connector setup, or local viewer exists yet. The initializer does not access or write private content, and it does not add generated files to Git. Intake remains proposal-only; schema validation is not user approval, and no intake artifact persists wording. The [guided intake guide](docs/guided-intake.md) explains the manual flow and future MCP boundary; the [v0.3.0 roadmap](docs/roadmap-v0.3.0.md) defines the planned user flow and sprint groups; [ADR 0003](docs/decisions/0003-journal-mirror-mcp-runtime.md) records the proposed architecture and denied operations without implementing them.
 
 ## Safety and Privacy Warnings
 

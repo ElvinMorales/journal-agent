@@ -18,6 +18,10 @@ Durable memory should be explicit, minimal, editable, and deletable. The compani
 
 Any future private controller must follow `docs/future-mcp-vps-controller-contract.md`: user-selected context only, destination-specific approval, and no automatic Memory or State writes. Private vault content, pending proposals, approved Memory, current State, controller configuration, secrets, and runtime logs stay in the private data plane and out of Git.
 
+## Private Vault Initializer
+
+`scripts/init-private-vault.py` refuses the public repository root and paths inside it. It creates blank or generic starter files only; do not add secrets, connector configuration, real journal content, filled Memory, live State, or private proposals to generated files, and do not commit the generated vault. A private location is not automatically confidential. Users remain responsible for device, sync, backup, access, and sharing privacy.
+
 ## Exports
 
 Exports should distinguish user-authored text from agent-generated summaries. Therapy-prep summaries should be concise, user-reviewed, and framed as the user's notes, not clinical conclusions.

@@ -10,6 +10,8 @@ private/**
 *.log
 tmp/
 .cache/
+__pycache__/
+*.py[cod]
 
 # Local agent/Codex scratch workspace
 .agents/

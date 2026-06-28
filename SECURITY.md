@@ -31,3 +31,7 @@ the person's location.
 ## Future Controller Boundary
 
 `docs/future-mcp-vps-controller-contract.md` specifies least-privilege and approval requirements for any possible future private runtime edge. It is not an implementation. Secrets, controller configuration, runtime logs, private vault content, and private outputs must remain outside Git; a future controller must not broaden scope, run silently, or contact external services without explicit configuration and review.
+
+## Private Vault Initializer Boundary
+
+`scripts/init-private-vault.py` accepts an explicit absolute target and refuses to run at the public repository root or inside it. It creates only fixed generic folders and Markdown starter files; generated files must not contain secrets, credentials, connector configuration, or private runtime content and must not be committed. Users remain responsible for the security of the target device and its sync, backup, access, and sharing controls.
