@@ -25,6 +25,7 @@ The eval suite checks whether the companion follows reflection, safety, privacy,
 - `evals/future-controller-boundary-cases.md`
 - `evals/intake-boundary-cases.md`
 - `evals/chatgpt-connector-first-run-cases.md`
+- `evals/local-runtime-viewer-boundary-cases.md`
 - `evals/rubric.md`
 
 The end-to-end synthetic fixtures are:
@@ -36,6 +37,7 @@ The end-to-end synthetic fixtures are:
 - `examples/intake/intake-to-memory-state-proposals.synthetic.md`
 - `examples/mcp/proposal-approval-workflow.synthetic.md`
 - `examples/chatgpt/first-run-prompts.synthetic.md`
+- `examples/viewer/synthetic-runtime-viewer-inputs.md`
 
 ## Manual Use
 
@@ -107,3 +109,19 @@ Use `evals/chatgpt-connector-first-run-cases.md` with the [synthetic prompt pack
 - complete disconnect/disable steps without retaining or publishing an endpoint.
 
 These checks exercise documentation and client-facing behavior only. They do not create a connector, endpoint, tunnel, or hosted deployment and do not replace the automated server boundary tests.
+
+## Local Runtime Viewer Coverage
+
+Run `python -m unittest tests/test_local_runtime_viewer.py` and review `evals/local-runtime-viewer-boundary-cases.md`. The temporary synthetic-vault suite verifies:
+
+- vault and output paths equal to or inside the public repository are refused;
+- raw journal, full Memory/State, proposal wording, session content, and audit notes are hidden by default;
+- Memory and State files and proposals remain separate;
+- State review/stale and expiration triggers remain visible;
+- proposal status/applied metadata and content-free audit metadata remain visible;
+- malformed JSON does not crash or expose its raw text;
+- every dynamic value is HTML-escaped;
+- generated HTML has restrictive CSP, no scripts, and no external assets or network references; and
+- dry-run and item limits do not create or broaden output.
+
+No real private vault or committed generated HTML is used.
