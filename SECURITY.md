@@ -44,11 +44,15 @@ Pending Memory and State destinations stay separate. Proposal creation and statu
 
 Successful apply audit entries contain only small metadata fields, including a wording hash and character count rather than the wording or proposal body. Operational logs go to stderr and must not include raw private content. There is still no whole-vault scan, connector configuration, hosted endpoint, or tunnel. Users remain responsible for reviewing the destination and wording, MCP client approvals, local process isolation, filesystem permissions, device security, sync, backup, audit retention, and recovery.
 
+Selected notes, proposal text, State files, audit notes, and client prompts are untrusted data. Embedded instructions must not alter tool scope, destination, approval state, audit behavior, or logging. Boundary tests and evals use disposable synthetic fixtures only; do not run public regression checks against a real private vault. The runtime must not store diagnostic or treatment interpretations or medication guidance as Memory/State, and urgent safety language must follow the non-clinical safety boundary rather than ordinary reflection.
+
 ## Local Runtime Viewer Boundary
 
 `viewer/local_runtime_viewer.py` validates the same explicit initialized private-vault boundary and reads only fixed Memory, State, pending-proposal, session, and audit locations. Reads are file-size and item-count limited; link escapes, arbitrary folders, raw journal folders, missing output parents, and repository output paths are refused or excluded. Malformed JSON yields safe filename/status metadata without raw content.
 
 The generated page escapes all dynamic values, uses a restrictive CSP, and includes no JavaScript, external assets, fonts, analytics, forms, or network calls. Default rendering excludes full content and wording. Optional include flags create a more sensitive output. Generated HTML and screenshots must remain private and uncommitted; local access remains subject to device, filesystem, sync, backup, and retention controls.
+
+Validation output, logs, connector configuration, endpoint/tunnel details, private paths, and generated viewer files are also private artifacts and must not be committed. Review staged filenames and leakage-scan matches before publication.
 
 ## ChatGPT Connector Testing
 

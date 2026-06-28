@@ -4,7 +4,11 @@
 
 This public-safe specification defines the boundary for controllers at the edge of a private Journal Mirror runtime. It keeps local and any future VPS-hosted integration narrow, visible, and user-approved.
 
-Issues #30 and #31 implement a minimal local stdio MCP server and exact-approved-wording apply under `mcp_server/`; issue #32 adds ChatGPT connector setup and first-run documentation; issue #33 adds local-only static HTML observability. This document remains the broader contract and future VPS design boundary. The local server and viewer require an explicitly configured initialized private vault outside the repository. No VPS hosting, client, plugin, live connector configuration, hosted endpoint, tunnel, or background job is implemented.
+Issues #30 and #31 implement a minimal local stdio MCP server and exact-approved-wording apply under `mcp_server/`; issue #32 adds ChatGPT connector setup and first-run documentation; issue #33 adds local-only static HTML observability; issue #34 adds integrated local-controller boundary tests and public-safe safety evals. This document remains the broader contract and future VPS design boundary. The local server and viewer require an explicitly configured initialized private vault outside the repository. No VPS hosting, client, plugin, live connector configuration, hosted endpoint, tunnel, or background job is implemented.
+
+### Issue #34 Local Boundary Validation Status
+
+`tests/test_mcp_runtime_safety_regressions.py` and the issue #34 eval matrices cover the implemented local controller's whole-vault refusal, selected-context-only reads, inert proposals, no silent writes, exact wording and destination gates, prompt-injection resistance, Memory/State separation, and metadata-only audit behavior. They use synthetic fixtures only. Hosted/VPS behavior remains future-facing, and every denied operation below remains denied.
 
 ### Issue #33 Local Viewer Status
 
@@ -174,6 +178,7 @@ This contract narrows a possible future runtime edge while preserving the curren
 - `docs/memory-state-proposal-review.md` defines separate proposal review and exact-wording approval.
 - `schemas/memory-update-proposal.schema.json` and `schemas/state-update-proposal.schema.json` define separate proposal shapes.
 - `evals/` and `EVALS.md` define synthetic manual boundary checks.
+- `docs/runtime-validation-checklist.md` defines local synthetic validation and leakage review without authorizing deployment.
 - `GUARDRAILS.md`, `PRIVACY.md`, and `SECURITY.md` remain authoritative for safety, privacy, and reporting.
 
 If later implementation behavior conflicts with these artifacts, the implementation must stop and the conflict must be resolved through public design review before private use.
