@@ -1,0 +1,143 @@
+{
+  "schema_version": "1.0",
+  "intake_id": "intake-synthetic-mixed-writing-001",
+  "created_at": "2026-06-28T14:00:00Z",
+  "source": "guided_intake",
+  "status": "pending_review",
+  "privacy_level": "synthetic_public_example",
+  "intake_summary": "This fictional user brings a mix of daily notes and freewrites and prefers warm, concise reflection with cautious interpretation. Broad current context may be useful temporarily, while stable response preferences may be useful after separate review.",
+  "reflection_preferences": {
+    "writing_modes": ["daily notes", "freewrites"],
+    "helpful_reflection": ["brief reflection", "one clarifying question", "pattern suggestions framed tentatively"],
+    "interpretation_boundary": "Ask before moving from reflection into advice or strong interpretation."
+  },
+  "tone_preferences": {
+    "preferred": ["warm", "concise", "grounded"],
+    "avoid": ["overly clinical", "overly cheerful"]
+  },
+  "life_areas": ["home", "relationships", "creative projects", "work routines"],
+  "current_context": [
+    {
+      "summary": "A short-term schedule change is affecting available reflection time.",
+      "uncertainty": "The duration and impact may change.",
+      "review_or_stale_trigger": "Review after two weeks or when the schedule changes again.",
+      "expiration_trigger": "Expire when the temporary schedule ends."
+    },
+    {
+      "summary": "A near-term creative decision is still open.",
+      "uncertainty": "The decision may be resolved before the next review.",
+      "review_or_stale_trigger": "Review after the decision is made or at the end of the month.",
+      "expiration_trigger": "Review at trigger"
+    }
+  ],
+  "durable_preferences": [
+    {
+      "summary": "Prefer warm, concise reflection.",
+      "uncertainty": "The desired amount of detail may vary by entry."
+    },
+    {
+      "summary": "Ask before offering advice.",
+      "uncertainty": "Direct action requests are an exception."
+    }
+  ],
+  "boundaries": [
+    "Do not turn one entry into a fixed trait.",
+    "Keep sensitive topics at a broad level unless the user asks otherwise."
+  ],
+  "support_preferences": [
+    "Start with a short reflection before questions.",
+    "Offer one manageable option when action support is requested."
+  ],
+  "action_preferences": {
+    "when_requested": ["offer one small next step", "state alternatives briefly"],
+    "when_overwhelmed": ["reduce the number of options", "avoid urgency language"],
+    "ask_before_advice": true
+  },
+  "safety_routing_preferences": {
+    "broad_level_only": true,
+    "preferences": [
+      "Pause ordinary reflection when immediate safety may be involved.",
+      "Use direct, calm language and encourage trusted human or appropriate emergency support."
+    ]
+  },
+  "items_not_to_save": [
+    {
+      "category": "identifying details",
+      "handling": "omit_from_proposals"
+    },
+    {
+      "category": "raw writing excerpts",
+      "handling": "omit_from_proposals"
+    },
+    {
+      "category": "sensitive specifics not needed for configuration",
+      "handling": "omit_from_proposals"
+    }
+  ],
+  "skipped_questions": ["recurring patterns to notice"],
+  "user_uncertainty": ["Not sure whether concise replies should always include a question."],
+  "model_uncertainty": ["The preferred balance between reflection and questions needs confirmation."],
+  "unanswered_questions": [
+    {
+      "question": "Which recurring patterns, if any, should be noticed over time?",
+      "status": "skipped"
+    },
+    {
+      "question": "Should a clarifying question appear after every reflection?",
+      "status": "not_sure"
+    }
+  ],
+  "candidate_memory_proposals": [
+    {
+      "proposal_id": "intake-memory-warm-concise-reflection",
+      "proposal": "Prefer warm, concise reflection.",
+      "reason_it_may_remain_useful": "This response-style preference may improve future sessions across topics.",
+      "uncertainty": "The desired amount of detail may vary by entry.",
+      "status": "pending_review",
+      "destination": "Memory",
+      "requires_user_approval": true,
+      "source_intake_section": "tone_preferences"
+    },
+    {
+      "proposal_id": "intake-memory-ask-before-advice",
+      "proposal": "Ask before offering advice unless action support is requested directly.",
+      "reason_it_may_remain_useful": "This boundary may remain useful across reflection sessions.",
+      "uncertainty": "The user may want exceptions for some writing modes.",
+      "status": "pending_review",
+      "destination": "Memory",
+      "requires_user_approval": true,
+      "source_intake_section": "action_preferences"
+    }
+  ],
+  "candidate_state_proposals": [
+    {
+      "proposal_id": "intake-state-temporary-schedule",
+      "proposal": "A temporary schedule change may limit reflection time.",
+      "reason_it_is_useful_now": "Shorter responses may fit the user's current availability.",
+      "review_or_stale_trigger": "Review after two weeks or when the schedule changes again.",
+      "expiration_trigger": "Expire when the temporary schedule ends.",
+      "uncertainty": "The duration and impact may change.",
+      "status": "pending_review",
+      "destination": "State",
+      "requires_user_approval": true,
+      "source_intake_section": "current_context"
+    },
+    {
+      "proposal_id": "intake-state-creative-decision",
+      "proposal": "A near-term creative decision is still open.",
+      "reason_it_is_useful_now": "The open decision may recur in near-term writing.",
+      "review_or_stale_trigger": "Review after the decision is made or at the end of the month.",
+      "expiration_trigger": "review at trigger",
+      "uncertainty": "The decision may resolve before the next session.",
+      "status": "pending_review",
+      "destination": "State",
+      "requires_user_approval": true,
+      "source_intake_section": "current_context"
+    }
+  ],
+  "review_notes": [
+    "Validation against the schema does not indicate user approval.",
+    "Review Memory and State candidates separately and confirm exact wording and destination.",
+    "Nothing has been saved or written."
+  ]
+}

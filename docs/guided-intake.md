@@ -10,10 +10,10 @@ The design reduces setup friction while preserving review-based persistence, Mem
 
 - Issue #26 established the `v0.3.0` MCP runtime direction and architecture boundaries.
 - Issue #27 designs the guided intake prompt, manual flow, and initial proposal behavior.
-- Issue #28 will define the structured intake schema, synthetic examples, and deeper eval coverage.
+- Issue #28 adds the structured intake schema, synthetic examples, walkthrough, and boundary eval coverage.
 - Later MCP issues may let the interaction plane create private pending proposals and apply separately approved wording through a narrow runtime edge.
 
-This issue adds prompt and documentation artifacts only. It does not implement an MCP server, connector, vault initializer, private storage, runtime configuration, or apply operation. The manual workflow remains usable without MCP.
+Issues #27 and #28 add prompt, schema, synthetic example, eval, and documentation artifacts only. They do not implement an MCP server, connector, vault initializer, private storage, runtime configuration, or apply operation. The manual workflow remains usable without MCP.
 
 ## What Intake Produces
 
@@ -27,7 +27,7 @@ This issue adds prompt and documentation artifacts only. It does not implement a
 
 An intake answer is evidence for a candidate, not permission to persist it. A candidate proposal is not approved Memory or current State. The model's confidence is not approval. Memory and State remain separate throughout intake, review, and any later apply step.
 
-Intake output uses the human-readable markers `status: pending_review`, `destination: Memory | State`, and `requires_user_approval: true`. Issue #28 will decide how intake output maps into a formal structured contract. The existing Memory and State proposal schemas remain unchanged in this issue.
+Structured intake output uses `schemas/intake-response.schema.json` with `status: pending_review`, separate `destination: Memory | State` candidates, and `requires_user_approval: true`. This is a reviewable proposal bundle, not private persistence or an apply operation. Schema validation proves only that the output has the expected shape; it does not mean the user approved any wording or destination. The existing destination-specific Memory and State proposal schemas remain separate.
 
 ## Manual Use
 
@@ -100,6 +100,10 @@ Private storage is not automatically confidential. Users should evaluate the pri
 ## Related Artifacts
 
 - `prompts/guided-intake.md`
+- `schemas/intake-response.schema.json`
+- `examples/intake/guided-intake.synthetic.json`
+- `examples/intake/intake-to-memory-state-proposals.synthetic.md`
+- `evals/intake-boundary-cases.md`
 - `prompts/update-proposal-review.md`
 - `docs/memory-state-proposal-review.md`
 - `docs/roadmap-v0.3.0.md`
