@@ -30,6 +30,20 @@ The separate contracts are:
 
 See `examples/journal-mirror-walkthroughs/memory-state-review.synthetic.md` for a public-safe review of a good Memory candidate, a good State candidate, an overbroad discarded Memory candidate, and an expired State candidate. Use `evals/memory-state-proposal-cases.md` for manual regression checks of classification, required fields, approval, and expiration.
 
+## Intake-Originated Proposals
+
+`prompts/guided-intake.md` can turn plain-language onboarding answers into candidate Memory and State proposals. Intake is another proposal source, not an approval path. Its summary, model confidence, or classification does not authorize persistence.
+
+Apply the same review rules to intake-originated candidates:
+
+- Confirm the exact minimal wording and one destination.
+- Keep a durable preference or boundary in Memory only after explicit user approval.
+- Keep current context in State and require a review, stale, or expiration trigger.
+- Treat an edit or move between Memory and State as a new candidate requiring review.
+- Omit skipped, uncertain, sensitive, identifying, or unnecessary intake information rather than inferring or retaining it.
+
+The intake prompt uses human-readable `pending_review` markers. Until issue #28 defines a structured intake contract, map a retained candidate to the existing destination-specific schema only during separate review. Nothing is written by intake or by schema conversion.
+
 ## Review Questions
 
 - Is this Memory or State?
