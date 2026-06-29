@@ -52,6 +52,12 @@ The end-to-end synthetic fixtures are:
 
 These evals test system boundaries and review behavior. They do not measure mental-health outcomes, replace expert safety review, or validate the system for clinical use.
 
+## v0.3.0 Validation Baseline
+
+The release-readiness baseline is 9 JSON schemas and 79 automated tests: 9 initializer, 19 MCP boundary, 24 proposal/review/apply, 14 local viewer, and 13 integrated runtime safety regression tests. Run the commands and release scans in the [v0.3.0 release checklist](docs/release-checklist-v0.3.0.md) and the runtime-specific checks in the [runtime validation checklist](docs/runtime-validation-checklist.md).
+
+All listed manual eval documents must be reviewed for the changed surfaces using synthetic inputs only. Manual results are qualitative boundary evidence, not comprehensive proof of production safety, privacy, security, clinical suitability, or effectiveness.
+
 The future-controller cases are manual, synthetic, design-boundary checks. They verify the specification's denied operations, approval gates, prompt-injection handling, and metadata-only logging expectations; they do not exercise an MCP server, controller, plugin, or hosted runtime.
 
 ## Guided Intake Eval Coverage

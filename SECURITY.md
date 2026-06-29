@@ -59,3 +59,9 @@ Validation output, logs, connector configuration, endpoint/tunnel details, priva
 Treat Developer mode and custom MCP tools as high-risk interfaces because they may expose private reads and write/modify actions. Use least privilege and the strictest available confirmation setting, inspect complete JSON tool payloads, do not remember write approvals during early testing, and keep high-risk actions disabled until required. Prompt text and client confirmation are defense-in-depth controls; the server must continue validating scope, destination, exact wording, and confirmation.
 
 Prefer Secure MCP Tunnel or another reviewed private connectivity path when available. A temporary public HTTPS tunnel may expose the server and must be restricted, unpublished, uncommitted, and stopped after the test. Never commit a connector URL, tunnel profile or identifier, token, credential, private path, or generated private artifact. Disconnect/remove the app, stop connectivity and server processes, invalidate temporary access, and review metadata-only private audit retention when testing ends.
+
+## Release Readiness
+
+Before a tag or GitHub release, run the repository's release checklist, inspect every leakage-scan match, and review tracked and untracked filenames. Release text and attachments must contain no private data, local paths, endpoints, connectivity material, credentials, screenshots, generated viewer output, logs, exports, private vault files, or other runtime artifacts.
+
+The local prototype has no production authentication, hosted permissions layer, monitoring, formal threat-model review, or formal security audit. Documentation must not describe it as production-ready or guarantee security, privacy, or clinical safety. Users remain responsible for device, filesystem, process, sync, backup, retention, sharing, and separately configured connectivity controls.

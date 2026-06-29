@@ -11,9 +11,21 @@
 - [x] Issue #32: document ChatGPT connector setup, tool review/permissions, a synthetic first-run walkthrough, refusal checks, and disconnect guidance without adding live connectivity.
 - [x] Issue #33: add an optional local static HTML viewer for Journal Mirror runtime state with private-path refusal, metadata-only defaults, and synthetic tests.
 - [x] Issue #34: expand MCP runtime tests and safety evals with integrated regressions, prompt-injection and clinical/safety matrices, intake cases, and local validation guidance.
-- [ ] Issue #35: complete `v0.3.0` release readiness.
+- [x] Issue #35: prepare `v0.3.0` release notes, validation checklist, usable-product handoff, navigation, and public/private release audit in a docs-only PR.
 
-Issues #26 through #34 cover architecture, intake design, structured intake artifacts, the private-vault package, the minimal local MCP server, exact-approved-wording apply, ChatGPT connector onboarding, local runtime inspection, and expanded safety validation. Issue #35 is the next likely work: final `v0.3.0` release readiness. Parent sprint #25 remains open until that work is complete.
+Issues #26 through #35 cover architecture, intake design, structured intake artifacts, the private-vault package, the minimal local MCP server, exact-approved-wording apply, ChatGPT connector onboarding, local runtime inspection, expanded safety validation, and release readiness. Parent sprint #25 is ready to close only after the readiness PR is merged and the `v0.3.0` tag and GitHub release are verified; this PR does not close it.
+
+## v0.4 Candidates — Not Shipped in v0.3.0
+
+- Package and CLI polish.
+- Stronger CI coverage.
+- A formal threat model and security review.
+- Reviewed private deployment design.
+- Richer local viewer UX without weaker privacy defaults.
+- Automated eval harnesses.
+- An optional framework-mapping guide.
+- Example adapter documentation.
+- Release automation.
 
 ## v0.2 Follow-Up Sprint Areas
 
@@ -36,4 +48,4 @@ Issues #26 through #34 cover architecture, intake design, structured intake arti
 - Add export packaging for therapist handoff.
 - Consider future controller implementation planning only as a separately scoped and approved effort.
 - Add more examples and evals after private use only as independently synthetic or deliberately redacted public artifacts.
-- Create the `v0.2.0` tag and GitHub release after merge and final validation, if desired.
+- Review retention and purge controls for private metadata-only audit records.

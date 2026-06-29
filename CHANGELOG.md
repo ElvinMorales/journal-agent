@@ -4,6 +4,30 @@ All notable changes to this artifact system will be documented here.
 
 ## Unreleased
 
+## [v0.3.0] - 2026-06-29
+
+### Added
+
+- Guided-intake prompts, schema, synthetic example, proposal walkthrough, and boundary evals.
+- A private-vault runtime package and safe standard-library initializer.
+- A narrow local stdio MCP server for selected/allowlisted reads, separate pending proposals, guarded exact apply, and metadata-only audit.
+- A Memory/State proposal approval and character-exact apply workflow with destination confirmation, State triggers, fixed target allowlists, and repeat-apply refusal.
+- ChatGPT connector setup, conservative tool-permission guidance, and a synthetic first-run walkthrough without committed connectivity configuration.
+- A local static runtime viewer with bounded reads, separate Memory/State display, metadata-only defaults, and repository output refusal.
+- Automated initializer, MCP boundary, proposal/apply, viewer, and integrated runtime safety tests plus expanded manual synthetic evals.
+- `v0.3.0` release notes, release checklist, usable-product handoff, and release-focused navigation.
+
+### Safety / Privacy
+
+- Retained the public repository as the reusable control plane and private vault as the user-controlled data plane.
+- Kept Memory and State separate and required reviewed exact wording, destination-specific confirmation, and an allowlisted target before apply.
+- Added no private data or paths, connector configuration, live endpoint, tunnel setup, generated viewer HTML, screenshot, log, export, token, secret, or other private runtime artifact.
+- Made no production-hardening, confidentiality, security, clinical-safety, or therapeutic-effectiveness claim.
+
+### Intentionally Unsupported
+
+- No hosted service, production authentication/monitoring, public dashboard, automatic synchronization, automatic Memory update, State-to-Memory promotion, whole-vault scan, arbitrary file browser, or clinical/therapy replacement.
+
 - Added synthetic MCP runtime safety regressions for whole-vault refusal, selected-context-only reads, inert proposals, no silent Memory/State writes, exact approval gates, destination separation, prompt-injection resistance, metadata-only audit, and default viewer hiding.
 - Added MCP runtime, prompt-injection, and clinical/safety boundary eval matrices; expanded guided-intake boundary cases for intrusive inference, clinical overreach, urgent routing, raw journal requests, approval bypass, and injected response data.
 - Added a local runtime validation checklist with stable test counts, schema/tests/help commands, leakage and generated-output review, and the 14-bucket taxonomy audit.
