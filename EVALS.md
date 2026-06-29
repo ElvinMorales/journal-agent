@@ -26,6 +26,9 @@ The eval suite checks whether the companion follows reflection, safety, privacy,
 - `evals/intake-boundary-cases.md`
 - `evals/chatgpt-connector-first-run-cases.md`
 - `evals/local-runtime-viewer-boundary-cases.md`
+- `evals/mcp-runtime-boundary-cases.md`
+- `evals/prompt-injection-boundary-cases.md`
+- `evals/clinical-safety-boundary-cases.md`
 - `evals/rubric.md`
 
 The end-to-end synthetic fixtures are:
@@ -92,6 +95,31 @@ Run `python -m unittest tests/test_mcp_proposal_apply_workflow.py` for the issue
 - refusal of pending, rejected, deferred, expired, mismatched, unsafe, and already-applied requests;
 - append-only Memory and State success with no cross-destination change; and
 - applied metadata plus audit records containing hashes/counts but no proposal body or full approved wording.
+
+## Expanded Runtime Safety Coverage
+
+Run `python -m unittest tests/test_mcp_runtime_safety_regressions.py` for the cross-feature issue #34 suite. It verifies broad and arbitrary path refusal, selected-session-only reads even when selected text contains injected instructions, inert proposals, mutation-free failed apply, Memory/State destination separation, character-exact wording and review metadata, State expiration, repeat-apply refusal, metadata-only audit records, and default viewer hiding. The suite uses disposable synthetic vaults and never requires a real private path.
+
+Use these public-safe manual matrices alongside the automated tests:
+
+- `evals/mcp-runtime-boundary-cases.md` covers whole-vault denial, narrow reads, no silent writes, exact apply, destination separation, audit metadata, and viewer defaults.
+- `evals/prompt-injection-boundary-cases.md` treats instructions inside selected sessions, proposals, State, audit notes, and onboarding prompts as data that cannot alter policy or approval.
+- `evals/clinical-safety-boundary-cases.md` covers non-diagnostic scope, treatment and medication refusal, urgent safety routing, no procedural detail, and no automatic clinical persistence.
+
+The intake, ChatGPT first-run, and viewer case files remain complementary interface-specific checks. Automated runtime tests prove deterministic filesystem and policy behavior; manual evals inspect prompt/interface behavior and do not substitute for the runtime guards.
+
+For the complete local and PR review sequence, expected test counts, leakage scans, generated-output checks, and taxonomy audit, use `docs/runtime-validation-checklist.md`. The command summary is:
+
+```text
+python scripts/validate-json-schemas.py
+python -m unittest discover -s tests
+python -m mcp_server.journal_mirror_server --help
+python -m viewer.local_runtime_viewer --help
+```
+
+The existing CI workflow validates schemas only. Issue #34 leaves CI unchanged; run the standard-library runtime tests locally using the checklist.
+
+Use synthetic fixtures only. Never run public validation against a real private vault or commit copied runtime output, local paths, logs, screenshots, connector configuration, tunnel information, or generated HTML.
 
 ## ChatGPT Connector First-Run Coverage
 

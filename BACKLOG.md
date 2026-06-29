@@ -10,10 +10,10 @@
 - [x] Issue #31: implement proposal approval and exact-wording apply through MCP with destination-specific confirmation, fixed target allowlists, State triggers, append-only writes, double-apply refusal, and metadata-only audit.
 - [x] Issue #32: document ChatGPT connector setup, tool review/permissions, a synthetic first-run walkthrough, refusal checks, and disconnect guidance without adding live connectivity.
 - [x] Issue #33: add an optional local static HTML viewer for Journal Mirror runtime state with private-path refusal, metadata-only defaults, and synthetic tests.
-- [ ] Issue #34: expand MCP runtime tests and safety evals.
+- [x] Issue #34: expand MCP runtime tests and safety evals with integrated regressions, prompt-injection and clinical/safety matrices, intake cases, and local validation guidance.
 - [ ] Issue #35: complete `v0.3.0` release readiness.
 
-Issues #26 through #33 cover architecture, intake design, structured intake artifacts, the private-vault package, the minimal local MCP server, exact-approved-wording apply, ChatGPT connector onboarding, and local runtime inspection. Issue #34 is the next likely work: expanded MCP runtime tests and safety evals. Issue #35 keeps release readiness future and separately reviewable. Parent sprint #25 remains open.
+Issues #26 through #34 cover architecture, intake design, structured intake artifacts, the private-vault package, the minimal local MCP server, exact-approved-wording apply, ChatGPT connector onboarding, local runtime inspection, and expanded safety validation. Issue #35 is the next likely work: final `v0.3.0` release readiness. Parent sprint #25 remains open until that work is complete.
 
 ## v0.2 Follow-Up Sprint Areas
 

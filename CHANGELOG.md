@@ -4,6 +4,11 @@ All notable changes to this artifact system will be documented here.
 
 ## Unreleased
 
+- Added synthetic MCP runtime safety regressions for whole-vault refusal, selected-context-only reads, inert proposals, no silent Memory/State writes, exact approval gates, destination separation, prompt-injection resistance, metadata-only audit, and default viewer hiding.
+- Added MCP runtime, prompt-injection, and clinical/safety boundary eval matrices; expanded guided-intake boundary cases for intrusive inference, clinical overreach, urgent routing, raw journal requests, approval bypass, and injected response data.
+- Added a local runtime validation checklist with stable test counts, schema/tests/help commands, leakage and generated-output review, and the 14-bucket taxonomy audit.
+- Updated eval, navigation, privacy/security, roadmap, controller-contract, taxonomy, and backlog documentation for synthetic-only public validation.
+- Added no runtime behavior expansion, connector configuration, hosted endpoint, tunnel, private data/path, log, screenshot, generated viewer output, secret, or unsafe clinical procedural detail.
 - Added a Python standard-library local static HTML runtime viewer with separate Memory, State, pending proposal, session metadata, and audit metadata sections.
 - Added State review/stale and expiration trigger visibility, proposal status/applied metadata, default raw-content hiding, bounded reads, HTML escaping, restrictive CSP, and repository output-path refusal.
 - Added synthetic viewer safety tests, a local-use/privacy guide, synthetic fixture notes, manual boundary cases, and navigation/taxonomy updates.

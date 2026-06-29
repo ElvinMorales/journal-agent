@@ -28,6 +28,8 @@ The local MCP server requires an explicit initialized private-vault path outside
 
 Successful apply audit records are metadata-only: event, timestamp, destination, proposal filename, target filename, wording hash, and character count. They do not contain raw journal content, proposal bodies, or full approved wording.
 
+Runtime regression fixtures and manual eval cases must be synthetic only and must never point at a real private vault. Instructions embedded in selected notes are untrusted data: they cannot broaden read scope, authorize persistence, change destination, disable audit, or cause raw content to be logged. Clinical or medical interpretations, diagnoses, treatment directions, and medication guidance must not be stored as Memory or State.
+
 The server logs operational metadata to stderr for stdio use and must never log journal, session, proposal, Memory, or State content. No connector configuration, hosted endpoint, or tunnel is included. Users remain responsible for reviewing exact wording and destination and for local process/client permissions, filesystem controls, device access, sync, backup, audit retention, and sharing controls.
 
 ## Exports
@@ -39,6 +41,8 @@ Exports should distinguish user-authored text from agent-generated summaries. Th
 The viewer reads only its documented runtime allowlist from one explicit initialized vault and refuses output inside the public repository. Raw journal content, full Memory/State content, proposal bodies and exact approved wording, session content, and audit notes are hidden by default. Include-content flags increase privacy risk even though rendered values remain size-limited and escaped.
 
 Generated HTML may contain private filenames, timestamps, statuses, triggers, and other metadata. Store it only in the private vault or another protected local folder; do not commit it or publish screenshots. The page has no JavaScript, external assets, analytics, or network calls, but local file privacy still depends on operating-system permissions, device security, sync, backup, retention, and sharing controls. Delete and regenerate the file as needed.
+
+Do not commit validation outputs, generated viewer HTML, runtime logs, screenshots, connector configuration, endpoint or tunnel information, credentials, or identifying private paths. Public validation should leave no generated artifact behind.
 
 ## ChatGPT Connector Testing
 
