@@ -1,6 +1,6 @@
 # Journal Mirror Agent
 
-`journal-agent` is a public, file-first scaffold for a private-first Journal Mirror Agent and a reference implementation of the Agentic AI Artifact Taxonomy. `v0.2.0` is the current manual/control-plane release: it supports natural private writing first, selected-context reflection after, and reviewable Memory or State update proposals. Work toward `v0.3.0` now includes a minimal local MCP server and a local static HTML runtime viewer for a user-controlled private vault.
+`journal-agent` is a public, file-first scaffold for a private-first Journal Mirror Agent and a reference implementation of the Agentic AI Artifact Taxonomy. `v0.2.0` is the current tagged manual/control-plane release. `v0.3.0` is ready for final validation and tagging only after the release-readiness PR merges; it adds an optional local/private MCP runtime prototype, guided intake, strict proposal apply, connector onboarding documentation, and a local static viewer.
 
 It does not store journal entries and it is not therapy, diagnosis, crisis counseling, medical advice, treatment planning, medication guidance, a mental health product, clinical decision support system, hosted service, Obsidian plugin, or private journal database.
 
@@ -52,13 +52,14 @@ This repo applies that lens to a journaling companion by making public artifacts
 - [Minimal local MCP server](docs/mcp-local-server.md) for nine narrow selected-context, approved Memory, current State, pending-proposal review, exact-approved-wording apply, and metadata-only audit tools. The [proposal approval workflow](docs/mcp-proposal-approval-workflow.md) requires exact wording, destination-specific confirmation, and an allowlisted target; it exposes no arbitrary filesystem operation.
 - [Runtime validation checklist](docs/runtime-validation-checklist.md) and the [MCP runtime](evals/mcp-runtime-boundary-cases.md), [prompt-injection](evals/prompt-injection-boundary-cases.md), and [clinical/safety](evals/clinical-safety-boundary-cases.md) eval matrices for synthetic-only boundary regression.
 - [ChatGPT connector setup](docs/chatgpt-mcp-connector-setup.md), [first-run walkthrough](docs/first-run-chatgpt-walkthrough.md), and [tool review/permissions guide](docs/chatgpt-tool-review-and-permissions.md) for safely onboarding the existing MCP server with synthetic prompts. These are documentation only: no connector configuration, endpoint, tunnel, hosted deployment, or private data is committed.
+- [v0.3.0 release notes](docs/release-notes/v0.3.0.md), [release checklist](docs/release-checklist-v0.3.0.md), and [usable-product handoff](docs/v0.3-usable-product-handoff.md) for the release scope, final gates, limitations, and practical local/private path.
 - `docs/journal-mirror-workflow.md` for the post-writing reflection workflow.
 - [Private runtime starter guide](docs/obsidian-private-runtime-guide.md) for a manual setup that works with Obsidian or any private notes system, with no plugin or server required.
 - [Future MCP/VPS controller contract](docs/future-mcp-vps-controller-contract.md) for the design-only boundary of a possible private runtime edge; it includes no MCP/VPS server or controller implementation.
 
 ## Start Here
 
-For the shortest orientation, read the [v0.2 usable-product handoff](docs/v0.2-usable-product-handoff.md). Then follow this manual flow:
+For the optional local runtime path, start with the [v0.3 usable-product handoff](docs/v0.3-usable-product-handoff.md). The [v0.2 handoff](docs/v0.2-usable-product-handoff.md) remains the shortest orientation to the manual workflow. The v0.3 path is:
 
 1. Optionally run the [guided intake prompt](prompts/guided-intake.md) to describe reflection preferences, boundaries, and current context in plain language. Review the separate pending proposals; intake writes nothing.
 2. Create a blank private runtime outside this repo with the [private vault initializer](docs/private-vault-runtime-package.md), or follow the [manual private runtime starter guide](docs/obsidian-private-runtime-guide.md).
@@ -67,7 +68,7 @@ For the shortest orientation, read the [v0.2 usable-product handoff](docs/v0.2-u
 5. For an optional ChatGPT test, follow the [connector setup](docs/chatgpt-mcp-connector-setup.md) and [synthetic first-run walkthrough](docs/first-run-chatgpt-walkthrough.md). ChatGPT cannot connect directly to local stdio; a separately reviewed reachable MCP endpoint or Secure MCP Tunnel path is required.
 6. Use `templates/` only when a structured starting point is helpful; templates are optional, not a required journal format.
 
-Release readers should also review the [v0.2.0 release notes](docs/release-notes/v0.2.0.md) and [v0.2.0 release checklist](docs/release-checklist-v0.2.0.md).
+Release readers should review the [v0.3.0 release notes](docs/release-notes/v0.3.0.md), [v0.3.0 release checklist](docs/release-checklist-v0.3.0.md), and [runtime validation checklist](docs/runtime-validation-checklist.md). These documents prepare the release; they do not indicate that a `v0.3.0` tag or GitHub release exists.
 
 See [all session prompts](prompts/), the [Journal Mirror session capability](skills/journal-mirror-session/SKILL.md), and the [Memory/State review capability](skills/memory-state-review/SKILL.md). Read `docs/journal-mirror-workflow.md` for the complete flow, `docs/memory-state-proposal-review.md` for the proposal lifecycle and publishing checklist, `ARTIFACT_MAP.md` for the artifact layout, and `GUARDRAILS.md` before running reflection workflows.
 
@@ -77,15 +78,17 @@ To inspect the flow without private content, use the [synthetic Journal Mirror w
 
 `v0.2.0` adds usable manual Journal Mirror sessions, private-notes setup guidance, prompt and capability surfaces, separate reviewable Memory and State proposal contracts, synthetic walkthroughs and evals, and a design-only future controller contract. It does not add a live MCP/VPS runtime, vault access, an Obsidian plugin, automatic persistence, a clinical product, or crisis automation.
 
-The `v0.2.0` manual workflow remains the usable path while `v0.3.0` is planned and built.
+The `v0.2.0` manual workflow remains supported; the `v0.3.0` local runtime path is optional and becomes a release only after post-merge validation and tagging.
 
-## v0.3.0 Planning Status
+## v0.3.0 Release-Readiness Status
 
-`v0.3.0` work has started under issue #25. Guided intake provides a manual, plain-language way to avoid starting from a blank slate, plus a schema, synthetic example, review walkthrough, and boundary evals for separate pending Memory and State proposals. The private vault initializer creates blank, generic runtime folders and starter files outside the public repo. The minimal local MCP server now provides a narrow runtime boundary for selected session reads, allowlisted Memory/State reads, inert proposal creation, proposal review status, exact-approved-wording apply, and metadata-only private audit entries.
+Issue #35 prepares `v0.3.0` for final validation after issues #26 through #34 delivered the planned local runtime surfaces. Guided intake provides a manual, plain-language way to avoid starting from a blank slate, plus a schema, synthetic example, review walkthrough, and boundary evals for separate pending Memory and State proposals. The private vault initializer creates blank, generic runtime folders and starter files outside the public repo. The minimal local MCP server provides a narrow runtime boundary for selected session reads, allowlisted Memory/State reads, inert proposal creation, proposal review status, exact-approved-wording apply, and metadata-only private audit entries.
 
 The server requires an explicit private-vault path outside the repository and exposes only its documented tools. Apply is never inferred from proposal creation or status: it requires a matching reviewed proposal, exact wording, destination-specific confirmation, an allowlisted target file, and State lifecycle triggers when applicable. The [local runtime viewer](docs/local-runtime-viewer.md) generates one static HTML file from an explicit private vault path, keeps Memory and State separate, and hides raw journal content by default. It adds no hosted dashboard, connector configuration, endpoint, tunnel, or public export. ChatGPT connector onboarding and a synthetic first-run flow are documented, but no live connector configuration or hosted deployment is included. The initializer does not access or write private content, and it does not add generated files to Git. Intake remains proposal-only; schema validation is not user approval. See the [local server guide](docs/mcp-local-server.md), [connector setup](docs/chatgpt-mcp-connector-setup.md), [first-run walkthrough](docs/first-run-chatgpt-walkthrough.md), [proposal approval workflow](docs/mcp-proposal-approval-workflow.md), [guided intake guide](docs/guided-intake.md), [v0.3.0 roadmap](docs/roadmap-v0.3.0.md), and [ADR 0003](docs/decisions/0003-journal-mirror-mcp-runtime.md).
 
 Expanded MCP runtime regression tests now exercise whole-vault refusal, selected-context-only reads, no silent Memory/State writes, destination separation, exact approval gates, prompt-injection resistance, and metadata-only audit behavior. Run only with synthetic temporary fixtures and follow the [runtime validation checklist](docs/runtime-validation-checklist.md).
+
+The public repository remains the control plane and includes no private vault data. The optional runtime uses a separate private data plane and is not a hosted service. It does not provide therapy or clinical care, and it never authorizes automatic persistence: proposal creation, review, exact-wording approval, and destination-specific apply remain distinct operations.
 
 ## Safety and Privacy Warnings
 

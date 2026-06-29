@@ -8,7 +8,7 @@ The private user space is the data plane: journal entries, copied excerpts, user
 
 See `docs/obsidian-private-runtime-guide.md` for an optional, manual setup using Obsidian or another private notes system. The guide is setup documentation, not a committed private vault, and it does not implement a live runtime, plugin, server, connector, or automated persistence.
 
-The minimal local MCP server is a narrow runtime edge inside the private environment, between explicitly scoped operations and the private data plane. `docs/mcp-local-server.md` documents the issue #30 implementation, and `docs/future-mcp-vps-controller-contract.md` defines the broader contract and future VPS boundary. No VPS service, connector, hosted endpoint, tunnel, or viewer is implemented.
+The minimal local MCP server is a narrow runtime edge inside the private environment, between explicitly scoped operations and the private data plane. `docs/mcp-local-server.md` documents the local implementation, `docs/local-runtime-viewer.md` documents the optional local static inspection surface, and `docs/future-mcp-vps-controller-contract.md` defines the broader contract and future VPS boundary. No VPS service, live connector configuration, hosted endpoint, or tunnel is implemented.
 
 ```mermaid
 flowchart LR
@@ -27,7 +27,9 @@ flowchart LR
     C --> C4[User-reviewed exports]
 
     D[Local MCP Runtime Edge<br/>Narrow Tools] -. approved narrow operations .-> C
+    E[Local Static Viewer<br/>Read-Only Inspection] -. bounded private reads .-> C
     B -. governs .-> D
+    B -. governs .-> E
 
     B -. guides .-> C
     C -. never committed .-> A

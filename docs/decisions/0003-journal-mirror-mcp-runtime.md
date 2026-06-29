@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted; minimally implemented locally by issues #30 and #31
+Accepted; implemented locally by issues #30, #31, and #33 and validated by issue #34
 
 ## Context
 
@@ -24,9 +24,9 @@ The MCP runtime will expose narrow, named tools rather than broad filesystem acc
 
 Guided intake will initialize reviewable Memory and State proposals, not unquestioned durable facts. Intake output must use separate destinations and remain pending until the user approves, edits, rejects, or expires it. Applying a proposal will require a separate confirmation and must preserve the exact approved wording.
 
-The local HTML viewer is planned as a local inspection aid for Memory, State, proposals, and sessions. It is not a public dashboard, a substitute write path, or authorization to reveal raw journal content by default.
+The local HTML viewer is implemented as a local inspection aid for Memory, State, proposals, and sessions. It is not a public dashboard, a substitute write path, or authorization to reveal raw journal content by default.
 
-Issue #30 implements the first local subset through `mcp_server/`: narrow read, inert proposal, proposal-metadata/status, guarded apply-refusal, and metadata-only audit handlers. Issue #31 activates strict exact-wording append after matching review, destination confirmation, fixed target allowlists, and State trigger checks. Connector configuration, hosted endpoints, tunnels, and viewer behavior remain deferred to later issues.
+Issue #30 implements the first local subset through `mcp_server/`: narrow read, inert proposal, proposal-metadata/status, guarded apply-refusal, and metadata-only audit handlers. Issue #31 activates strict exact-wording append after matching review, destination confirmation, fixed target allowlists, and State trigger checks. Issue #33 implements the optional local static viewer, and issue #34 expands runtime boundary validation. Connector configuration, hosted endpoints, and tunnels remain deferred.
 
 ### MCP Tool Categories
 

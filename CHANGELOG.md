@@ -4,69 +4,102 @@ All notable changes to this artifact system will be documented here.
 
 ## Unreleased
 
-- Added synthetic MCP runtime safety regressions for whole-vault refusal, selected-context-only reads, inert proposals, no silent Memory/State writes, exact approval gates, destination separation, prompt-injection resistance, metadata-only audit, and default viewer hiding.
-- Added MCP runtime, prompt-injection, and clinical/safety boundary eval matrices; expanded guided-intake boundary cases for intrusive inference, clinical overreach, urgent routing, raw journal requests, approval bypass, and injected response data.
-- Added a local runtime validation checklist with stable test counts, schema/tests/help commands, leakage and generated-output review, and the 14-bucket taxonomy audit.
-- Updated eval, navigation, privacy/security, roadmap, controller-contract, taxonomy, and backlog documentation for synthetic-only public validation.
-- Added no runtime behavior expansion, connector configuration, hosted endpoint, tunnel, private data/path, log, screenshot, generated viewer output, secret, or unsafe clinical procedural detail.
-- Added a Python standard-library local static HTML runtime viewer with separate Memory, State, pending proposal, session metadata, and audit metadata sections.
-- Added State review/stale and expiration trigger visibility, proposal status/applied metadata, default raw-content hiding, bounded reads, HTML escaping, restrictive CSP, and repository output-path refusal.
-- Added synthetic viewer safety tests, a local-use/privacy guide, synthetic fixture notes, manual boundary cases, and navigation/taxonomy updates.
-- Added no hosted dashboard, connector configuration, endpoint, tunnel, screenshots, public export, generated viewer HTML, private data, or private path.
-- Added a ChatGPT MCP connector setup guide for the existing local server, including the local-stdio/reachable-remote boundary, Secure MCP Tunnel guidance, temporary HTTPS tunnel risks, draft app setup, and disconnect steps.
-- Added a synthetic first-run ChatGPT walkthrough covering selected-context and allowlisted Memory/State reads, separate pending proposals, metadata review, exact apply confirmation, broad-scan refusal, and silent-write refusal.
-- Added a tool-by-tool ChatGPT review and permissions guide plus a copyable synthetic first-run prompt pack and manual connector safety cases.
-- Updated privacy, security, eval, taxonomy, roadmap, and runtime onboarding docs for conservative permissions, JSON payload review, private connectivity, and shutdown.
-- Added no live connector configuration, reachable endpoint, tunnel configuration or identifier, hosted deployment, viewer, private data, configured private path, token, secret, or credential.
-- Added the proposal review and exact-approved-wording apply workflow for the local MCP server.
-- Added strict apply gates for matching reviewed proposal metadata, character-exact wording, destination-specific confirmation, and fixed Memory/State target allowlists.
-- Added State review/stale and expiration trigger enforcement during approval and apply, append-only writes, cross-destination refusal, and double-apply prevention.
-- Added metadata-only apply audit records with destination, filenames, timestamp, approved-wording hash, and character count but no full wording or proposal body.
-- Added standard-library proposal approval/apply tests and a synthetic lifecycle walkthrough covering approve, reject, defer, expire, mismatch, trigger, separation, and repeat-apply boundaries.
-- Added no ChatGPT connector setup, hosted endpoint, tunnel, local viewer, private data, configured private path, secret, or generated private-vault content.
-- Added a minimal local Python MCP server using the official SDK interface and a standard-library private-vault policy layer.
-- Added nine narrow tools for selected session context, approved Memory, current State, separate inert Memory/State proposals, proposal metadata/status, guarded apply refusal, and metadata-only private audit entries.
-- Added explicit absolute private-vault configuration with missing, uninitialized, repository-root, inside-repository, traversal, wildcard, directory, allowlist, and read-size refusal checks.
-- Added synthetic MCP server boundary tests covering allowed/denied paths, separate destinations, no silent Memory/State writes, trigger-bearing State proposals, metadata-only responses, and the original issue #30 disabled-apply boundary.
-- Added local MCP server installation, operation, privacy, security, taxonomy, controller-contract, and roadmap documentation.
-- Added no connector configuration, hosted endpoint, tunnel, viewer, full approval/apply workflow, private data, or configured local path.
-- Added private vault runtime package documentation for a generic local notes structure outside the public repository.
-- Added a Python standard-library private vault initializer with dry-run, idempotent default behavior, managed-starter `--force`, and resolved-path repository refusal checks.
-- Added initializer tests for creation, dry-run, idempotency, force scope, unsafe path refusal, generic content, and separate Memory, State, and pending-proposal destinations.
-- Updated setup, navigation, taxonomy, privacy, and security documentation for the initializer boundary.
-- Added no MCP runtime, connector configuration, endpoint, hosted runtime, or local viewer implementation.
-- Added a guided intake response schema for structured, reviewable, proposal-only output.
-- Added an independently synthetic guided intake JSON example that validates against the new schema.
-- Added a synthetic intake-to-Memory/State walkthrough covering approve, edit, move, discard, and expiration-trigger review decisions.
-- Added guided intake boundary evals for jargon, skipping, sensitive overreach, clinical framing, approval confusion, Memory/State separation, State triggers, runtime claims, and prompt injection.
-- Updated documentation and navigation for structured intake while keeping schema validation separate from user approval.
-- Added no runtime implementation, MCP server, connector configuration, private-vault initializer, local viewer, endpoint, or automatic persistence.
-- Added a manual guided intake prompt that asks plain-language questions about reflection use, tone, boundaries, supports, and temporary context.
-- Added guided intake documentation for manual use, future MCP boundaries, and separate pending Memory and State proposals.
-- Clarified that intake-originated proposals still require review of exact wording and destination, and that State requires a review/stale/expiration trigger.
-- Added no runtime, MCP server, connector configuration, private-vault initializer, or automatic persistence as part of the guided intake prompt work.
-- Added the `v0.3.0` MCP runtime and guided-intake roadmap.
-- Added ADR 0003 for the proposed local/private Journal Mirror MCP runtime direction.
-- Clarified `v0.2.0` as the current manual/control-plane release and `v0.3.0` as the MCP-connected private-runtime sprint.
-- Added planning boundaries only; no MCP runtime, connector configuration, vault initializer, local viewer, endpoint, or executable implementation was added.
-- Started `v0.2.0` planning for the Journal Mirror runtime pattern: natural private writing first, reflection after selection, and user-reviewed Memory or State proposals.
+- No unreleased changes yet.
+
+## [v0.3.0] - 2026-06-29
+
+### Added
+
+- Guided-intake prompts, response schema, synthetic example, proposal walkthrough, and boundary evals.
+- A private-vault runtime package and safe Python standard-library initializer for creating a blank private vault outside the public repository.
+- A narrow local stdio MCP server for selected-session reads, allowlisted Memory and State reads, separate pending proposals, guarded exact apply, and metadata-only audit.
+- A Memory/State proposal approval and character-exact apply workflow with destination-specific confirmation, State lifecycle triggers, fixed target allowlists, append-only writes, and repeat-apply refusal.
+- ChatGPT MCP connector setup documentation, conservative tool-permission guidance, a synthetic first-run walkthrough, a tool review guide, and manual connector safety cases without committed live connectivity configuration.
+- A local static runtime viewer with bounded reads, separate Memory/State display, State trigger visibility, proposal status/applied metadata, metadata-only defaults, HTML escaping, restrictive CSP, and repository output-path refusal.
+- Automated initializer, MCP boundary, proposal/apply, local viewer, and integrated runtime safety tests.
+- Manual synthetic eval matrices for intake boundaries, MCP runtime boundaries, prompt injection, clinical/safety boundaries, ChatGPT connector first run, and local viewer boundaries.
+- A runtime validation checklist with schema/test/help commands, stable test counts, leakage scans, generated-output review, and taxonomy audit guidance.
+- `v0.3.0` release notes, release checklist, usable-product handoff, and release-focused navigation.
+
+### Changed
+
+- Updated README navigation to point to the v0.3 runtime docs, private-vault setup, MCP server guide, ChatGPT connector setup, proposal workflow, local viewer, runtime validation checklist, release notes, and usable-product handoff.
+- Updated architecture, ADR, roadmap, controller-contract, eval, privacy/security, artifact map, taxonomy mapping, changelog, and backlog documentation for the v0.3 local/private runtime path.
+- Clarified `v0.2.0` as the manual/control-plane release and `v0.3.0` as the optional local/private MCP runtime prototype.
+- Separated shipped `v0.3.0` scope from future `v0.4` candidates such as packaging/CLI polish, stronger CI, formal threat modeling, private deployment design, richer viewer UX, eval automation, framework mappings, adapter docs, and release automation.
+
+### Safety / Privacy
+
+- Retained the public repository as the reusable control plane and the private vault as the user-controlled data plane.
+- Kept Memory and State separate across intake, proposal creation, review, apply, display, and validation.
+- Required reviewed exact wording, destination-specific confirmation, and an allowlisted target before apply.
+- Preserved metadata-only audit behavior without logging raw journal content, full proposal bodies, or full approved wording.
+- Used synthetic fixtures and public-safe eval scenarios only.
+- Added no private data or paths, connector configuration, live endpoint, tunnel setup, generated viewer HTML, screenshot, log, export, token, secret, credential, or other private runtime artifact.
+- Made no production-hardening, confidentiality, security, clinical-safety, medical, therapeutic, or crisis-support guarantee.
+
+### Intentionally Unsupported
+
+- No hosted service.
+- No production authentication, authorization, monitoring, or hardening claim.
+- No public dashboard.
+- No automatic synchronization.
+- No automatic Memory updates.
+- No automatic State-to-Memory promotion.
+- No whole-vault scan.
+- No arbitrary file browser.
+- No committed connector configuration, live endpoint, tunnel configuration, or hosted deployment.
+- No clinical diagnosis, treatment planning, medication guidance, therapy replacement, crisis counseling, or emergency-support replacement.
+
+## [v0.2.0] - 2026-06-28
+
+### Added
+
+- Started the Journal Mirror runtime pattern: natural private writing first, reflection after selection, and user-reviewed Memory or State proposals.
 - Added a private Obsidian/private-notes runtime starter guide for manual setup, selected-context sessions, and reviewed Memory/State updates without a plugin or server.
 - Added Journal Mirror prompts for selected-context sessions, freeform entries, recent pattern review, gentle next actions, and separate Memory/State proposal review.
 - Added session and update-review capability modules, extended existing reflection capabilities, and added privacy-first trust metadata to journal skills.
-- Updated navigation, workflow, runtime, taxonomy, output, roadmap, and backlog documentation for the manual prompt surfaces.
-- Added separate Memory and State update proposal schemas, four synthetic lifecycle examples, and a manual review guide for approve, edit, discard, and expiration decisions.
-- Clarified that proposal artifacts remain private and review-only, approved wording is copied manually, and no automatic persistence or State-to-Memory promotion is implemented.
+- Added separate Memory and State update proposal schemas.
+- Added four synthetic Memory/State lifecycle examples.
+- Added a manual proposal review guide for approve, edit, discard, and expiration decisions.
 - Added three public-safe synthetic Journal Mirror walkthroughs covering a freeform entry, a recent pattern review, and separate Memory/State proposal decisions.
 - Added manual eval cases for template avoidance, evidence-bound reflection, Memory overreach, State staleness, required proposal fields, clinical scope, crisis routing, and selected-context privacy.
-- Updated eval guidance, workflow and private-runtime docs, taxonomy mappings, roadmap, and backlog for the issue #15 walkthrough/eval layer without adding runtime automation.
 - Added a design-only future MCP/VPS controller contract defining the private runtime edge, data classes, narrow allowed operations, denied operations, approval gates, audit expectations, failure mitigations, threat model, and pre-implementation checklist.
-- Added synthetic manual future-controller boundary cases and linked the contract through architecture, workflow, lifecycle, proposal-review, privacy, security, taxonomy, roadmap, and navigation docs; no runtime implementation or private artifacts were added.
-- Added `v0.2.0` release notes, a practical usable-product handoff, and a pre-release checklist.
-- Tightened README and cross-repo navigation around manual private-first use, public/private boundaries, separate Memory and State review, and release readiness.
-- Updated the artifact map, taxonomy mapping, roadmap, and backlog for the issue #17 handoff without adding a live runtime, vault access, automatic persistence, plugin, server, controller implementation, tag, or GitHub release.
-- Added conservative cross-platform line-ending normalization through `.gitattributes` and ignored the local `.agents/` scratch workspace without adding its contents.
+- Added synthetic manual future-controller boundary cases.
+- Added `v0.2.0` release notes, a usable-product handoff, and a pre-release checklist.
+- Added conservative cross-platform line-ending normalization through `.gitattributes`.
+- Ignored the local `.agents/` scratch workspace without adding its contents.
 
-## v0.1.0 - 2026-05-31
+### Changed
+
+- Reframed the repo from a template-heavy journaling scaffold into a public, file-first Journal Mirror Agent pattern.
+- Updated navigation, workflow, runtime, taxonomy, output, roadmap, backlog, privacy, security, and lifecycle documentation for the manual prompt/runtime surfaces.
+- Linked the future-controller contract through architecture, workflow, lifecycle, proposal-review, privacy, security, taxonomy, roadmap, and navigation docs.
+- Tightened README and cross-repo navigation around manual private-first use, public/private boundaries, separate Memory and State review, and release readiness.
+
+### Safety / Privacy
+
+- Clarified that proposal artifacts remain private and review-only.
+- Clarified that approved wording is copied manually in `v0.2.0`.
+- Preserved separate Memory and State review.
+- Preserved selected-context privacy.
+- Kept public examples synthetic.
+- Added no real journal data, private vault content, logs, screenshots, exports, secrets, credentials, private paths, or private runtime artifacts.
+- Added no automatic persistence and no State-to-Memory promotion.
+
+### Intentionally Unsupported
+
+- No MCP runtime implementation.
+- No connector configuration.
+- No hosted endpoint.
+- No private-vault initializer.
+- No local viewer.
+- No Obsidian plugin.
+- No server.
+- No live runtime.
+- No future controller implementation beyond design documentation.
+
+## [v0.1.0] - 2026-05-31
 
 ### Added
 
