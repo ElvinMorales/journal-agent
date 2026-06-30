@@ -1,6 +1,6 @@
 # v0.3.0 Release Checklist
 
-Use this checklist after the release-readiness PR merges and before creating the `v0.3.0` tag or GitHub release. Run it from updated `main` with synthetic fixtures only. The checklist records release gates; it does not authorize tagging or publishing.
+This checklist records the gate that was required after the release-readiness PR merged and before creating the `v0.3.0` tag or GitHub release. The tag and release were published on June 29, 2026. Use the [final public-safety verification](release-verification/v0.3.0-final-public-safety-verification.md) for issue #46 and later audits. Run checks from updated `main` with synthetic fixtures only; this checklist does not authorize moving a tag or changing a published release.
 
 ## 1. Scope Confirmation
 
@@ -112,7 +112,7 @@ Confirm:
 
 ## 9. Tagging Steps
 
-List these commands in the readiness PR, but do not run them until all preceding gates pass after merge and explicit release approval is given:
+These are the historical tag commands. They were run for `v0.3.0`; do not rerun them. For a future release, equivalent commands remain gated on updated-main validation and explicit release approval:
 
 ```text
 git tag -a v0.3.0 -m "v0.3.0: Journal Mirror MCP runtime"

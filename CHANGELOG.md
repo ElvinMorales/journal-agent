@@ -4,7 +4,8 @@ All notable changes to this artifact system will be documented here.
 
 ## Unreleased
 
-- No unreleased changes yet.
+- Added the final v0.3 public-safety and release-readiness verification report.
+- Added no runtime behavior, private data, tag, or GitHub release.
 
 ## [v0.3.0] - 2026-06-29
 
