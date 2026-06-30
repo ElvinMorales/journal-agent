@@ -122,4 +122,4 @@ Issue #31 implements the minimal local approval/apply contract. Issue #32 docume
 
 The [local runtime viewer](local-runtime-viewer.md) can display separate Memory/State proposal statuses, State triggers, and applied metadata. It is read-only: it cannot approve, edit, reject, or apply proposals and does not replace this workflow's exact-wording gates.
 
-Broader runtime and safety evals, audit retention/purge controls, and `v0.3.0` release readiness remain separately reviewed work. Parent sprint #25 remains open.
+Issues #34 and #35 addressed broader runtime/safety evals and `v0.3.0` release readiness; issue #46 records the final public-safety verification. Audit retention and purge controls remain future work. Parent sprint #25 remains open.
