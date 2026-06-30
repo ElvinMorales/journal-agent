@@ -1,6 +1,6 @@
 # Runtime Validation Checklist
 
-Use this checklist for local runtime changes and PR review. For the complete pre-tag gate, also use the [v0.3.0 release checklist](release-checklist-v0.3.0.md). All automated validation must use repository fixtures or disposable temporary synthetic vaults. Never point public validation commands at a real private vault.
+Use this checklist for local runtime changes and PR review. For the complete release gate and post-release verification, also use the [v0.3.0 release checklist](release-checklist-v0.3.0.md) and [final public-safety verification](release-verification/v0.3.0-final-public-safety-verification.md). All automated validation must use repository fixtures or disposable temporary synthetic vaults. Never point public validation commands at a real private vault.
 
 The existing GitHub workflow remains focused on schema validation. Issue #34 does not add a second CI workflow or change dependencies; reviewers should run the standard-library unit-test commands below locally until CI expansion is separately reviewed.
 
@@ -87,4 +87,4 @@ git diff --cached --name-status
 git diff --cached --check
 ```
 
-Issue #35 is a documentation and release-validation change only. It must not alter runtime behavior or add connector configuration, a hosted endpoint, a tunnel, a local HTTP server, private paths/data, logs, screenshots, generated viewer output, secrets, or clinical procedural detail. Before commit, verify the changed-file scope, rerun every automated command, review every scan match, confirm both taxonomy tables retain 14 rows, and confirm no tag or GitHub release was created.
+Issue #46 is a documentation and final-verification change only. It must not alter runtime behavior or add connector configuration, a hosted endpoint, a tunnel, a local HTTP server, private paths/data, logs, screenshots, generated viewer output, secrets, or clinical procedural detail. Before commit, verify the changed-file scope, rerun every automated command, review every scan match, confirm both taxonomy tables retain 14 rows, and confirm this branch did not create, delete, move, or modify the pre-existing `v0.3.0` tag or GitHub release.

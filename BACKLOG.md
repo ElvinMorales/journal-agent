@@ -12,8 +12,9 @@
 - [x] Issue #33: add an optional local static HTML viewer for Journal Mirror runtime state with private-path refusal, metadata-only defaults, and synthetic tests.
 - [x] Issue #34: expand MCP runtime tests and safety evals with integrated regressions, prompt-injection and clinical/safety matrices, intake cases, and local validation guidance.
 - [x] Issue #35: prepare `v0.3.0` release notes, validation checklist, usable-product handoff, navigation, and public/private release audit in a docs-only PR.
+- [x] Issue #46: record the final `v0.3.0` public-safety and release-readiness verification in a public-safe, documentation-only report.
 
-Issues #26 through #35 cover architecture, intake design, structured intake artifacts, the private-vault package, the minimal local MCP server, exact-approved-wording apply, ChatGPT connector onboarding, local runtime inspection, expanded safety validation, and release readiness. Parent sprint #25 is ready to close only after the readiness PR is merged and the `v0.3.0` tag and GitHub release are verified; this PR does not close it.
+Issues #26 through #35 cover architecture, intake design, structured intake artifacts, the private-vault package, the minimal local MCP server, exact-approved-wording apply, ChatGPT connector onboarding, local runtime inspection, expanded safety validation, and release readiness. The `v0.3.0` tag and GitHub release were published on June 29, 2026. Issue #46 adds the final verification record after those release artifacts already existed. Parent sprint #25 remains open; this PR does not close it.
 
 ## v0.4 Candidates — Not Shipped in v0.3.0
 
